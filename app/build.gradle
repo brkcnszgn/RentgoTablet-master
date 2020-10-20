@@ -50,13 +50,10 @@ android {
             resValue "string", "app_name", "Rentgo Servis Test"
             buildConfigField "String", 'API_USERNAME', '"serviceclient"'
             buildConfigField "String", 'API_PASSWORD', '"123"'
-            buildConfigField "String", 'SERVICE_API_URL', '"http://176.235.168.154:6060/api/service/"'
-            buildConfigField "String", 'FINE_API_URL', '"http://176.235.168.154:6060/api/fine/"'
+            buildConfigField "String", 'SERVICE_API_URL', '"http://mongodb.rentgo.com:6060/api/service/"'
+            buildConfigField "String", 'FINE_API_URL', '"http://mongodb.rentgo.com:6060/api/fine/"'
             buildConfigField "String", 'BLOB_API_URL', '"https://rentgostorage.blob.core.windows.net/"'
-            buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;"\n' +
-                    '            + "AccountName=rentgostorage;"\n' +
-                    '            + "AccountKey=w+17Rp3M3WxTs+VAfDnMGkhYVZY/QwLaZCIEWKZtSU2Ld34yz1PCkuYtXqwowkXmAFBdr+x9KgqaWwz5DU6AMA==;"\n' +
-                    '            + "EndpointSuffix=core.windows.net"'
+            buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;AccountName=rentgostorage;AccountKey=w+17Rp3M3WxTs+VAfDnMGkhYVZY/QwLaZCIEWKZtSU2Ld34yz1PCkuYtXqwowkXmAFBdr+x9KgqaWwz5DU6AMA==;EndpointSuffix=core.windows.net"'
             buildConfigField "boolean", 'IS_PROD', "false"
         }
     }
