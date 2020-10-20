@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.creatifsoftware.rentgoservice.model.User" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tabIndicatorColor="@color/colorMainBlue"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="6dp"
+            app:tabMaxWidth="0dp"
+            app:tabMode="fixed">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_all_fleet_search_layout" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_vehicles_in_the_carpark_layout" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_in_use_vehicles" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_vehicles_in_the_washing_layout" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_fuel_filling_layout" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_vehicles_in_the_service_layout" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <!--<com.loopeer.shadow.ShadowView-->
+        <!--android:id="@+id/new_transfer_shadow_view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--android:elevation="10dp"-->
+        <!--android:foreground="?attr/selectableItemBackground"-->
+        <!--app:cornerRadius="5dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/tabs"-->
+        <!--app:shadowColor="#1A000000"-->
+        <!--app:shadowMargin="@dimen/spacing_default"-->
+        <!--app:shadowRadius="14dp"-->
+        <!--tools:layout_editor_absoluteX="0dp">-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/spacing_default"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tabs">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/relativeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/cars_header_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="@color/colorMainBlue"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/icon_delivery_rentgo_logo" />
+
+                <TextView
+                    android:id="@+id/all_fleet_search_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:text="@string/all_fleet_search"
+                    android:textSize="27sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/cars_header_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/search_plate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/all_fleet_search_button_bg"
+                    android:drawableStart="@drawable/icon_search_button"
+                    android:drawablePadding="10dp"
+                    android:ems="8"
+                    android:hint="@string/hint_plate_search"
+                    android:inputType="textPersonName"
+                    android:paddingStart="@dimen/spacing_default"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/contract_list_item_height"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.15"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/plate_number"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="@dimen/general_text_title_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.15"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/class_id"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="@dimen/general_text_title_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.15"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/brand_id"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="@dimen/general_text_title_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.2"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/model"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="@dimen/general_text_title_size" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.15"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/kilometer_text_title"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Yakıt"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.1"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/where_is_my_car_status"
+                    android:textColor="@color/contract_list_item_text_color"
+                    android:textSize="13sp" />
+
+            </LinearLayout>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/equipment_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/spacing_default"
+                    android:contentDescription="@string/customer_information_title"
+                    app:layoutManager="LinearLayoutManager" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        </LinearLayout>
+        <!--</com.loopeer.shadow.ShadowView>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

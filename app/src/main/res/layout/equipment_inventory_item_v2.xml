@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="equipmentInventory"
+            type="com.creatifsoftware.rentgoservice.model.EquipmentInventory" />
+
+        <variable
+            name="callback"
+            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentInventoryClickCallback" />
+
+        <variable
+            name="availableCallback"
+            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentInventoryAvailableCallback" />
+
+        <variable
+            name="missingCallback"
+            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentInventoryMissingCallback" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{equipmentInventory.inventoryName}"
+            android:textColor="@color/equipment_inventory_item_color" />
+
+        <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+            android:id="@+id/equipment_inventory_segment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="@dimen/spacing_default"
+            android:layout_marginBottom="@dimen/spacing_default"
+            android:background="#ECECEC"
+            android:elevation="2dp"
+            app:borderColor="@color/colorWhite"
+            app:borderWidth="1dp"
+            app:dividerPadding="10dp"
+            app:dividerWidth="1dp"
+            app:draggable="true"
+            app:radius="30dp"
+            app:ripple="true"
+            app:rippleColor="@color/colorWhite">
+
+            <com.addisonelliott.segmentedbutton.SegmentedButton
+                android:id="@+id/available_segment"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:onClick="@{() -> availableCallback.onClick(equipmentInventory)}"
+                android:paddingStart="40dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="40dp"
+                android:paddingBottom="10dp"
+                app:drawableGravity="top"
+                app:selectedBackground="@color/colorMainBlue"
+                app:selectedTextColor="@color/colorWhite"
+                app:text="Mevcut"
+                app:textColor="#747474" />
+
+            <com.addisonelliott.segmentedbutton.SegmentedButton
+                android:id="@+id/missing_segment"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="@{() -> missingCallback.onClick(equipmentInventory)}"
+                android:paddingStart="40dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="40dp"
+                android:paddingBottom="10dp"
+                app:drawableGravity="top"
+                app:selectedBackground="@color/colorMainBlue"
+                app:selectedTextColor="@color/colorWhite"
+                app:text="Eksik"
+                app:textColor="#747474" />
+
+        </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+
+        <!--<com.nex3z.togglebuttongroup.SingleSelectToggleGroup-->
+        <!--android:id="@+id/inventory_choice"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginBottom="@dimen/spacing_small"-->
+        <!--android:layout_marginTop="@dimen/spacing_small"-->
+        <!--android:layout_alignParentEnd="true"-->
+        <!--android:layout_centerVertical="true">-->
+
+        <!--<com.nex3z.togglebuttongroup.button.LabelToggle-->
+        <!--android:id="@+id/choice_a"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Mevcut"-->
+        <!--android:layout_marginEnd="@dimen/spacing_default"-->
+        <!--app:tbgMarkerColor="@color/colorMainBlue"-->
+        <!--android:onClick="@{() -> availableCallback.onClick(equipmentInventory)}"/>-->
+
+        <!--<com.nex3z.togglebuttongroup.button.LabelToggle-->
+        <!--android:id="@+id/choice_b"-->
+        <!--android:layout_width="100dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Yok"-->
+        <!--app:tbgMarkerColor="@color/colorMainRed"-->
+        <!--android:onClick="@{() -> missingCallback.onClick(equipmentInventory)}"/>-->
+
+        <!--</com.nex3z.togglebuttongroup.SingleSelectToggleGroup>-->
+
+    </RelativeLayout>
+</layout>

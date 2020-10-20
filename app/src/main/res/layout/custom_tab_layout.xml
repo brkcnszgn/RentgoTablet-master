@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="0.3"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:id="@+id/delivery_contract"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:background="@color/dashboard_delivery_color"
+        android:onClick="@{(v) -> callback.onItemClick(v)}">
+
+        <TextView
+            android:id="@+id/first_delivery_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/first_delivery_title"
+            android:layout_alignEnd="@+id/horizontal_layout"
+            android:layout_alignBottom="@+id/first_delivery_title"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:layout_toEndOf="@+id/first_delivery_title"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.findFirstDeliveryContractTime()}"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/first_delivery_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/horizontal_layout"
+            android:layout_alignStart="@+id/horizontal_layout"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="En Yakın Teslim"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            app:srcCompat="@drawable/icon_dashboard_delivery" />
+
+        <TextView
+            android:id="@+id/total_delivery_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.findDeliveryContractCount()}"
+            android:textColor="@color/white_color"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/total_delivery_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/total_delivery_count"
+            android:layout_alignStart="@+id/total_delivery_count"
+            android:fontFamily="@font/roboto"
+            android:text="Beklenen Teslim"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/horizontal_layout"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/total_delivery_title"
+            android:layout_alignStart="@+id/total_delivery_title"
+            android:layout_marginTop="@dimen/spacing_default"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:alpha="0.15"
+            android:background="@color/white_color"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/collect_contract"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_weight="0.2"
+        android:background="@drawable/dashboard_collect_bg"
+        android:onClick="@{(v) -> callback.onItemClick(v)}">
+
+        <TextView
+            android:id="@+id/first_collect_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/first_collect_title"
+            android:layout_alignEnd="@+id/collect_horizontal_layout"
+            android:layout_alignBottom="@+id/first_collect_title"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:layout_toEndOf="@+id/first_collect_title"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.findFirstRentalContractTime()}"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/first_collect_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/collect_horizontal_layout"
+            android:layout_alignStart="@+id/collect_horizontal_layout"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="En Yakın İade"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/collect_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            app:srcCompat="@drawable/icon_dashboard_collect" />
+
+        <TextView
+            android:id="@+id/total_collect_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.findRentalContractCount()}"
+            android:textColor="@color/white_color"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/total_collect_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/total_collect_count"
+            android:layout_alignStart="@+id/total_collect_count"
+            android:fontFamily="@font/roboto"
+            android:text="Beklenen İade"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/collect_horizontal_layout"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/total_collect_title"
+            android:layout_alignStart="@+id/total_collect_title"
+            android:layout_marginTop="@dimen/spacing_default"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:alpha="0.15"
+            android:background="@color/white_color"
+            android:orientation="horizontal" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fast_contract"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_weight="0.2"
+        android:background="@drawable/dashboard_fast_contract_bg"
+        android:onClick="@{(v) -> callback.onItemClick(v)}">
+
+        <TextView
+            android:id="@+id/total_collect_count2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:fontFamily="@font/roboto_medium"
+            android:text="0"
+            android:textColor="@color/white_color"
+            android:textSize="48sp" />
+
+        <TextView
+            android:id="@+id/first_collect_time2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/first_collect_title2"
+            android:layout_alignEnd="@+id/collect_horizontal_layout2"
+            android:layout_alignBottom="@+id/first_collect_title2"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:layout_toEndOf="@+id/first_collect_title2"
+            android:fontFamily="@font/roboto_medium"
+            android:text="- -"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/total_collect_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/total_collect_count2"
+            android:layout_alignStart="@+id/total_collect_count2"
+            android:fontFamily="@font/roboto"
+            android:text="Hızlı Sözleşme Teslimi"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/first_collect_title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/collect_horizontal_layout2"
+            android:layout_alignStart="@+id/collect_horizontal_layout2"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="En Yakın Teslim"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:id="@+id/collect_horizontal_layout2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/total_collect_title2"
+            android:layout_alignStart="@+id/total_collect_title2"
+            android:layout_marginTop="@dimen/spacing_default"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:alpha="0.15"
+            android:background="@color/white_color"
+            android:orientation="horizontal"></LinearLayout>
+
+        <ImageView
+            android:id="@+id/collect_background2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            app:srcCompat="@drawable/icon_dashboard_collect" />
+    </RelativeLayout>
+</LinearLayout>

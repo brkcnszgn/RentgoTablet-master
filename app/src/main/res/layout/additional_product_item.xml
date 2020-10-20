@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="additionalProductItem"
+            type="com.creatifsoftware.rentgoservice.model.AdditionalProduct" />
+
+        <variable
+            name="callback"
+            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductClickCallback" />
+
+        <variable
+            name="plusCallback"
+            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductPlusClickCallback" />
+
+        <variable
+            name="minusCallback"
+            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductMinusClickCallback" />
+    </data>
+
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/new_transfer_shadow_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cornerRadius="5dp"
+        app:shadowColor="#1A000000"
+        app:shadowMargin="@dimen/spacing_default"
+        app:shadowRadius="14dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@{additionalProductItem.isChecked ? @color/colorMainBlue : @color/colorWhite}"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:src="@drawable/navigation"
+                android:tint="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_toLeftOf="@+id/increase_decrease_layout"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="10dp"
+                    android:text="@{additionalProductItem.productName}"
+                    android:textAlignment="textEnd"
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/product_name"
+                    android:layout_alignEnd="@+id/product_name"
+                    android:text='@{String.format("%.02f TL", additionalProductItem.actualTotalAmount)}'
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/additional_products_price_grey}"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/roboto" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/increase_decrease_layout"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:background="@{additionalProductItem.isChecked ? @drawable/main_white_border_bg : @drawable/main_blue_border_bg}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/plus_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.33"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="@{() -> plusCallback.onClick(additionalProductItem)}"
+                    android:text="+"
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/added_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.33"
+                    android:background="@{additionalProductItem.isChecked ? @drawable/main_white_border_bg : @drawable/main_blue_border_bg}"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@{String.valueOf(additionalProductItem.value)}"
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/minus_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.33"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="@font/roboto_medium"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:onClick="@{() -> minusCallback.onClick(additionalProductItem)}"
+                    android:text="-"
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </com.loopeer.shadow.ShadowView>
+</layout>

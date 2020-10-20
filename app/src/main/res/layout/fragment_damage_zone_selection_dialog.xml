@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#BF000000"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/close_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/ic_close"
+            android:scaleType="centerInside" />
+
+        <LinearLayout
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/main_dialog_bg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/damage_zone_selection_title" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_default">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_margin="32dp"
+                    android:background="@drawable/back_button_bg"
+                    android:drawableStart="@drawable/ic_back_arrow"
+                    android:fontFamily="@font/roboto"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Geri"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorMainBlue" />
+
+                <Button
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="32dp"
+                    android:background="@drawable/next_button_bg"
+                    android:drawableEnd="@drawable/ic_next_arrow"
+                    android:fontFamily="@font/roboto"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:text="Devam"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhite" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="transfer"
+            type="com.creatifsoftware.rentgoservice.model.TransferItem" />
+
+        <variable
+            name="viewModel"
+            type="com.creatifsoftware.rentgoservice.viewmodel.ContractSummaryViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhite"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:id="@+id/delivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/transfer"
+                android:textColor="@color/main_title_color"
+                android:textSize="27sp"
+                app:fontFamily="@font/roboto_medium" />
+
+            <LinearLayout
+                android:id="@+id/transfer_information_linear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/delivery"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
+                    <include
+                        layout="@layout/equipment_information_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        bind:groupCodeInformation="@{transfer.groupCodeInformation}"
+                        bind:selectedEquipment="@{transfer.selectedEquipment}" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/customer_information_layout_bg"
+                        app:layout_constraintEnd_toEndOf="@+id/relativeLayout3"
+                        app:layout_constraintStart_toStartOf="@+id/relativeLayout3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        bind:layout_conversion_absoluteHeight="26dp"
+                        bind:layout_conversion_absoluteWidth="615dp"
+                        bind:layout_editor_absoluteX="650dp"
+                        bind:layout_editor_absoluteY="81dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/transfer_type_title"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/transfer_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/transfer_type_checkmark"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="end"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/transfer_type_checkmark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/transfer_location_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/customer_information_layout_bg">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/transfer_location"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/transfer_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/transfer_location_image"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="end"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/transfer_location_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="0.5"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/kilometer_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/customer_information_layout_bg">
+
+                        <TextView
+                            android:id="@+id/kilometer_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/kilometer_text_title"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            bind:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/kilometer_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="false"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/spacing_default"
+                            android:layout_toStartOf="@+id/kilometer_checkbox"
+                            android:gravity="end"
+                            android:minEms="4"
+                            android:text="@{String.valueOf(transfer.selectedEquipment.currentKmValue > 0 ? transfer.selectedEquipment.currentKmValue : transfer.selectedEquipment.kmValue)}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            bind:fontFamily="@font/roboto" />
+
+                        <ImageView
+                            android:id="@+id/kilometer_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/customer_information_layout_bg">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="Yakıt Göstergesi"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            bind:fontFamily="@font/roboto_medium" />
+
+                        <include
+                            android:id="@+id/fuelRatingBar"
+                            layout="@layout/custom_ratingbar_big"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginEnd="@dimen/spacing_default"
+                            android:layout_toStartOf="@+id/current_fuel_value"
+                            bind:equipment="@{transfer.selectedEquipment}" />
+
+                        <TextView
+                            android:id="@+id/current_fuel_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/spacing_default"
+                            android:layout_toStartOf="@+id/fuel_checkbox"
+                            android:background="@drawable/equipment_information_gray_bg"
+                            android:fontFamily="@font/roboto_medium"
+                            android:padding="@dimen/spacing_small"
+                            android:textColor="@color/main_title_color" />
+
+                        <ImageView
+                            android:id="@+id/fuel_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/spacing_small"
+                            android:src="@drawable/icon_checkmark" />
+
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:background="@drawable/customer_information_layout_bg"
+                        app:layout_constraintStart_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/relativeLayout2"
+                        bind:layout_conversion_absoluteHeight="26dp"
+                        bind:layout_conversion_absoluteWidth="615dp"
+                        bind:layout_editor_absoluteX="650dp"
+                        bind:layout_editor_absoluteY="117dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/transfer_outlet_branch"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/transfer_pickup_branch"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="false"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/transfer_pickup_branch_icon"
+                            android:gravity="end"
+                            android:text="@{transfer.pickupBranch.branchName}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto" />
+
+                        <ImageView
+                            android:id="@+id/transfer_pickup_branch_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/pickup_date_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:background="@drawable/customer_information_layout_bg"
+                        app:layout_constraintStart_toStartOf="@+id/relativeLayout3"
+                        app:layout_constraintTop_toBottomOf="@+id/relativeLayout3"
+                        bind:layout_conversion_absoluteHeight="27dp"
+                        bind:layout_conversion_absoluteWidth="615dp"
+                        bind:layout_editor_absoluteX="650dp"
+                        bind:layout_editor_absoluteY="153dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/estimated_pickup_date_time_title"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/transfer_start_date_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/transfer_start_date_time_image"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="end"
+                            android:text="@{transfer.convertTimestampToDateTime(transfer.estimatedPickupTimestamp)}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/transfer_start_date_time_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/return_date_layout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:background="@drawable/customer_information_layout_bg"
+                        app:layout_constraintStart_toStartOf="@+id/pickup_date_layout"
+                        app:layout_constraintTop_toBottomOf="@+id/pickup_date_layout"
+                        bind:layout_conversion_absoluteHeight="27dp"
+                        bind:layout_conversion_absoluteWidth="615dp"
+                        bind:layout_editor_absoluteX="650dp"
+                        bind:layout_editor_absoluteY="190dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="24dp"
+                            android:text="@string/estimated_dropoff_date_time_title"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/transfer_end_date_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/transfer_end_date_time_image"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="end"
+                            android:text="@{transfer.convertTimestampToDateTime(transfer.estimatedDropoffTimestamp)}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="15sp" />
+
+                        <ImageView
+                            android:id="@+id/transfer_end_date_time_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/damages_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/transfer_information_linear"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/damages_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/damages"
+                    android:textColor="@color/main_title_color"
+                    android:textSize="17sp"
+                    app:fontFamily="@font/roboto_medium" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/damage_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layoutManager="LinearLayoutManager">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

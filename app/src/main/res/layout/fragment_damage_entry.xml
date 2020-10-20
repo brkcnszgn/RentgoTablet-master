@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <TextView
+            android:id="@+id/damage_entry_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/main_title_color"
+            android:textSize="27sp"
+            app:fontFamily="@font/roboto_medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/damage_entry_title"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:id="@+id/damage_layout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:background="@drawable/background_delivery_damage">
+
+                <com.richpath.RichPathView
+                    android:id="@+id/damage_entry_form"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    app:vector="@drawable/ic_front_vector" />
+
+                <ImageView
+                    android:id="@+id/damage_entry_wireframe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_front_wireframe" />
+
+                <com.addisonelliott.segmentedbutton.SegmentedButtonGroup
+                    android:id="@+id/damage_entry_segment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/spacing_default"
+                    android:background="@color/colorWhite"
+                    android:elevation="2dp"
+                    app:borderColor="@color/colorWhite"
+                    app:borderWidth="1dp"
+                    app:dividerPadding="10dp"
+                    app:dividerWidth="1dp"
+                    app:draggable="true"
+                    app:position="0"
+                    app:radius="30dp"
+                    app:ripple="true"
+                    app:rippleColor="@color/colorWhite">
+
+                    <com.addisonelliott.segmentedbutton.SegmentedButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingStart="40dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="40dp"
+                        android:paddingBottom="10dp"
+                        app:drawableGravity="top"
+                        app:selectedBackground="@color/colorMainBlue"
+                        app:selectedTextColor="@color/colorWhite"
+                        app:text="Araç Ön Görünüm"
+                        app:textColor="#747474" />
+
+                    <com.addisonelliott.segmentedbutton.SegmentedButton
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:paddingStart="40dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="40dp"
+                        android:paddingBottom="10dp"
+                        app:drawableGravity="top"
+                        app:selectedBackground="@color/colorMainBlue"
+                        app:selectedTextColor="@color/colorWhite"
+                        app:text="Araç Arka Görünüm"
+                        app:textColor="#747474" />
+
+                </com.addisonelliott.segmentedbutton.SegmentedButtonGroup>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_weight="0.3"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/damage_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/add_other_damage_layout"
+                    android:contentDescription="@string/customer_information_title"
+                    app:layoutManager="LinearLayoutManager" />
+
+                <RelativeLayout
+                    android:id="@+id/add_other_damage_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:background="@drawable/change_car_group_gradient_bg"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/spacing_default"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/add_other_damage_title"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/spacing_default"
+                        android:src="@drawable/ic_plus_blue" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

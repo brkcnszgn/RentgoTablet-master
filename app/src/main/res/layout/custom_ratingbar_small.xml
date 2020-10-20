@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="equipment"
+            type="com.creatifsoftware.rentgoservice.model.Equipment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/background_car_specs_grey"
+            android:padding="3dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_fuel" />
+
+            <RatingBar
+                android:id="@+id/rate"
+                style="@style/RatingBarSmall"
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:background="@android:color/transparent"
+                android:isIndicator="true"
+                android:numStars="8"
+                android:rating="@{equipment.fuelValue}"
+                android:stepSize="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

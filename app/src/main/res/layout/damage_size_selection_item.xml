@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="damageSize"
+            type="com.creatifsoftware.rentgoservice.model.DamageSize" />
+
+        <variable
+            name="callback"
+            type="com.creatifsoftware.rentgoservice.view.callback.DamageSizeClickCallback" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="130dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:background="@{damageSize.isSelected ? @drawable/damage_part_item_selected_bg : @drawable/damage_part_item_bg}"
+        android:onClick="@{()-> callback.onItemClick(damageSize)}"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:fontFamily="@font/roboto"
+            android:text="@{damageSize.damageSizeName}"
+            android:textColor="@color/damage_zone_name_bold"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</layout>

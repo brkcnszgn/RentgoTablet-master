@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="additionalProductItem"
+            type="com.creatifsoftware.rentgoservice.model.AdditionalProduct" />
+
+        <variable
+            name="callback"
+            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductClickCallback" />
+    </data>
+
+    <com.loopeer.shadow.ShadowView
+        android:id="@+id/new_transfer_shadow_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:foreground="?attr/selectableItemBackground"
+        app:cornerRadius="5dp"
+        app:shadowColor="#1A000000"
+        app:shadowMargin="@dimen/spacing_default"
+        app:shadowRadius="14dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@{additionalProductItem.isChecked ? @color/colorMainBlue : @color/colorWhite}"
+            android:onClick="@{() -> callback.onClick(additionalProductItem)}"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/product_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:layout_marginBottom="@dimen/spacing_default"
+                android:src="@drawable/navigation"
+                android:tint="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_toLeftOf="@+id/navigation_device_checkbox">
+
+                <TextView
+                    android:id="@+id/product_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_margin="10dp"
+                    android:text="@{additionalProductItem.productName}"
+                    android:textAlignment="textEnd"
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}"
+                    android:textSize="14sp"
+                    app:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/product_name"
+                    android:layout_alignEnd="@+id/product_name"
+                    android:text='@{String.format("%.02f TL", additionalProductItem.actualTotalAmount)}'
+                    android:textColor="@{additionalProductItem.isChecked ? @color/colorWhite : @color/additional_products_price_grey}"
+                    android:textSize="18sp"
+                    app:fontFamily="@font/roboto" />
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/navigation_device_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="10dp"
+                android:src="@{additionalProductItem.isChecked ? @drawable/icon_checkbox_checked : @drawable/icon_checkbox_unchecked}"
+                android:tint="@{additionalProductItem.isChecked ? @color/colorWhite : @color/colorMainBlue}" />
+
+        </RelativeLayout>
+    </com.loopeer.shadow.ShadowView>
+</layout>

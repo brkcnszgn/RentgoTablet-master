@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.creatifsoftware.rentgoservice.model.User" />
+
+        <variable
+            name="transferType"
+            type="com.creatifsoftware.rentgoservice.utils.EnumUtils.TransferType" />
+
+        <variable
+            name="viewModel"
+            type="com.creatifsoftware.rentgoservice.viewmodel.ContractListViewModel" />
+
+        <variable
+            name="transferTypeCallback"
+            type="com.creatifsoftware.rentgoservice.view.callback.TransferTypeClickCallback" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            app:tabIndicatorColor="@color/dashboard_will_transfer_color"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="6dp"
+            app:tabMaxWidth="0dp">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_delivery_transfer_tab_layout" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_return_transfer_tab_layout" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout="@layout/custom_new_transfer_tab_layout" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/new_transfer_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="32dp"
+            android:layout_weight="0.7"
+            android:background="@android:color/transparent"
+            tools:visibility="gone">
+
+            <RelativeLayout
+                android:id="@+id/damage_transfer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{(v)-> transferTypeCallback.onItemClick(v)}"
+                android:padding="@dimen/spacing_tiny"
+                app:layout_constraintHeight_percent="0.33"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_damage" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/damage_transfer_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/branch_transfer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{(v)-> transferTypeCallback.onItemClick(v)}"
+                android:padding="@dimen/spacing_tiny"
+                app:layout_constraintHeight_percent="0.33"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_branch_transfer" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/branch_transfer_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/service_transfer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{(v)-> transferTypeCallback.onItemClick(v)}"
+                android:padding="@dimen/spacing_tiny"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.33"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_service" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/service_transfer_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/second_hand_transfer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{(v)-> transferTypeCallback.onItemClick(v)}"
+                android:padding="@dimen/spacing_tiny"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.33"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_second_hand" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/second_hand_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/fault_transfer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{(v)-> transferTypeCallback.onItemClick(v)}"
+                android:padding="@dimen/spacing_tiny"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.33"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintWidth_percent="0.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_fault" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/fault_transfer_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/free_transfer_layout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@android:color/transparent"
+                android:onClick="@{(v)-> transferTypeCallback.onItemClick(v)}"
+                android:padding="@dimen/spacing_tiny"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHeight_percent="0.33"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintWidth_percent="0.5">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:srcCompat="@drawable/ic_free" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginTop="@dimen/spacing_default"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@string/free_transfer_title"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18sp" />
+
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/transfer_list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/spacing_default"
+            android:layout_weight="0.7"
+            android:orientation="vertical"
+            tools:visibility="visible">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/header_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:tint="@color/dashboard_future_transfer_color"
+                    app:srcCompat="@drawable/icon_collect_rentgo_logo" />
+
+                <TextView
+                    android:id="@+id/header_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:layout_toEndOf="@+id/header_logo"
+                    android:text="@string/will_transfer_title"
+                    android:textSize="27sp" />
+
+                <EditText
+                    android:id="@+id/transfer_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_default"
+                    android:background="@drawable/future_transfer_search_button_bg"
+                    android:drawableStart="@drawable/icon_search_button"
+                    android:drawablePadding="10dp"
+                    android:drawableTint="@color/dashboard_future_transfer_color"
+                    android:ems="9"
+                    android:hint="Transfer Ara"
+                    android:inputType="textPersonName"
+                    android:paddingStart="@dimen/spacing_default"
+                    android:textSize="12sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/contract_list_item_height"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.15"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Transfer No"
+                        android:textColor="@color/contract_list_item_text_color"
+                        android:textSize="@dimen/general_text_title_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.15"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/plate_number"
+                        android:textColor="@color/contract_list_item_text_color"
+                        android:textSize="@dimen/general_text_title_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/car_group"
+                        android:textColor="@color/contract_list_item_text_color"
+                        android:textSize="@dimen/general_text_title_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.2"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/transfer_start_date"
+                        android:textColor="@color/contract_list_item_text_color"
+                        android:textSize="@dimen/general_text_title_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.2"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="@string/transfer_location"
+                        android:textColor="@color/contract_list_item_text_color"
+                        android:textSize="@dimen/general_text_title_size" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="0.1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Transfer Tipi"
+                        android:textColor="@color/contract_list_item_text_color"
+                        android:textSize="@dimen/general_text_title_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/swipeContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/transfer_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/spacing_default"
+                    android:contentDescription="@string/customer_information_title"
+                    android:paddingBottom="@dimen/spacing_default"
+                    app:layoutManager="LinearLayoutManager" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

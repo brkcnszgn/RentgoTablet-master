@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="groupCodeInformation"
+            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+
+        <variable
+            name="selectedEquipment"
+            type="com.creatifsoftware.rentgoservice.model.Equipment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/car_information_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/main_title_color"
+            android:textSize="27sp"
+            bind:fontFamily="@font/roboto_medium" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <include
+                android:id="@+id/car_information_layout"
+                layout="@layout/equipment_information_layout_with_input"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                bind:groupCodeInformation="@{groupCodeInformation}"
+                bind:selectedEquipment="@{selectedEquipment}" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_default"
+            android:layout_marginBottom="@dimen/spacing_default"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Ekipman Kontrolü"
+            android:textColor="@color/main_title_color"
+            android:textSize="16sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/equipment_inventory_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            app:layoutManager="LinearLayoutManager" />
+
+
+    </LinearLayout>
+</layout>

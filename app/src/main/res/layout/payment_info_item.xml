@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="paymentInfo"
+            type="com.creatifsoftware.rentgoservice.model.PaymentInfo" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/payment_info_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:text="@{paymentInfo.paymentInfoTitle}"
+            android:textAlignment="textEnd"
+            android:textColor="@color/main_title_color"
+            android:textSize="@dimen/general_text_title_size"
+            app:fontFamily="@font/roboto" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:textColor="@color/main_title_color"
+            android:textSize="@dimen/general_text_title_size"
+            app:fontFamily="@font/roboto" />
+    </RelativeLayout>
+
+</layout>

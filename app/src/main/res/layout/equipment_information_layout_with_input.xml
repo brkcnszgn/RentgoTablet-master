@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="groupCodeInformation"
+            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+
+        <variable
+            name="selectedEquipment"
+            type="com.creatifsoftware.rentgoservice.model.Equipment" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/car_information_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <include
+            layout="@layout/equipment_information_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            bind:groupCodeInformation="@{groupCodeInformation}"
+            bind:selectedEquipment="@{selectedEquipment}" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/kilometer_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_weight="0.33"
+                android:background="@drawable/layout_with_border_ripple_effect">
+
+                <TextView
+                    android:id="@+id/kilometer_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:text="@string/kilometer_text_title"
+                    android:textColor="@color/main_title_color"
+                    android:textSize="@dimen/general_text_title_size"
+                    bind:fontFamily="@font/roboto_medium" />
+
+                <TextView
+                    android:id="@+id/kilometer_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_default"
+                    android:layout_toStartOf="@+id/kilometer_checkbox"
+                    android:gravity="end"
+                    android:minEms="4"
+                    android:text="@{String.valueOf(selectedEquipment.currentKmValue > 0 ? selectedEquipment.currentKmValue : selectedEquipment.kmValue)}"
+                    android:textColor="@color/main_title_color"
+                    android:textSize="@dimen/general_text_title_size"
+                    bind:fontFamily="@font/roboto" />
+
+                <CheckBox
+                    android:id="@+id/kilometer_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:buttonTint="@color/colorMainBlue"
+                    android:checked="false"
+                    android:enabled="false" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.33"
+                android:background="@drawable/customer_information_layout_border_bg">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Yakıt Göstergesi"
+                    android:textColor="@color/main_title_color"
+                    android:textSize="@dimen/general_text_title_size"
+                    bind:fontFamily="@font/roboto_medium" />
+
+                <include
+                    android:id="@+id/fuelRatingBar"
+                    layout="@layout/custom_ratingbar_big"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="@dimen/spacing_default"
+                    android:layout_toStartOf="@+id/current_fuel_value"
+                    bind:equipment="@{selectedEquipment}" />
+
+                <TextView
+                    android:id="@+id/current_fuel_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_default"
+                    android:layout_toStartOf="@+id/fuel_checkbox"
+                    android:background="@drawable/equipment_information_gray_bg"
+                    android:fontFamily="@font/roboto_medium"
+                    android:padding="@dimen/spacing_small"
+                    android:textColor="@color/main_title_color" />
+
+                <CheckBox
+                    android:id="@+id/fuel_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:buttonTint="@color/colorMainBlue"
+                    android:checked="false"
+                    android:enabled="false" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/kilometer_fuel_photo_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="0.33"
+                android:background="@drawable/layout_with_border_ripple_effect">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Gösterge Fotoğrafı"
+                    android:textColor="@color/main_title_color"
+                    android:textSize="@dimen/general_text_title_size"
+                    bind:fontFamily="@font/roboto_medium" />
+
+                <ImageView
+                    android:id="@+id/kilometer_fuel_image"
+                    android:layout_width="40dp"
+                    android:layout_height="26dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_default"
+                    android:layout_toStartOf="@+id/kilometer_fuel_photo_checkbox"
+                    android:gravity="end"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_take_kilometer_photo" />
+
+                <CheckBox
+                    android:id="@+id/kilometer_fuel_photo_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:buttonTint="@color/colorMainBlue"
+                    android:checked="false"
+                    android:enabled="false" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

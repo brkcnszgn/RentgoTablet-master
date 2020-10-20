@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_dialog_transparent_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/close_button_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_close" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/surface_view_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/close_button_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/main_dialog_bg">
+
+            <ImageView
+                android:id="@+id/image_to_preview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="32dp"
+                android:src="@drawable/ic_rear_wireframe" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>

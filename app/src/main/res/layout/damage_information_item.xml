@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="damageItem"
+            type="com.creatifsoftware.rentgoservice.model.DamageItem"></variable>
+
+        <variable
+            name="callback"
+            type="com.creatifsoftware.rentgoservice.view.callback.DamageItemClickCallback"></variable>
+
+        <variable
+            name="deleteCallback"
+            type="com.creatifsoftware.rentgoservice.view.callback.DamageItemDeleteButtonCallback"></variable>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_default"
+        android:layout_marginBottom="@dimen/spacing_default"
+        android:background="@drawable/background_delivery_damage"
+        android:onClick="@{() -> callback.onClick(damageItem)}"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/damage_part"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_default"
+            android:text="@{damageItem.equipmentPart.equipmentSubPartName}"
+            android:textColor="@color/main_title_color"
+            android:textSize="15sp"
+            app:fontFamily="@font/roboto_medium" />
+
+        <ImageView
+            android:id="@+id/damage_photo"
+            android:layout_width="54dp"
+            android:layout_height="35dp"
+            android:layout_alignTop="@+id/damage_part"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_add_image" />
+
+        <TextView
+            android:id="@+id/damage_date_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/damage_photo"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@{damageItem.convertTimestampToDateTime(damageItem.damageInfo.damageDate)}"
+            android:textColor="@color/main_title_color"
+            android:textSize="15sp"
+            app:fontFamily="@font/roboto" />
+
+        <TextView
+            android:id="@+id/damage_branch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/damage_date_time"
+            android:text="@{damageItem.damageInfo.damageBranch.branchName}"
+            android:textColor="@color/main_title_color"
+            android:textSize="15sp"
+            app:fontFamily="@font/roboto" />
+
+        <TextView
+            android:id="@+id/damage_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/damage_branch"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@{damageItem.damageSize.damageSizeName}"
+            android:textColor="@color/main_title_color"
+            android:textSize="15sp"
+            app:fontFamily="@font/roboto_medium" />
+
+        <TextView
+            android:id="@+id/damage_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/damage_size"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:text="@{damageItem.damageType.damageTypeName}"
+            android:textColor="@color/main_title_color"
+            android:textSize="15sp"
+            app:fontFamily="@font/roboto_medium" />
+
+        <TextView
+            android:id="@+id/damage_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/damage_size"
+            android:layout_alignBottom="@+id/damage_type"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="10dp"
+            android:text="@{damageItem.damageId}"
+            android:textColor="#B8B8B8"
+            android:textSize="15sp"
+            android:visibility="gone"
+            app:fontFamily="@font/roboto" />
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/damage_type"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="false"
+            android:background="@android:color/transparent"
+            android:onClick="@{()-> deleteCallback.onClick(damageItem)}"
+            android:paddingStart="@dimen/spacing_default"
+            android:paddingTop="@dimen/spacing_default"
+            android:tint="@color/colorMainRed"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    </RelativeLayout>
+</layout>

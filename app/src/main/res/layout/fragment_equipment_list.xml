@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="groupCodeInformation"
+            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+
+        <variable
+            name="viewModel"
+            type="com.creatifsoftware.rentgoservice.viewmodel.EquipmentListViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/car_selection_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/main_title_color"
+            android:textSize="27sp"
+            app:fontFamily="@font/roboto_medium" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/car_selection_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginBottom="@dimen/spacing_tiny"
+            android:orientation="vertical"
+            android:padding="1dp">
+
+            <RelativeLayout
+                android:id="@+id/search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/equipment_list_gradient_header"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="-150dp"
+                    android:layout_toStartOf="@+id/plate_number_search"
+                    android:background="@drawable/ic_equipment_list_header_logo" />
+
+                <EditText
+                    android:id="@+id/plate_number_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/icon_plate_input"
+                    android:maxLength="13"
+                    android:paddingLeft="40dp"
+                    android:singleLine="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/equipment_list_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/equipment_list_layout_border_bg"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:id="@+id/group_code_image_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/group_code_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/spacing_default"
+                        android:src="@{groupCodeInformation.getGroupCodeImageById(groupCodeInformation.groupCodeId)}" />
+
+                    <TextView
+                        android:id="@+id/car_group"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignEnd="@+id/group_code_image"
+                        android:layout_alignBottom="@+id/group_code_image"
+                        android:layout_alignParentBottom="false"
+                        android:background="@drawable/group_code_text_bg"
+                        android:gravity="center"
+                        android:text="@{groupCodeInformation.groupCodeName}"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="25sp" />
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/equipment_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_marginEnd="1dp"
+                    android:layout_toEndOf="@+id/group_code_image_layout"
+                    android:layout_toRightOf="@+id/group_code_image_layout"
+                    android:contentDescription="@string/customer_information_title"
+                    app:layoutManager="LinearLayoutManager" />
+
+
+            </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/availability_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/customer_information_title"
+                android:visibility="gone"
+                app:layoutManager="LinearLayoutManager" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

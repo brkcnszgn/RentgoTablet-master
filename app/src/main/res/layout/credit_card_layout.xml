@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="creditCard"
+            type="com.creatifsoftware.rentgoservice.model.CreditCard"></variable>
+
+        <variable
+            name="title"
+            type="String"></variable>
+
+        <variable
+            name="addNewCard"
+            type="Boolean"></variable>
+
+        <variable
+            name="isInvisible"
+            type="Boolean"></variable>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/card_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="@dimen/spacing_default"
+        android:layout_weight="0.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/payment_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{title}"
+            android:textColor="@color/main_title_color"
+            android:textSize="17sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/credit_card_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/customer_information_title"
+            app:layoutManager="LinearLayoutManager" />
+
+        <RelativeLayout
+            android:id="@+id/add_card_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:background="@drawable/add_card_background_gradient"
+            android:visibility="@{addNewCard ? View.VISIBLE : View.GONE}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:text="@string/add_card"
+                android:textColor="@color/colorWhite"
+                android:textSize="13sp"
+                app:fontFamily="@font/roboto_medium" />
+
+            <ImageView
+                android:id="@+id/add_card_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:layout_toStartOf="@+id/add_card_button"
+                android:gravity="end"
+                android:src="@drawable/icon_add_card" />
+
+            <ImageView
+                android:id="@+id/add_card_button"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/spacing_small"
+                android:src="@drawable/ic_plus_blue" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fast_contract"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/spacing_default"
+    android:background="@drawable/dashboard_fast_contract_bg">
+
+    <TextView
+        android:id="@+id/total_quick_contract_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_default"
+        android:fontFamily="@font/roboto_medium"
+        android:text="0"
+        android:textColor="@color/white_color"
+        android:textSize="48sp" />
+
+    <TextView
+        android:id="@+id/first_quick_contract_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/first_quick_contract_title"
+        android:layout_alignEnd="@+id/collect_horizontal_layout2"
+        android:layout_alignBottom="@+id/first_quick_contract_title"
+        android:layout_marginStart="@dimen/spacing_default"
+        android:layout_toEndOf="@+id/first_quick_contract_title"
+        android:fontFamily="@font/roboto_medium"
+        android:text="- -"
+        android:textColor="@color/white_color"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/total_quick_contract_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/total_quick_contract_count"
+        android:layout_alignStart="@+id/total_quick_contract_count"
+        android:fontFamily="@font/roboto"
+        android:text="Hızlı Sözleşme Teslimi"
+        android:textColor="@color/white_color"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/first_quick_contract_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/horizontal_layout"
+        android:layout_alignStart="@+id/horizontal_layout"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="En Yakın Teslim"
+        android:textColor="@color/white_color"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/horizontal_layout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/total_quick_contract_title"
+        android:layout_alignStart="@+id/total_quick_contract_title"
+        android:layout_marginTop="@dimen/spacing_default"
+        android:layout_marginEnd="@dimen/spacing_small"
+        android:alpha="0.15"
+        android:background="@color/white_color"
+        android:orientation="horizontal"></LinearLayout>
+
+    <ImageView
+        android:id="@+id/collect_background2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing_tiny"
+        app:srcCompat="@drawable/icon_dashboard_collect" />
+</RelativeLayout>

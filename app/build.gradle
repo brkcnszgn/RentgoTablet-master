@@ -1,0 +1,157 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
+
+android {
+    def version_code = 32
+    def version_name = "3.2"
+
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
+    defaultConfig {
+        minSdkVersion 24
+        targetSdkVersion 29
+    }
+
+    signingConfigs {
+        release {
+            keyAlias 'rentgoservice_alias'
+            keyPassword 'Creatif092016'
+            storeFile file('../rentgoservice.jks')
+            storePassword 'Creatif092016'
+        }
+    }
+
+    flavorDimensions "ProductType"
+
+    productFlavors {
+        prod {
+            dimension "ProductType"
+            versionCode version_code
+            versionName "$version_name"
+            resValue "string", "app_name", "Rentgo Servis"
+            buildConfigField "String", 'API_USERNAME', '"serviceclient"'
+            buildConfigField "String", 'API_PASSWORD', '"123"'
+            buildConfigField "String", 'SERVICE_API_URL', '"http://newmongodb.rentgo.com:6060/api/service/"'
+            buildConfigField "String", 'FINE_API_URL', '"http://newmongodb.rentgo.com:6060/api/fine/"'
+            buildConfigField "String", 'BLOB_API_URL', '"https://rentgoproductionstorage.blob.core.windows.net/"'
+            buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;"\n' +
+                    '            + "AccountName=rentgoproductionstorage;"\n' +
+                    '            + "AccountKey=d3zPZ07IAZROSuLKQDYHH9jPzrqz8GJMGbbUojhSJONNDPEc8mpyloGZnrOoTDGATqrx+rpyU2k7RWZ7ZiZ5kw==;"\n' +
+                    '            + "EndpointSuffix=core.windows.net"'
+            buildConfigField "boolean", 'IS_PROD', "true"
+        }
+
+        qa {
+            dimension "ProductType"
+            applicationIdSuffix ".qa"
+            versionCode version_code
+            versionName "Test - $version_name"
+            resValue "string", "app_name", "Rentgo Servis Test"
+            buildConfigField "String", 'API_USERNAME', '"serviceclient"'
+            buildConfigField "String", 'API_PASSWORD', '"123"'
+            buildConfigField "String", 'SERVICE_API_URL', '"http://176.235.168.154:6060/api/service/"'
+            buildConfigField "String", 'FINE_API_URL', '"http://176.235.168.154:6060/api/fine/"'
+            buildConfigField "String", 'BLOB_API_URL', '"https://rentgostorage.blob.core.windows.net/"'
+            buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;"\n' +
+                    '            + "AccountName=rentgostorage;"\n' +
+                    '            + "AccountKey=w+17Rp3M3WxTs+VAfDnMGkhYVZY/QwLaZCIEWKZtSU2Ld34yz1PCkuYtXqwowkXmAFBdr+x9KgqaWwz5DU6AMA==;"\n' +
+                    '            + "EndpointSuffix=core.windows.net"'
+            buildConfigField "boolean", 'IS_PROD', "false"
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+final support = "1.0.0"
+final app_compat_support = '1.1.0'
+final recyclerview_support = '1.1.0-rc01'
+final constraintlayout = '2.0.0-beta4'
+final material = '1.2.0-alpha05'
+final arch = '2.2.0-rc01'
+final retrofit = '2.6.2'
+final android_dagger_version = '2.21'
+final firebase_core = '17.2.3'
+final firebase_perf = '19.0.5'
+final crashlytics = "2.10.1"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation "com.google.android.material:material:$support"
+    implementation "androidx.appcompat:appcompat:$app_compat_support"
+    implementation "androidx.cardview:cardview:$support"
+    implementation "androidx.recyclerview:recyclerview:$recyclerview_support"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    implementation "androidx.legacy:legacy-support-v4:$support"
+    implementation "com.google.android.material:material:$material"
+    implementation "com.google.firebase:firebase-core:$firebase_core"
+    implementation "com.google.firebase:firebase-perf:$firebase_perf"
+    implementation 'com.google.firebase:firebase-firestore:21.4.1'
+    implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics"
+    implementation("com.google.guava:guava:28.1-jre")
+
+    // Arch
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$arch"
+    implementation 'androidx.lifecycle:lifecycle-runtime:2.3.0-alpha01'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit"
+    implementation 'io.reactivex:rxjava:1.3.0'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    // Dagger
+    annotationProcessor "com.google.dagger:dagger-android-processor:$android_dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$android_dagger_version"
+    implementation "com.google.dagger:dagger:$android_dagger_version"
+    implementation "com.google.dagger:dagger-android:$android_dagger_version"
+    implementation "com.google.dagger:dagger-android-support:$android_dagger_version"
+
+    // Other
+    implementation 'com.github.gcacace:signature-pad:1.2.1'
+    implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.wang.avi:library:2.1.3'
+    implementation 'com.camerakit:camerakit:1.0.0-beta3.10'
+    implementation 'com.camerakit:jpegkit:0.1.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+    implementation 'id.zelory:compressor:2.1.0'
+    implementation 'com.microsoft.azure.android:azure-storage-android:2.0.0@aar'
+    implementation 'com.github.tarek360.RichPath:animator:0.1.1'
+    implementation 'br.com.simplepass:loading-button-android:2.1.0'
+    implementation 'com.loopeer.lib:shadow:0.0.4-beta3'
+    implementation 'com.sdsmdg.harjot:vectormaster:1.1.3'
+    implementation 'com.shuhart.stepview:stepview:1.5.1'
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'com.github.dmytrodanylyk.circular-progress-button:library:1.1.3'
+    implementation 'com.nex3z:toggle-button-group:1.1.9'
+    implementation 'com.github.ceryle:SegmentedButton:v2.0.2'
+    androidTestImplementation 'androidx.test:runner:1.3.0-alpha04'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha04'
+    implementation 'com.github.addisonelliott:SegmentedButton:3.1.2'
+
+    testImplementation 'junit:junit:4.12'
+}
+
+apply plugin: 'com.google.gms.google-services'

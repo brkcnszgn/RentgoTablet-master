@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:id="@+id/content_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitStart"
+            app:srcCompat="@drawable/ic_login_background" />
+
+        <ImageView
+            android:id="@+id/rentgo_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="32dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_rentgo_logo" />
+
+        <LinearLayout
+            android:id="@+id/input_layout"
+            android:layout_width="303dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rentgo_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_default"
+            android:background="@drawable/shadow_bg"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rentgo_logo">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/login_title"
+                android:textColor="@color/main_title_color"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/username"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/login_edit_text_bg"
+                android:ems="10"
+                android:hint="@string/username_hint_text"
+                android:inputType="textPersonName"
+                android:paddingStart="@dimen/spacing_default"
+                android:textSize="13sp" />
+
+            <EditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/login_edit_text_bg"
+                android:hint="@string/password_hint_text"
+                android:inputType="textPersonName|textPassword"
+                android:paddingStart="@dimen/spacing_default"
+                android:textSize="13sp" />
+
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="25dp"
+                android:background="@drawable/button_ripple_effect"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/login_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp" />
+
+            <!--<com.dd.CircularProgressButton-->
+            <!--android:id="@+id/login_button"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_marginStart="32dp"-->
+            <!--android:layout_marginTop="@dimen/spacing_default"-->
+            <!--android:layout_marginEnd="32dp"-->
+            <!--android:layout_marginBottom="25dp"-->
+            <!--android:fontFamily="@font/roboto_medium"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/colorWhite"-->
+            <!--app:cpb_cornerRadius="@dimen/radius_corner"-->
+            <!--app:cpb_textIdle="@string/login_button_title" />-->
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/version_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/rentgo_logo"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/spacing_default"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/main_title_color"
+            android:textSize="16sp" />
+    </RelativeLayout>
+</layout>

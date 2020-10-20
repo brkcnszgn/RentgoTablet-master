@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="groupCodeInformation"
+            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+
+        <variable
+            name="selectedEquipment"
+            type="com.creatifsoftware.rentgoservice.model.Equipment" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/customer_information_layout_border_bg">
+
+        <include
+            layout="@layout/group_code_information_layout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/spacing_default"
+            android:layout_weight="0.5"
+            bind:groupCodeInformation="@{groupCodeInformation}" />
+
+        <include
+            layout="@layout/equipment_information_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="@dimen/spacing_default"
+            android:background="@color/colorWhite"
+            bind:groupCodeInformation="@{groupCodeInformation}"
+            bind:selectedEquipment="@{selectedEquipment}" />
+
+    </LinearLayout>
+</layout>

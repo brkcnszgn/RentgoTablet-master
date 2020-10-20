@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="creditCard"
+            type="com.creatifsoftware.rentgoservice.model.CreditCard" />
+
+        <variable
+            name="callback"
+            type="com.creatifsoftware.rentgoservice.view.callback.CreditCardClickCallback" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:background="@drawable/customer_information_layout_border_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{()-> callback.onClick(creditCard)}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="@{creditCard.creditCardNumber}"
+            android:textColor="@color/main_title_color"
+            android:textSize="@dimen/general_text_title_size"
+            app:fontFamily="@font/roboto_medium" />
+
+        <ImageView
+            android:id="@+id/visa_card_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_toStartOf="@+id/credit_card_checkbox"
+            android:focusable="false"
+            android:gravity="end"
+            android:src="@drawable/icon_visa_card" />
+
+        <CheckBox
+            android:id="@+id/credit_card_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:buttonTint="@color/colorMainBlue"
+            android:checked="false"
+            android:enabled="false"
+            android:focusable="false" />
+
+    </RelativeLayout>
+</layout>

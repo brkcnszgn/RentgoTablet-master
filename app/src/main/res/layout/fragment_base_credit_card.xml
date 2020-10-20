@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_dialog_transparent_background"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/close_button_layout"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/close_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/ic_close" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="500dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/main_dialog_bg"
+            android:orientation="vertical">
+
+            <ExpandableListView
+                android:id="@+id/credit_card_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:background="@drawable/main_blue_border_bg"
+                android:divider="@android:color/darker_gray"
+                android:indicatorLeft="?android:attr/expandableListPreferredChildIndicatorLeft"></ExpandableListView>
+
+            <EditText
+                android:id="@+id/card_number"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:background="@drawable/main_white_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="Kart Numarası"
+                android:inputType="number"
+                android:paddingStart="@dimen/spacing_default"
+                android:textColor="@color/main_title_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/card_number_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/colorMainRed"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <EditText
+                android:id="@+id/card_holder_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:background="@drawable/main_white_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="Kart Üzerindeki İsim"
+                android:paddingStart="@dimen/spacing_default"
+                android:textColor="@color/main_title_color"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/card_holder_name_error"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="@color/colorMainRed"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.33"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/valid_month"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/main_white_bg"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="AA"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:paddingStart="@dimen/spacing_default"
+                        android:textColor="@color/main_title_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/valid_month_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/colorMainRed"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_weight="0.33"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/valid_year"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/main_white_bg"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="YYYY"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:paddingStart="@dimen/spacing_default"
+                        android:textColor="@color/main_title_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/valid_year_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/colorMainRed"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/spacing_default"
+                    android:layout_weight="0.33"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/cvv"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/main_white_bg"
+                        android:fontFamily="@font/roboto_medium"
+                        android:hint="Güvenlik Kodu"
+                        android:inputType="number"
+                        android:paddingStart="@dimen/spacing_default"
+                        android:textColor="@color/main_title_color"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/cvv_error"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_tiny"
+                        android:fontFamily="@font/roboto_medium"
+                        android:textColor="@color/colorMainRed"
+                        android:textSize="16sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/add_card"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="32dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/main_dialog_button_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:paddingStart="48dp"
+                android:paddingEnd="48dp"
+                android:text="Kart Ekle"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+        </LinearLayout>
+    </RelativeLayout>
+</layout>

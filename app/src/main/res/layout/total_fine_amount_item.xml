@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.creatifsoftware.rentgoservice.model.AdditionalProduct" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:text="@{item.productName}"
+            android:textAlignment="textEnd"
+            android:textColor="@color/main_title_color"
+            android:textSize="@dimen/general_text_title_size"
+            app:fontFamily="@font/roboto" />
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:text='@{String.format("%.02f TL", item.tobePaidAmount)}'
+            android:textColor="@color/main_title_color"
+            android:textSize="@dimen/general_text_title_size"
+            app:fontFamily="@font/roboto" />
+    </RelativeLayout>
+
+</layout>
