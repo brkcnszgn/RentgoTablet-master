@@ -6,7 +6,7 @@
 
         <variable
             name="paymentInfo"
-            type="com.creatifsoftware.rentgoservice.model.PaymentInfo" />
+            type="com.creatifsoftware.filonova.model.PaymentInfo" />
     </data>
 
     <RelativeLayout

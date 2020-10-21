@@ -6,11 +6,11 @@
 
         <variable
             name="damageItem"
-            type="com.creatifsoftware.rentgoservice.model.DamageItem"></variable>
+            type="com.creatifsoftware.filonova.model.DamageItem"></variable>
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.DamageItemClickCallback"></variable>
+            type="com.creatifsoftware.filonova.view.callback.DamageItemClickCallback"></variable>
     </data>
 
     <RelativeLayout

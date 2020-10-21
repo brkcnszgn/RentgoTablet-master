@@ -6,19 +6,19 @@
 
         <variable
             name="additionalProductItem"
-            type="com.creatifsoftware.rentgoservice.model.AdditionalProduct" />
+            type="com.creatifsoftware.filonova.model.AdditionalProduct" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.AdditionalProductClickCallback" />
 
         <variable
             name="plusCallback"
-            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductPlusClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.AdditionalProductPlusClickCallback" />
 
         <variable
             name="minusCallback"
-            type="com.creatifsoftware.rentgoservice.view.callback.AdditionalProductMinusClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.AdditionalProductMinusClickCallback" />
     </data>
 
     <com.loopeer.shadow.ShadowView

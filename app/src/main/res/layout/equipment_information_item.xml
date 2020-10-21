@@ -8,15 +8,15 @@
 
         <variable
             name="groupCodeInformation"
-            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+            type="com.creatifsoftware.filonova.model.GroupCodeInformation" />
 
         <variable
             name="selectedEquipment"
-            type="com.creatifsoftware.rentgoservice.model.Equipment" />
+            type="com.creatifsoftware.filonova.model.Equipment" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.EquipmentClickCallback" />
 
         <variable
             name="isSelected"

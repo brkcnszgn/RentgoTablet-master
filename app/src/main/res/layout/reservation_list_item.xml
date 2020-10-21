@@ -6,11 +6,11 @@
 
         <variable
             name="reservation"
-            type="com.creatifsoftware.rentgoservice.model.ReservationItem" />
+            type="com.creatifsoftware.filonova.model.ReservationItem" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.ReservationClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.ReservationClickCallback" />
     </data>
 
     <LinearLayout

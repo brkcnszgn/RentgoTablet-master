@@ -7,7 +7,7 @@
 
         <variable
             name="reservationItem"
-            type="com.creatifsoftware.rentgoservice.model.ReservationItem" />
+            type="com.creatifsoftware.filonova.model.ReservationItem" />
     </data>
 
     <ScrollView

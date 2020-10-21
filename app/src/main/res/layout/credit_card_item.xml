@@ -6,11 +6,11 @@
 
         <variable
             name="creditCard"
-            type="com.creatifsoftware.rentgoservice.model.CreditCard" />
+            type="com.creatifsoftware.filonova.model.CreditCard" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.CreditCardClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.CreditCardClickCallback" />
     </data>
 
     <RelativeLayout

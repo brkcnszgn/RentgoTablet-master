@@ -7,19 +7,19 @@
 
         <variable
             name="user"
-            type="com.creatifsoftware.rentgoservice.model.User" />
+            type="com.creatifsoftware.filonova.model.User" />
 
         <variable
             name="transferType"
-            type="com.creatifsoftware.rentgoservice.utils.EnumUtils.TransferType" />
+            type="com.creatifsoftware.filonova.utils.EnumUtils.TransferType" />
 
         <variable
             name="viewModel"
-            type="com.creatifsoftware.rentgoservice.viewmodel.ContractListViewModel" />
+            type="com.creatifsoftware.filonova.viewmodel.ContractListViewModel" />
 
         <variable
             name="transferTypeCallback"
-            type="com.creatifsoftware.rentgoservice.view.callback.TransferTypeClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.TransferTypeClickCallback" />
     </data>
 
     <LinearLayout

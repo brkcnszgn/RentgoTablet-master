@@ -14,12 +14,7 @@ android {
     }
 
     signingConfigs {
-        release {
-            keyAlias 'rentgoservice_alias'
-            keyPassword 'Creatif092016'
-            storeFile file('../rentgoservice.jks')
-            storePassword 'Creatif092016'
-        }
+
     }
 
     flavorDimensions "ProductType"
@@ -29,7 +24,7 @@ android {
             dimension "ProductType"
             versionCode version_code
             versionName "$version_name"
-            resValue "string", "app_name", "Rentgo Servis"
+            resValue "string", "app_name", "FiloNova Servis"
             buildConfigField "String", 'API_USERNAME', '"serviceclient"'
             buildConfigField "String", 'API_PASSWORD', '"123"'
             buildConfigField "String", 'SERVICE_API_URL', '"http://newmongodb.rentgo.com:6060/api/service/"'
@@ -47,13 +42,13 @@ android {
             applicationIdSuffix ".qa"
             versionCode version_code
             versionName "Test - $version_name"
-            resValue "string", "app_name", "Rentgo Servis Test"
+            resValue "string", "app_name", "FiloNova Servis Test"
             buildConfigField "String", 'API_USERNAME', '"serviceclient"'
             buildConfigField "String", 'API_PASSWORD', '"123"'
-            buildConfigField "String", 'SERVICE_API_URL', '"http://mongodb.rentgo.com:6060/api/service/"'
-            buildConfigField "String", 'FINE_API_URL', '"http://mongodb.rentgo.com:6060/api/fine/"'
-            buildConfigField "String", 'BLOB_API_URL', '"https://rentgostorage.blob.core.windows.net/"'
-            buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;AccountName=rentgostorage;AccountKey=w+17Rp3M3WxTs+VAfDnMGkhYVZY/QwLaZCIEWKZtSU2Ld34yz1PCkuYtXqwowkXmAFBdr+x9KgqaWwz5DU6AMA==;EndpointSuffix=core.windows.net"'
+            buildConfigField "String", 'SERVICE_API_URL', '" http://testfilonova.westeurope.cloudapp.azure.com:6060/api/service/"'
+            buildConfigField "String", 'FINE_API_URL', '" http://testfilonova.westeurope.cloudapp.azure.com:6060/api/fine/"'
+            buildConfigField "String", 'BLOB_API_URL', '"https://testfilonova.blob.core.windows.net/"'
+            buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;AccountName=testfilonova;AccountKey=jtG3AReFmMALWULEa0culeWqzLtjPGUYfiwQfQGDfhUv95uDGQ/rXVVHgQZVu20/mXLu09iYJOIqHzeladoi4A==;EndpointSuffix=core.windows.net"'
             buildConfigField "boolean", 'IS_PROD', "false"
         }
     }
@@ -61,7 +56,6 @@ android {
     buildTypes {
         release {
             debuggable false
-            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

@@ -7,11 +7,11 @@
 
         <variable
             name="transfer"
-            type="com.creatifsoftware.rentgoservice.model.TransferItem" />
+            type="com.creatifsoftware.filonova.model.TransferItem" />
 
         <variable
             name="viewModel"
-            type="com.creatifsoftware.rentgoservice.viewmodel.ContractSummaryViewModel" />
+            type="com.creatifsoftware.filonova.viewmodel.ContractSummaryViewModel" />
     </data>
 
     <RelativeLayout

@@ -6,11 +6,11 @@
 
         <variable
             name="item"
-            type="com.creatifsoftware.rentgoservice.model.FinePriceItem"></variable>
+            type="com.creatifsoftware.filonova.model.FinePriceItem"></variable>
 
         <variable
             name="viewModel"
-            type="com.creatifsoftware.rentgoservice.viewmodel.FinePricesViewModel"></variable>
+            type="com.creatifsoftware.filonova.viewmodel.FinePricesViewModel"></variable>
     </data>
 
     <RelativeLayout

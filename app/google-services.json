@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "887179165588",
-    "firebase_url": "https://rentgo-7b5a5.firebaseio.com",
-    "project_id": "rentgo-7b5a5",
-    "storage_bucket": "rentgo-7b5a5.appspot.com"
+    "project_number": "179101262686",
+    "firebase_url": "https://filonova-1a19b.firebaseio.com",
+    "project_id": "filonova-1a19b",
+    "storage_bucket": "filonova-1a19b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:887179165588:android:83a3d14bf67594c5",
+        "mobilesdk_app_id": "1:179101262686:android:3be38c236ba07fcc7425cf",
         "android_client_info": {
-          "package_name": "com.creatifsoftware.rentgoservice"
+          "package_name": "com.creatifsoftware.filonova"
         }
       },
       "oauth_client": [
         {
-          "client_id": "887179165588-sur67962lf3g3fbkm8noe3a9ptituste.apps.googleusercontent.com",
+          "client_id": "179101262686-f91ei6bh5c52pj1j3ktlq3khegf0rqql.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.creatifsoftware.rentgoservice",
-            "certificate_hash": "7d0e83504234d8d4e764ed870ecb3685b6f29ae4"
+            "package_name": "com.creatifsoftware.filonova",
+            "certificate_hash": "f08539b5d2685d6574208cc875f086d036438704"
           }
         },
         {
-          "client_id": "887179165588-aqes5tkhiif869salsi2kdobsjnimliv.apps.googleusercontent.com",
+          "client_id": "179101262686-8sg0b40rd0g9h5gcj17rdnrm3lpabgp3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC9cTJ1ELh67SSbd6zuM9YeLG9un5d91G4"
+          "current_key": "AIzaSyCcopLrWST3wLXinlidUa-4vYOf1QjwUsI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "887179165588-aqes5tkhiif869salsi2kdobsjnimliv.apps.googleusercontent.com",
+              "client_id": "179101262686-8sg0b40rd0g9h5gcj17rdnrm3lpabgp3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -45,27 +45,27 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:887179165588:android:5fb696078bc74c88461981",
+        "mobilesdk_app_id": "1:179101262686:android:11a81f056d43907d7425cf",
         "android_client_info": {
-          "package_name": "com.creatifsoftware.rentgoservice.qa"
+          "package_name": "com.creatifsoftware.filonova.qa"
         }
       },
       "oauth_client": [
         {
-          "client_id": "887179165588-aqes5tkhiif869salsi2kdobsjnimliv.apps.googleusercontent.com",
+          "client_id": "179101262686-8sg0b40rd0g9h5gcj17rdnrm3lpabgp3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC9cTJ1ELh67SSbd6zuM9YeLG9un5d91G4"
+          "current_key": "AIzaSyCcopLrWST3wLXinlidUa-4vYOf1QjwUsI"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "887179165588-aqes5tkhiif869salsi2kdobsjnimliv.apps.googleusercontent.com",
+              "client_id": "179101262686-8sg0b40rd0g9h5gcj17rdnrm3lpabgp3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -6,11 +6,11 @@
 
         <variable
             name="contract"
-            type="com.creatifsoftware.rentgoservice.model.ContractItem" />
+            type="com.creatifsoftware.filonova.model.ContractItem" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.ContractClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.ContractClickCallback" />
     </data>
 
     <LinearLayout

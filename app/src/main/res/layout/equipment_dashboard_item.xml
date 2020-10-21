@@ -5,11 +5,11 @@
 
         <variable
             name="equipment"
-            type="com.creatifsoftware.rentgoservice.model.Equipment" />
+            type="com.creatifsoftware.filonova.model.Equipment" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.EquipmentClickCallback" />
     </data>
 
     <LinearLayout

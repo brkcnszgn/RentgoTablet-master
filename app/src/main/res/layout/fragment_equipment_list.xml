@@ -6,11 +6,11 @@
 
         <variable
             name="groupCodeInformation"
-            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+            type="com.creatifsoftware.filonova.model.GroupCodeInformation" />
 
         <variable
             name="viewModel"
-            type="com.creatifsoftware.rentgoservice.viewmodel.EquipmentListViewModel" />
+            type="com.creatifsoftware.filonova.viewmodel.EquipmentListViewModel" />
     </data>
 
     <RelativeLayout

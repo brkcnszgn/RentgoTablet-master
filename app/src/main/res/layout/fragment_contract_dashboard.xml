@@ -6,11 +6,11 @@
 
         <variable
             name="user"
-            type="com.creatifsoftware.rentgoservice.model.User" />
+            type="com.creatifsoftware.filonova.model.User" />
 
         <variable
             name="viewModel"
-            type="com.creatifsoftware.rentgoservice.viewmodel.ContractListViewModel" />
+            type="com.creatifsoftware.filonova.viewmodel.ContractListViewModel" />
     </data>
 
     <LinearLayout

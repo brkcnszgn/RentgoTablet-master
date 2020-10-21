@@ -6,11 +6,11 @@
 
         <variable
             name="groupCode"
-            type="com.creatifsoftware.rentgoservice.model.GroupCodeInformation" />
+            type="com.creatifsoftware.filonova.model.GroupCodeInformation" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.GroupCodeItemClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.GroupCodeItemClickCallback" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

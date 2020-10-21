@@ -8,7 +8,7 @@
 
         <variable
             name="creditCard"
-            type="com.creatifsoftware.rentgoservice.model.CreditCard"></variable>
+            type="com.creatifsoftware.filonova.model.CreditCard"></variable>
 
         <variable
             name="title"

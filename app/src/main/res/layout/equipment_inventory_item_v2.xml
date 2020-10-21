@@ -6,19 +6,19 @@
 
         <variable
             name="equipmentInventory"
-            type="com.creatifsoftware.rentgoservice.model.EquipmentInventory" />
+            type="com.creatifsoftware.filonova.model.EquipmentInventory" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentInventoryClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.EquipmentInventoryClickCallback" />
 
         <variable
             name="availableCallback"
-            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentInventoryAvailableCallback" />
+            type="com.creatifsoftware.filonova.view.callback.EquipmentInventoryAvailableCallback" />
 
         <variable
             name="missingCallback"
-            type="com.creatifsoftware.rentgoservice.view.callback.EquipmentInventoryMissingCallback" />
+            type="com.creatifsoftware.filonova.view.callback.EquipmentInventoryMissingCallback" />
     </data>
 
     <RelativeLayout

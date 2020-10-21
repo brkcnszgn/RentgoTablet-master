@@ -6,11 +6,11 @@
 
         <variable
             name="transferItem"
-            type="com.creatifsoftware.rentgoservice.model.TransferItem" />
+            type="com.creatifsoftware.filonova.model.TransferItem" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.TransferItemClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.TransferItemClickCallback" />
     </data>
 
     <LinearLayout

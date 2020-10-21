@@ -5,11 +5,11 @@
 
         <variable
             name="damageDocument"
-            type="com.creatifsoftware.rentgoservice.model.DamageDocument" />
+            type="com.creatifsoftware.filonova.model.DamageDocument" />
 
         <variable
             name="callback"
-            type="com.creatifsoftware.rentgoservice.view.callback.DamageDocumentClickCallback" />
+            type="com.creatifsoftware.filonova.view.callback.DamageDocumentClickCallback" />
     </data>
 
     <LinearLayout
