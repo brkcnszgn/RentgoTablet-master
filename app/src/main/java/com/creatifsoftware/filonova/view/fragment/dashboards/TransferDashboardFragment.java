@@ -237,7 +237,7 @@ public class TransferDashboardFragment extends BaseFragment implements Injectabl
 
     private void observeTransferList() {
         viewModel.setBranchId(new User().getUser(getContext()).userBranch.branchId);
-        viewModel.getTransferListObservable().observe(this, response -> {
+        viewModel.getTransferListObservable().observe(getViewLifecycleOwner(), response -> {
             if (binding.swipeContainer != null) {
                 binding.swipeContainer.setRefreshing(false);
             }

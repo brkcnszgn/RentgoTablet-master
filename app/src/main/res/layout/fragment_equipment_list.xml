@@ -16,6 +16,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="12dp"
         android:background="@color/colorWhite"
         android:orientation="vertical">
 
@@ -46,13 +47,6 @@
                 android:background="@drawable/equipment_list_gradient_header"
                 android:visibility="visible">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="100dp"
-                    android:layout_marginEnd="-150dp"
-                    android:layout_toStartOf="@+id/plate_number_search"
-                    android:background="@drawable/ic_equipment_list_header_logo" />
-
                 <EditText
                     android:id="@+id/plate_number_search"
                     android:layout_width="wrap_content"
@@ -60,7 +54,6 @@
                     android:layout_centerInParent="true"
                     android:background="@drawable/icon_plate_input"
                     android:maxLength="13"
-                    android:paddingLeft="40dp"
                     android:singleLine="true" />
 
             </RelativeLayout>

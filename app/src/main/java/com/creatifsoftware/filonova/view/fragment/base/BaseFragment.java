@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Base64;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import com.creatifsoftware.filonova.model.ContractItem;
 import com.creatifsoftware.filonova.model.CreditCard;
 import com.creatifsoftware.filonova.model.TransferItem;
 import com.creatifsoftware.filonova.model.base.ResponseResult;
+import com.creatifsoftware.filonova.utils.ClickHelper;
 import com.creatifsoftware.filonova.view.activity.MainActivity;
 import com.shuhart.stepview.StepView;
 
@@ -75,7 +77,13 @@ public class BaseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         Button nextButton = ((MainActivity) mActivity).findViewById(R.id.next_button);
-        nextButton.setOnClickListener(view -> nextButtonClicked());
+        //To Prevent multiple clicks
+        nextButton.setOnClickListener(new ClickHelper() {
+            @Override
+            public void onSingleClick(View v) {
+                nextButtonClicked();
+            }
+        });
 
         Button backButton = ((MainActivity) mActivity).findViewById(R.id.back_button);
         backButton.setOnClickListener(view -> backButtonClicked());
@@ -131,7 +139,6 @@ public class BaseFragment extends Fragment {
     }
 
     protected void navigate() {
-
     }
 
     public void backButtonClicked() {

@@ -77,7 +77,7 @@
     <string name="added_additional_service_amount_title">Yeni Eklenen Ek Hizmet Bedeli</string>
     <string name="additional_products_title">Ek Ürünler</string>
     <string name="additional_service_title">Ek Hizmetler</string>
-    <string name="new_transfer_title">Yeni Transfer</string>
+    <string name="new_transfer_title">Yeni Transfer Oluştur</string>
     <string name="create_title">Oluştur</string>
     <string name="will_transfer_title">Gidecek Transfer</string>
     <string name="future_transfer_title">Gelecek Transfer</string>
@@ -115,7 +115,7 @@
     <string name="transfer_number">Transfer Numarası</string>
     <string name="customer">Müşteri</string>
     <string name="logout_dialog">Çıkış yapmak istediğinize emin misiniz ?</string>
-    <string name="login_button_title">Giriş Yap</string>
+    <string name="login_button_title">Giriş</string>
     <string name="dialog_button_yes">Evet</string>
     <string name="dialog_button_cancel">İptal</string>
     <string name="contract_update_confirmation_dialog_title">Sözleşme Güncelleme</string>
@@ -172,5 +172,6 @@
     <string name="new_version_alert_message">Uygulamanın güncel versiyonunu indirmeniz gerekiyor, \'Yükle\' butonuna basarak açılan sayfadaki yönlendirmeleri izleyin</string>
     <string name="new_version_alert_title">Yeni versiyon</string>
     <string name="new_version_download_button_title">Yükle</string>
+    <string name="text_login">GİRİŞ YAP</string>
 
 </resources>

@@ -79,8 +79,13 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
 
     private void prepareComponents() {
         Animation translate = AnimationUtils.loadAnimation(this, R.anim.translate);
+        Animation translate_left = AnimationUtils.loadAnimation(this, R.anim.translate_left);
+        Animation translate_right = AnimationUtils.loadAnimation(this, R.anim.translate_right);
         binding.versionNumber.setText(String.format(Locale.getDefault(), "Version: %s", ApplicationUtils.instance.getApplicationVersion(getApplicationContext())));
         binding.inputLayout.startAnimation(translate);
+        binding.imgLeft.startAnimation(translate_left);
+        binding.imgRight.startAnimation(translate_right);
+
         binding.loginButton.setOnClickListener(view -> {
             hideKeyboard(view);
             if (binding.username.getText().toString().isEmpty() || binding.password.getText().toString().isEmpty()) {

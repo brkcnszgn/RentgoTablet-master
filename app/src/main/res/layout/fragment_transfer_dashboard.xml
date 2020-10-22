@@ -25,7 +25,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/ic_base_background"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_logo" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -258,35 +265,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/header_logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:tint="@color/dashboard_future_transfer_color"
-                    app:srcCompat="@drawable/icon_collect_rentgo_logo" />
-
                 <TextView
                     android:id="@+id/header_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:layout_toEndOf="@+id/header_logo"
                     android:text="@string/will_transfer_title"
                     android:textSize="27sp" />
 
                 <EditText
                     android:id="@+id/transfer_search"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_width="200dp"
+                    android:layout_height="@dimen/search_bar_height"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_marginEnd="@dimen/spacing_default"
-                    android:background="@drawable/future_transfer_search_button_bg"
+                    android:background="@drawable/delivery_search_button_bg"
                     android:drawableStart="@drawable/icon_search_button"
                     android:drawablePadding="10dp"
-                    android:drawableTint="@color/dashboard_future_transfer_color"
                     android:ems="9"
                     android:hint="Transfer Ara"
                     android:inputType="textPersonName"

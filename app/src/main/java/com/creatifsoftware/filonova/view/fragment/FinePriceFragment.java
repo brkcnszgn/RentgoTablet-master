@@ -178,7 +178,7 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         }
         viewModel.setContractItem(selectedContract);
         viewModel.setJsonApi(service);
-        viewModel.getTrafficPenaltyListObservable().observe(this, response -> {
+        viewModel.getTrafficPenaltyListObservable().observe(getViewLifecycleOwner(), response -> {
             if (response == null) {
                 expandableTrafficTicketListAdapter.setDetailList(new ArrayList<>());
             } else if (response.responseResult.result) {
@@ -202,7 +202,7 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         viewModel.setContractItem(selectedContract);
         User user = new User().getUser(getContext());
         viewModel.setUser(user);
-        viewModel.getFinePriceObservable().observe(this, calculateContractRemainingAmountResponse -> {
+        viewModel.getFinePriceObservable().observe(getViewLifecycleOwner(), calculateContractRemainingAmountResponse -> {
             if (calculateContractRemainingAmountResponse == null) {
                 super.hideLoading();
                 showMessageDialog(getString(R.string.unknown_error_message));
@@ -241,7 +241,7 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
 
         if (request.damageList.size() > 0) {
             viewModel.setCalculateDamageRequest(request);
-            viewModel.getDamagesAmountObservable().observe(this, response -> {
+            viewModel.getDamagesAmountObservable().observe(getViewLifecycleOwner(), response -> {
                 if (response == null) {
                     super.hideLoading();
                     showMessageDialog(getString(R.string.unknown_error_message));
@@ -269,7 +269,7 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         }
         viewModel.setContractItem(selectedContract);
         viewModel.setJsonApi(service);
-        viewModel.getHgstransitListObservable().observe(this, response -> {
+        viewModel.getHgstransitListObservable().observe(getViewLifecycleOwner(), response -> {
             if (response == null) {
                 expandableTollListAdapter.setDetailList(new ArrayList<>());
             } else if (response.responseResult.result) {

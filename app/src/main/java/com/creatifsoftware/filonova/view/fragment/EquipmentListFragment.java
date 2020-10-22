@@ -198,7 +198,7 @@ public class EquipmentListFragment extends BaseFragment implements Injectable {
         super.showLoading();
         viewModel.setGroupCodeId(selectedContract.groupCodeInformation.groupCodeId);
         viewModel.setUser(new User().getUser(getContext()));
-        viewModel.getEquipmentListObservable().observe(this, response -> {
+        viewModel.getEquipmentListObservable().observe(getViewLifecycleOwner(), response -> {
             count++;
             hideLoading();
             if (response == null) {
@@ -243,7 +243,7 @@ public class EquipmentListFragment extends BaseFragment implements Injectable {
         }
         viewModel.setContractItem(selectedContract);
         viewModel.setUser(new User().getUser(getContext()));
-        viewModel.getCalculateAvailabilityObservable().observe(this, response -> {
+        viewModel.getCalculateAvailabilityObservable().observe(getViewLifecycleOwner(), response -> {
             count++;
             hideLoading();
             if (response == null) {

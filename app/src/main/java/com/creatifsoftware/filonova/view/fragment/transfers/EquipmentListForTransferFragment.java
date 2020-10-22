@@ -140,7 +140,7 @@ public class EquipmentListForTransferFragment extends BaseFragment implements In
         }
         showLoading();
         viewModel.setBranchId(new User().getUser(getContext()).userBranch.branchId);
-        viewModel.getCarListObservable().observe(this, equipmentListResponse -> {
+        viewModel.getCarListObservable().observe(getViewLifecycleOwner(), equipmentListResponse -> {
             hideLoading();
             equipmentList = new ArrayList<>();
             equipmentList = equipmentListResponse.equipmentList;

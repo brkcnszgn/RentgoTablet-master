@@ -298,7 +298,6 @@ public class EquipmentDashboardFragment extends Fragment implements Injectable {
                     equipmentDashboardAdapter.setEquipmentList(equipmentList);
                     equipmentDashboardAdapter.notifyDataSetChanged();
                     tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(mActivity, R.color.dashboard_delivery_color));
-                    binding.carsHeaderIcon.setImageTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_delivery_color));
                     binding.searchPlate.setCompoundDrawableTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_delivery_color));
                     binding.searchPlate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.all_fleet_search_button_bg));
                 } else if (tab.getPosition() == AVAILABLE_EQUIPMENTS_TAB) {
@@ -306,7 +305,6 @@ public class EquipmentDashboardFragment extends Fragment implements Injectable {
                     equipmentDashboardAdapter.setEquipmentList(filterEquipmentByStatusCode(selectedStatusCode));
                     equipmentDashboardAdapter.notifyDataSetChanged();
                     tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(mActivity, R.color.dashboard_cars_vehicles_in_the_carpark_bg));
-                    binding.carsHeaderIcon.setImageTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_cars_vehicles_in_the_carpark_bg));
                     binding.searchPlate.setCompoundDrawableTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_cars_vehicles_in_the_carpark_bg));
                     binding.searchPlate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.vehicles_in_the_carpark_search_button_bg));
                 } else if (tab.getPosition() == RENTAL_EQUIPMENTS_TAB) {
@@ -314,7 +312,6 @@ public class EquipmentDashboardFragment extends Fragment implements Injectable {
                     equipmentDashboardAdapter.setEquipmentList(filterEquipmentByStatusCode(selectedStatusCode));
                     equipmentDashboardAdapter.notifyDataSetChanged();
                     tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(mActivity, R.color.dashboard_in_use_vehicles_bg));
-                    binding.carsHeaderIcon.setImageTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_in_use_vehicles_bg));
                     binding.searchPlate.setCompoundDrawableTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_in_use_vehicles_bg));
                     binding.searchPlate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.in_use_vehicles_search_button_bg));
                 } else if (tab.getPosition() == IN_WASHING_EQUIPMENTS_TAB) {
@@ -322,7 +319,6 @@ public class EquipmentDashboardFragment extends Fragment implements Injectable {
                     equipmentDashboardAdapter.setEquipmentList(filterEquipmentByStatusCode(selectedStatusCode));
                     equipmentDashboardAdapter.notifyDataSetChanged();
                     tabLayout.setSelectedTabIndicatorColor(getResources().getColor(R.color.dashboard_vehicles_in_the_washing));
-                    binding.carsHeaderIcon.setImageTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_vehicles_in_the_washing));
                     binding.searchPlate.setCompoundDrawableTintList(ContextCompat.getColorStateList(mActivity, R.color.dashboard_vehicles_in_the_washing));
                     binding.searchPlate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.vehicles_in_the_washing_search_button_bg));
                 } else if (tab.getPosition() == IN_FUEL_FILLING_EQUIPMENTS_TAB) {
@@ -330,7 +326,6 @@ public class EquipmentDashboardFragment extends Fragment implements Injectable {
                     equipmentDashboardAdapter.setEquipmentList(filterEquipmentByStatusCode(selectedStatusCode));
                     equipmentDashboardAdapter.notifyDataSetChanged();
                     tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(mActivity, R.color.fuel_filling));
-                    binding.carsHeaderIcon.setImageTintList(ContextCompat.getColorStateList(mActivity, R.color.fuel_filling));
                     binding.searchPlate.setCompoundDrawableTintList(ContextCompat.getColorStateList(mActivity, R.color.fuel_filling));
                     binding.searchPlate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.fuel_filling_search_button_bg));
                 } else {
@@ -338,7 +333,6 @@ public class EquipmentDashboardFragment extends Fragment implements Injectable {
                     equipmentDashboardAdapter.setEquipmentList(filterEquipmentByStatusCode(selectedStatusCode));
                     equipmentDashboardAdapter.notifyDataSetChanged();
                     tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(mActivity, R.color.vehicles_in_the_service));
-                    binding.carsHeaderIcon.setImageTintList(ContextCompat.getColorStateList(mActivity, R.color.vehicles_in_the_service));
                     binding.searchPlate.setCompoundDrawableTintList(ContextCompat.getColorStateList(mActivity, R.color.vehicles_in_the_service));
                     binding.searchPlate.setBackground(ContextCompat.getDrawable(mActivity, R.drawable.vehicles_in_the_service_search_button_bg));
                 }

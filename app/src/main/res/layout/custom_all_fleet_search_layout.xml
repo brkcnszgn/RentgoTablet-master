@@ -1,39 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="@dimen/spacing_default"
-    android:background="@drawable/dashboard_all_fleet_search_bg">
-
-    <ImageView
-        android:id="@+id/background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/spacing_tiny"
-        app:srcCompat="@drawable/icon_dashboard_delivery" />
-
-    <TextView
-        android:id="@+id/total_count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_default"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/white_color"
-        android:textSize="48sp" />
+    android:background="@drawable/dashboard_all_fleet_search_bg"
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/tab_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/total_count"
-        android:layout_alignStart="@+id/total_count"
+        android:layout_margin="8dp"
         android:layout_marginEnd="@dimen/spacing_default"
         android:fontFamily="@font/roboto"
         android:text="@string/all_equipment_title"
         android:textColor="@color/white_color"
         android:textSize="18sp" />
 
-</RelativeLayout>
+    <TextView
+        android:id="@+id/total_count"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:textColor="@color/white_color"
+        android:textSize="48sp"
+        tools:text="12" />
+
+
+</FrameLayout>

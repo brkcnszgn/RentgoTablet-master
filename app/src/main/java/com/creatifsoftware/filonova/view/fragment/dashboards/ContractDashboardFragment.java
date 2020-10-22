@@ -359,7 +359,7 @@ public class ContractDashboardFragment extends BaseFragment implements Injectabl
 
     private void observeContractList() {
         viewModel.setBranchId(new User().getUser(getContext()).userBranch.branchId);
-        viewModel.getContractListObservable().observe(this, response -> {
+        viewModel.getContractListObservable().observe(getViewLifecycleOwner(), response -> {
             if (binding.swipeContainer != null) {
                 binding.swipeContainer.setRefreshing(false);
             }
@@ -386,7 +386,7 @@ public class ContractDashboardFragment extends BaseFragment implements Injectabl
 
     private void observeReservationList() {
         viewModel.setBranchId(new User().getUser(getContext()).userBranch.branchId);
-        viewModel.getReservationListObservable().observe(this, response -> {
+        viewModel.getReservationListObservable().observe(getViewLifecycleOwner(), response -> {
             if (binding.swipeContainer != null) {
                 binding.swipeContainer.setRefreshing(false);
             }

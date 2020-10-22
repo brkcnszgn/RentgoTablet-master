@@ -10,4 +10,6 @@
     <dimen name="general_text_title_size">15sp</dimen>
     <dimen name="main_button_height">45sp</dimen>
     <dimen name="main_button_width">120sp</dimen>
+    <dimen name="search_bar_height">32dp</dimen>
+    <dimen name="side_bar">72dp</dimen>
 </resources>

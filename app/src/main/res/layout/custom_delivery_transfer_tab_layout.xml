@@ -1,55 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/delivery_contract"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="@dimen/spacing_default"
-    android:background="@drawable/dashboard_will_bg">
-
-
-    <TextView
-        android:id="@+id/first_delivery_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/first_delivery_title"
-        android:layout_alignBottom="@+id/first_delivery_title"
-        android:layout_marginStart="@dimen/spacing_default"
-        android:layout_toEndOf="@+id/first_delivery_title"
-        android:fontFamily="@font/roboto_medium"
-        android:textColor="@color/white_color"
-        android:textSize="18sp" />
+    android:layout_gravity="center"
+    android:background="@drawable/dashboard_will_bg"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/first_delivery_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/delivery_tansfer_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/horizontal_layout"
-        android:layout_alignStart="@+id/horizontal_layout"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/roboto_medium"
-        android:text="@string/nearest_exit"
+        android:fontFamily="@font/roboto"
+        android:gravity="center"
+        android:text="@string/will_transfer_title"
         android:textColor="@color/white_color"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/total_delivery_transfer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_default"
         android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
         android:textColor="@color/white_color"
-        android:textSize="48sp" />
+        android:textSize="48sp"
+        tools:text="0" />
+
 
     <TextView
-        android:id="@+id/delivery_tansfer_title"
-        android:layout_width="wrap_content"
+        android:id="@+id/first_delivery_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/total_delivery_transfer"
-        android:layout_alignStart="@+id/total_delivery_transfer"
-        android:fontFamily="@font/roboto"
-        android:text="@string/will_transfer_title"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="@string/nearest_exit"
         android:textColor="@color/white_color"
         android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/first_delivery_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:textColor="@color/white_color"
+        android:textSize="18sp"
+        tools:text="10:56" />
+
 
     <LinearLayout
         android:id="@+id/horizontal_layout"
@@ -62,4 +63,4 @@
         android:alpha="0.15"
         android:background="@color/white_color"
         android:orientation="horizontal"></LinearLayout>
-</RelativeLayout>
+</LinearLayout>

@@ -140,7 +140,7 @@ public class DamageEntryFragment extends BaseFragment implements Injectable {
 
         super.showLoading();
         viewModel.setEquipmentId(selectedEquipment.equipmentId);
-        viewModel.getDamageListByEquipment().observe(this, damageListResponse -> {
+        viewModel.getDamageListByEquipment().observe(getViewLifecycleOwner(), damageListResponse -> {
             hideLoading();
             if (damageListResponse == null) {
                 isServiceCalled = true;

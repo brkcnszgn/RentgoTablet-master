@@ -16,11 +16,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/ic_base_background"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:src="@drawable/ic_logo" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="12dp"
             android:layout_weight="0.3"
             android:orientation="horizontal">
 
@@ -31,7 +39,7 @@
                 android:layout_marginEnd="@dimen/spacing_default"
                 android:layout_weight="0.6"
                 app:tabGravity="fill"
-                app:tabIndicatorColor="@color/colorMainBlue"
+                app:tabIndicatorColor="#FEBC42"
                 app:tabIndicatorFullWidth="false"
                 app:tabIndicatorHeight="6dp"
                 app:tabMaxWidth="0dp">
@@ -55,6 +63,7 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="12dp"
                 android:layout_marginBottom="@dimen/spacing_default"
                 android:layout_weight="0.4"
                 android:background="@drawable/dashboard_weather_sunny_gradient_bg">
@@ -125,18 +134,6 @@
 
         </LinearLayout>
 
-        <!--<com.loopeer.shadow.ShadowView-->
-        <!--android:id="@+id/new_transfer_shadow_view"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_weight="0.7"-->
-        <!--android:elevation="10dp"-->
-        <!--android:foreground="?attr/selectableItemBackground"-->
-        <!--app:cornerRadius="5dp"-->
-        <!--app:shadowColor="#1A000000"-->
-        <!--app:shadowMargin="@dimen/spacing_default"-->
-        <!--app:shadowRadius="14dp">-->
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -155,12 +152,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/quick_contract_header_logo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/icon_delivery_rentgo_logo" />
 
                     <TextView
                         android:id="@+id/quick_contract_title"
@@ -168,20 +159,20 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/spacing_small"
-                        android:layout_toEndOf="@+id/quick_contract_header_logo"
                         android:text="@string/delivery_contract_title"
                         android:textSize="27sp" />
 
                     <EditText
                         android:id="@+id/quick_contract_search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_width="200dp"
+                        android:layout_height="@dimen/search_bar_height"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/reservation_search_button_bg"
+                        android:background="@drawable/delivery_search_button_bg"
                         android:drawableStart="@drawable/icon_search_button"
                         android:drawablePadding="10dp"
                         android:ems="9"
+                        android:drawableTint="@color/dashboard_fast_contract_color"
                         android:hint="@string/hint_reservation_search"
                         android:inputType="textPersonName"
                         android:paddingStart="@dimen/spacing_default"
@@ -274,33 +265,25 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/delivery_header_logo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/icon_delivery_rentgo_logo" />
-
                     <TextView
                         android:id="@+id/delivery_contract_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/spacing_small"
-                        android:layout_toEndOf="@+id/delivery_header_logo"
                         android:text="@string/delivery_contract_title"
                         android:textSize="27sp" />
 
                     <EditText
+                        android:layout_width="200dp"
                         android:id="@+id/delivery_contract_search"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
+                        android:layout_height="@dimen/search_bar_height"
+                        android:drawableTint="#FEBC42"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:background="@drawable/delivery_search_button_bg"
                         android:drawableStart="@drawable/icon_search_button"
                         android:drawablePadding="10dp"
-                        android:ems="9"
+                        android:ems="12"
                         android:hint="@string/hint_contract_search"
                         android:inputType="textPersonName"
                         android:paddingStart="@dimen/spacing_default"
@@ -316,6 +299,8 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="@dimen/contract_list_item_height"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
                         android:layout_weight="0.9"
                         android:orientation="horizontal">
 
@@ -392,12 +377,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/rental_header_logo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        app:srcCompat="@drawable/icon_collect_rentgo_logo" />
 
                     <TextView
                         android:id="@+id/rental_contract_title"
@@ -405,19 +384,17 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/spacing_small"
-                        android:layout_toEndOf="@+id/rental_header_logo"
                         android:text="@string/rental_contract_title"
                         android:textSize="27sp" />
 
                     <Button
                         android:id="@+id/search_plate"
                         android:layout_width="100dp"
-                        android:layout_height="30dp"
+                        android:layout_height="@dimen/search_bar_height"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/spacing_default"
                         android:layout_toStartOf="@+id/rental_contract_search"
-                        android:background="@drawable/rental_search_button_bg"
-                        android:drawableTint="@color/dashboard_rental_color"
+                        android:background="@drawable/delivery_search_button_bg"
                         android:text="Plaka Ara"
                         android:textAllCaps="false"
                         android:textColor="@color/colorMainRed"
@@ -425,16 +402,16 @@
 
                     <EditText
                         android:id="@+id/rental_contract_search"
-                        android:layout_width="wrap_content"
+                        android:layout_width="200dp"
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
-                        android:background="@drawable/rental_search_button_bg"
+                        android:background="@drawable/delivery_search_button_bg"
                         android:drawableStart="@drawable/icon_search_button"
                         android:drawablePadding="10dp"
-                        android:drawableTint="@color/dashboard_rental_color"
                         android:ems="9"
                         android:hint="@string/hint_contract_search"
+                        android:drawableTint="@color/dashboard_rental_color"
                         android:inputType="textPersonName"
                         android:paddingStart="@dimen/spacing_default"
                         android:textSize="12sp" />

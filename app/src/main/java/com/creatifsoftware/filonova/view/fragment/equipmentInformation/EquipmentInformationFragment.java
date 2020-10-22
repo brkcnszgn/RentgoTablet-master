@@ -205,7 +205,7 @@ public class EquipmentInformationFragment extends BaseFragment implements Inject
         }
         showLoading();
         viewModel.setEquipmentId(selectedEquipment.equipmentId);
-        viewModel.getEquipmentInventoryListObservable().observe(this, response -> {
+        viewModel.getEquipmentInventoryListObservable().observe(getViewLifecycleOwner(), response -> {
             super.hideLoading();
             if (response == null) {
                 showMessageDialog(getString(R.string.unknown_error_message));
