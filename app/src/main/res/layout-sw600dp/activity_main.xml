@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:id="@+id/complete_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        tools:context=".view.activity.MainActivity">
+
+        <RelativeLayout
+            android:id="@+id/navigation_bar"
+            android:layout_width="@dimen/spacing_huge"
+            android:layout_height="match_parent"
+            android:background="#F5F5F5"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/logout_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="@dimen/spacing_default"
+                android:background="@drawable/ic_navbar_logout" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="@dimen/spacing_default"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/icon_navbar_logo" />
+
+            <LinearLayout
+                android:layout_width="@dimen/spacing_huge"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/contract_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/ic_navbar_delivery"
+                    app:layout_constraintBottom_toTopOf="@+id/where_is_my_car_button" />
+
+                <ImageButton
+                    android:id="@+id/where_is_my_car_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/ic_navbar_car_search"
+                    app:layout_constraintBottom_toTopOf="@+id/transfer_button" />
+
+                <ImageButton
+                    android:id="@+id/transfer_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="45dp"
+                    android:background="@drawable/ic_navbar_transfer"
+                    app:layout_constraintBottom_toTopOf="@+id/transfer_button" />
+
+                <!--<ImageButton-->
+                <!--android:id="@+id/report_button"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--android:layout_marginTop="45dp"-->
+                <!--android:background="@drawable/ic_navbar_report"-->
+                <!--app:layout_constraintBottom_toTopOf="@+id/transfer_button" />-->
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/content_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/progress_bar"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_default"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_toEndOf="@+id/navigation_bar">
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:id="@+id/progress_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/navigation_bar"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/spacing_default"
+            android:paddingBottom="@dimen/spacing_default"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/navigation_bar">
+
+
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:background="@drawable/button_ripple_effect_white_25"
+                android:fontFamily="@font/roboto"
+                android:text="@string/back_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorMainBlue"
+                android:textSize="14sp" />
+
+            <com.shuhart.stepview.StepView
+                android:id="@+id/step_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:layout_toStartOf="@id/next_button"
+                android:layout_toEndOf="@id/back_button"
+                android:paddingBottom="@dimen/spacing_default"
+                app:sv_animationDuration="1000"
+                app:sv_animationType="All"
+                app:sv_doneCircleColor="@color/colorMainBlue"
+                app:sv_doneCircleRadius="12dp"
+                app:sv_doneStepLineColor="@color/colorMainBlue"
+                app:sv_doneStepMarkColor="@color/colorWhite"
+                app:sv_doneTextColor="@color/colorMainBlue"
+                app:sv_nextStepLineColor="@color/colorMainLightGray"
+                app:sv_nextTextColor="@color/colorMainLightGray"
+                app:sv_selectedCircleColor="@color/colorMainBlue"
+                app:sv_selectedCircleRadius="15dp"
+                app:sv_selectedStepNumberColor="@color/colorWhite"
+                app:sv_selectedTextColor="@color/colorMainBlue"
+                app:sv_stepLineWidth="1dp"
+                app:sv_stepNumberTextSize="12sp"
+                app:sv_stepPadding="0dp"
+                app:sv_stepViewStyle="@style/StepView"
+                app:sv_textPadding="0dp" />
+
+            <Button
+                android:id="@+id/next_button"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:background="@drawable/button_ripple_effect_25"
+                android:fontFamily="@font/roboto"
+                android:text="@string/next_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.5"
+            android:background="@android:color/black"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ProgressBar
+                android:id="@+id/indicator"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="70dp"
+                android:layout_height="100dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/indicator"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="@dimen/spacing_default"
+                android:text="Yükleniyor, lütfen bekleyin"
+                android:textColor="@color/colorWhite"
+                android:textSize="20sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
