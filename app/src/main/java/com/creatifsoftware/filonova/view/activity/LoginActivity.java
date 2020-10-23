@@ -27,6 +27,7 @@ import com.creatifsoftware.filonova.model.request.UserRequest;
 import com.creatifsoftware.filonova.utils.ApplicationUtils;
 import com.creatifsoftware.filonova.utils.SharedPrefUtils;
 import com.creatifsoftware.filonova.view.fragment.base.BaseErrorDialog;
+import com.creatifsoftware.filonova.view.fragment.base.BaseFilonovaLoadingDialogFragment;
 import com.creatifsoftware.filonova.viewmodel.LoginViewModel;
 
 import java.util.Locale;
@@ -50,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
     private ProgressDialog progressDialog;
     private ActivityLoginBinding binding;
     private LoginViewModel viewModel;
+    private BaseFilonovaLoadingDialogFragment baseFilonovaLoadingDialogFragment;
 
     public static void triggerRebirth(Context context) {
         Intent intent = new Intent(context, LoginActivity.class);
@@ -187,12 +189,15 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
     }
 
     void showLoading() {
-        progressDialog = new ProgressDialog(LoginActivity.this);
+       /* progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setMessage("Lütfen Bekleyin...");
         //progressDialog.setTitle("ProgressDialog");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(false);*/
+        baseFilonovaLoadingDialogFragment = new BaseFilonovaLoadingDialogFragment();
+        baseFilonovaLoadingDialogFragment.setCancelable(false);
+        baseFilonovaLoadingDialogFragment.show(getSupportFragmentManager(), "BaseLoading");
 
 //        BaseLoadingDialog loadingDialog = new BaseLoadingDialog();
 //        getSupportFragmentManager()
@@ -203,8 +208,9 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
     }
 
     void hideLoading() {
-        progressDialog.dismiss();
+        //  progressDialog.dismiss();
         //onBackPressed();
+        baseFilonovaLoadingDialogFragment.dismiss();
     }
 
     private void showMainActivity(User user) {

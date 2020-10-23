@@ -219,7 +219,7 @@ public class EquipmentListFragment extends BaseFragment implements Injectable {
     }
 
     private void bindEquipmentListViewModal() {
-        binding.searchLayout.setVisibility(View.VISIBLE);
+        //binding.searchLayout.setVisibility(View.VISIBLE);
         binding.equipmentListLayout.setVisibility(View.VISIBLE);
         //equipmentListAdapter.setEquipmentList(selectedContract.groupCodeInformation.equipmentList);
         equipmentListAdapter.setEquipmentList(equipmentListResponse.equipmentList);

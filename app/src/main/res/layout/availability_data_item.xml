@@ -14,173 +14,186 @@
             type="com.creatifsoftware.filonova.view.callback.AvailabilityItemClickCallback" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_small"
-        android:layout_marginBottom="@dimen/spacing_small"
+        android:layout_margin="8dp"
         android:background="@drawable/change_car_group_gradient_bg"
         android:onClick="@{() -> callback.onClick(groupCodeInformation)}"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_small"
+        android:orientation="horizontal"
+        android:padding="8dp"
         tools:ignore="ContentDescription">
 
-        <RelativeLayout
-            android:id="@+id/group_information_layout"
+
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/white_layout_corner_radius">
+            android:layout_height="match_parent">
 
             <ImageView
                 android:id="@+id/car_group_image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_default"
+                android:layout_margin="8dp"
+                android:src="@{groupCodeInformation.getGroupCodeImageById(groupCodeInformation.groupCodeId)}"
+                tools:src="@drawable/ic_logo" />
+
+            <TextView
+                android:id="@+id/group_code_name"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="end"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:src="@{groupCodeInformation.getGroupCodeImageById(groupCodeInformation.groupCodeId)}" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/spacing_default"
-                android:layout_marginEnd="@dimen/spacing_default"
-                android:layout_toEndOf="@+id/car_group_image"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/car_name"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:fontFamily="@font/roboto_medium"
-                    android:gravity="end"
-                    android:text='@{groupCodeInformation.displayText}'
-                    android:textColor="@color/main_title_color"
-                    android:textSize="20sp" />
-
-                <TextView
-                    android:id="@+id/group_code_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginTop="@dimen/spacing_small"
-                    android:fontFamily="@font/roboto"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:text="@{groupCodeInformation.groupCodeName}"
-                    android:textColor="@color/main_title_color"
-                    android:textSize="30sp" />
-            </LinearLayout>
-
-        </RelativeLayout>
+                android:background="@drawable/group_code_text_bg"
+                android:fontFamily="@font/roboto"
+                android:gravity="center"
+                android:text="@{groupCodeInformation.groupCodeName}"
+                android:textColor="@color/white_color"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="A" />
+        </FrameLayout>
 
         <LinearLayout
-            android:id="@+id/info_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:orientation="horizontal">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/spacing_default"
+            android:layout_marginEnd="@dimen/spacing_default"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/car_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_medium"
+                android:text='@{groupCodeInformation.displayText}'
+                android:textColor="@color/main_title_color"
+                android:textSize="24sp"
+                tools:text="Jeep ve Benzeri" />
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/equipment_information_gray_bg">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/info_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/icon_fuel" />
+                    android:layout_marginTop="@dimen/spacing_small"
+                    android:layout_weight="1"
+                    android:gravity="end"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/car_fuel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/roboto"
-                    android:text="@{groupCodeInformation.fuelTypeName}"
-                    android:textColor="@color/group_code_information"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/to_be_paid_amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/base_border_ng"
+                        android:backgroundTint="@color/colorAccent"
+                        android:fontFamily="@font/roboto_medium"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="-120.00 TL"
+                        android:textColor="@color/white_color"
+                        android:textSize="20sp" />
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/base_border_ng"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/equipment_information_gray_bg">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icon_transmission" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/icon_transmission" />
+                        <TextView
+                            android:id="@+id/car_gear"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="center"
+                            android:padding="2dp"
+                            android:text="@{groupCodeInformation.transmissionName}"
+                            android:textColor="@color/group_code_information"
+                            android:textSize="12sp"
+                            tools:text="Manual" />
 
-                <TextView
-                    android:id="@+id/car_gear"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/roboto"
-                    android:text="@{groupCodeInformation.transmissionName}"
-                    android:textColor="@color/group_code_information"
-                    android:textSize="12sp" />
+                    </LinearLayout>
 
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/base_border_ng"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/equipment_information_gray_bg">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icon_fuel" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
-                    android:src="@drawable/icon_air_condition" />
+                        <TextView
+                            android:id="@+id/car_fuel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto"
+                            android:padding="4dp"
+                            android:text="@{groupCodeInformation.fuelTypeName}"
+                            android:textColor="@color/group_code_information"
+                            android:textSize="12sp"
+                            tools:text="Diesel" />
 
-                <TextView
-                    android:id="@+id/car_snow_tire"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    android:fontFamily="@font/roboto"
-                    android:text="Var"
-                    android:textColor="@color/group_code_information"
-                    android:textSize="12sp" />
+                    </LinearLayout>
 
+                    <LinearLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/base_border_ng"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:src="@drawable/icon_air_condition" />
+
+                        <TextView
+                            android:id="@+id/car_snow_tire"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:fontFamily="@font/roboto"
+                            android:padding="4dp"
+                            android:text="Var"
+                            android:textColor="@color/group_code_information"
+                            android:textSize="12sp"
+                            tools:text="Diesel" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/to_be_paid_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/group_information_layout"
-            android:layout_alignBottom="@+id/info_layout"
-            android:layout_gravity="end"
-            android:fontFamily="@font/roboto_medium"
-            android:text="TextView"
-            android:textColor="@color/colorWhite"
-            android:textSize="25sp" />
 
-
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

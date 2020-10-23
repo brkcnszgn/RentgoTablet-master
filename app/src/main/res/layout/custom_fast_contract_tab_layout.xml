@@ -23,7 +23,7 @@
         android:layout_alignTop="@+id/first_quick_contract_title"
         android:layout_alignEnd="@+id/collect_horizontal_layout2"
         android:layout_alignBottom="@+id/first_quick_contract_title"
-        android:layout_marginStart="@dimen/spacing_default"
+        android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/first_quick_contract_title"
         android:fontFamily="@font/roboto_medium"
         android:text="- -"

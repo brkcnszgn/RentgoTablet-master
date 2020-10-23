@@ -3,6 +3,7 @@
     android:id="@+id/delivery_contract"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/spacing_default"
     android:background="@drawable/dashboard_new_transfer_create_bg">
 
 

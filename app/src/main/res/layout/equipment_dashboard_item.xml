@@ -17,7 +17,9 @@
         android:layout_height="@dimen/contract_list_item_height"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{()->callback.onClick(equipment)}"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp">
 
         <TextView
             android:id="@+id/plate_number"

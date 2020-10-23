@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="com.creatifsoftware.filonova.utils.FilonovaHelper" />
 
         <variable
             name="equipment"
@@ -9,16 +12,15 @@
     </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorWhite"
+        android:background="@drawable/base_border_ng"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:background="@drawable/background_car_specs_grey"
-            android:padding="3dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -26,18 +28,34 @@
                 android:layout_gravity="center"
                 android:src="@drawable/icon_fuel" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="Yakıt Durumu"
+                android:textColor="#28282D" />
+
             <RatingBar
                 android:id="@+id/rate"
                 style="@style/RatingBarSmall"
-                android:layout_width="match_parent"
-                android:layout_height="17dp"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/spacing_small"
-                android:background="@android:color/transparent"
                 android:isIndicator="true"
                 android:numStars="8"
                 android:rating="@{equipment.fuelValue}"
-                android:stepSize="1" />
+                tools:rating="2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="@{FilonovaHelper.getPercent(8,equipment.fuelValue)}"
+                android:textColor="@color/colorMainBlue"
+                tools:text="%67" />
 
         </LinearLayout>
     </LinearLayout>

@@ -26,12 +26,14 @@ public class EquipmentListAdapter extends RecyclerView.Adapter<EquipmentListAdap
     public EquipmentListAdapter(@Nullable EquipmentClickCallback equipmentClickCallback, ContractItem contract) {
         this.equipmentClickCallback = equipmentClickCallback;
         this.selectedContract = contract;
+
     }
 
     public void setEquipmentList(final List<? extends Equipment> itemList) {
         if (this.itemList == null) {
             this.itemList = itemList;
             notifyItemRangeInserted(0, itemList.size());
+
         } else {
             DiffUtil.DiffResult result = DiffUtil.calculateDiff(new DiffUtil.Callback() {
                 @Override

@@ -173,5 +173,10 @@
     <string name="new_version_alert_title">Yeni versiyon</string>
     <string name="new_version_download_button_title">Yükle</string>
     <string name="text_login">GİRİŞ YAP</string>
+    <string name="please_wait">Lütfen bekleyiniz...</string>
+    <string name="hint_search">Ara...</string>
+    <string name="car_classes">SINIFI</string>
+    <string name="ready_for_bg">UYGUN</string>
+    <string name="not_ready_for">UYGUN DEĞİL</string>
 
 </resources>

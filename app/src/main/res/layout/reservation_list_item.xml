@@ -14,9 +14,11 @@
     </data>
 
     <LinearLayout
+        android:foreground="?android:attr/selectableItemBackground"
+        android:paddingStart="8dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/contract_list_item_height"
-        android:background="@drawable/delivery_contract_item_ripple_effect"
+        android:paddingEnd="8dp"
         android:onClick="@{() ->  callback.onClick(reservation)}"
         android:orientation="horizontal">
 

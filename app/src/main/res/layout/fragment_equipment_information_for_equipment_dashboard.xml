@@ -15,11 +15,11 @@
     </data>
 
     <LinearLayout
+        android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorWhite"
-        android:orientation="vertical"
-        android:padding="15dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/car_information"

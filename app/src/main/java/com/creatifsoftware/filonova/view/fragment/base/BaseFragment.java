@@ -54,6 +54,7 @@ public class BaseFragment extends Fragment {
     public String imageFilePath;
     private Compressor compressor;
     private ProgressDialog progressDialog;
+    private BaseFilonovaLoadingDialogFragment baseFilonovaLoadingDialogFragment;
 
     @BindingAdapter({"android:src"})
     public static void setImageViewResource(ImageView imageView, String base64String) {
@@ -182,23 +183,29 @@ public class BaseFragment extends Fragment {
 
     protected void showMessageDialog(String message) {
         mActivity.showMessageDialog(message);
+
     }
 
     protected void showLoading() {
-        progressDialog = new ProgressDialog(mActivity);
+       /* progressDialog = new ProgressDialog(mActivity);
         progressDialog.setMessage("Lütfen Bekleyin...");
         //progressDialog.setTitle("ProgressDialog");
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.show();
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(false);*/
 
         //mActivity.showLoading();
+
+        baseFilonovaLoadingDialogFragment = new BaseFilonovaLoadingDialogFragment();
+        baseFilonovaLoadingDialogFragment.setCancelable(false);
+        baseFilonovaLoadingDialogFragment.show(mActivity.getSupportFragmentManager(), "BaseLoading");
     }
 
     protected void hideLoading() {
-        progressDialog.dismiss();
+        // progressDialog.dismiss();
 
-        //mActivity.hideLoading();
+        //  mActivity.hideLoading();
+        baseFilonovaLoadingDialogFragment.dismiss();
     }
 
     protected void changeFragment(Fragment fragment) {

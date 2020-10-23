@@ -75,6 +75,7 @@
                 android:layout_marginEnd="@dimen/spacing_small"
                 android:layout_toStartOf="@+id/add_card_button"
                 android:gravity="end"
+                android:tint="@color/colorAccent"
                 android:src="@drawable/icon_add_card" />
 
             <ImageView
@@ -84,6 +85,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginEnd="@dimen/spacing_small"
+                android:tint="@color/colorAccent"
                 android:src="@drawable/ic_plus_blue" />
         </RelativeLayout>
 

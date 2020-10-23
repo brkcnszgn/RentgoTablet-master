@@ -18,7 +18,7 @@
         android:layout_marginEnd="8dp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/contract_list_item_height"
-        android:background="@drawable/rental_contract_item_ripple_effect"
+        android:foreground="?android:attr/selectableItemBackground"
         android:onClick="@{() ->  callback.onClick(contract)}"
         android:orientation="horizontal">
 

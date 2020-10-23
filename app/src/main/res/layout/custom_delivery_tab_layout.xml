@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/first_delivery_title"
         android:layout_alignBottom="@+id/first_delivery_title"
-        android:layout_marginStart="@dimen/spacing_default"
+        android:layout_marginStart="8dp"
         android:layout_toEndOf="@+id/first_delivery_title"
         android:fontFamily="@font/roboto_medium"
         android:textColor="@color/white_color"

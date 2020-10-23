@@ -25,26 +25,25 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/spacing_small"
+        android:elevation="8dp"
         android:background="@{isSelected ? @drawable/equipment_information_selected_bg : @drawable/equipment_information_bg}"
+        tools:background="@drawable/equipment_information_selected_bg"
         android:onClick="@{() -> callback.onClick(selectedEquipment)}"
         android:padding="@dimen/spacing_small"
         tools:ignore="ContentDescription">
 
         <TextView
             android:id="@+id/car_name"
-            android:layout_width="225dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
             android:fontFamily="@font/roboto_medium"
             android:text='@{String.format("%s %s", selectedEquipment.brandName, selectedEquipment.modelName)}'
             android:textColor="@{isSelected ? @color/colorWhite : @color/equipment_item_brand_color}"
-            android:textSize="16sp" />
+            android:textSize="28sp"
+            tools:text="Toyota Camry" />
 
         <TextView
             android:id="@+id/car_color"
@@ -57,7 +56,6 @@
             android:fontFamily="@font/roboto"
             android:gravity="end"
             android:paddingEnd="4dp"
-            android:text=""
             android:textColor="@color/equipment_item_color_name"
             android:textSize="16sp" />
 
@@ -67,17 +65,17 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/car_name"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="@dimen/spacing_default"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="@dimen/spacing_default"
-            android:background="@{isSelected ? @drawable/icon_plate_selected : @drawable/icon_plate}"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:background="@{isSelected ? @drawable/icon_plate_selected : @drawable/icon_plate_selected}"
             android:fontFamily="@font/roboto"
             android:gravity="center_vertical|center_horizontal"
-            android:paddingStart="32dp"
+            android:paddingStart="16dp"
             android:paddingEnd="@dimen/spacing_default"
             android:text="@{selectedEquipment.plateNumber}"
             android:textColor="@color/plate_number_color"
-            android:textSize="21sp" />
+            android:textSize="21sp"
+            tools:background="@drawable/icon_plate_selected" />
 
         <LinearLayout
             android:id="@+id/info_layout"
@@ -93,120 +91,185 @@
                 android:orientation="horizontal">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:background="@drawable/equipment_information_gray_bg">
+                    android:background="@drawable/base_border_ng"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center"
                         android:src="@drawable/icon_transmission" />
 
                     <TextView
                         android:id="@+id/car_gear"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/roboto"
+                        android:gravity="center"
+                        android:padding="2dp"
                         android:text="@{groupCodeInformation.transmissionName}"
                         android:textColor="@color/group_code_information"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Manual" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:background="@drawable/equipment_information_gray_bg">
+                    android:background="@drawable/base_border_ng"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center"
                         android:src="@drawable/icon_fuel" />
 
                     <TextView
                         android:id="@+id/car_fuel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/roboto"
+                        android:padding="4dp"
                         android:text="@{groupCodeInformation.fuelTypeName}"
                         android:textColor="@color/group_code_information"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Diesel" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/car_seat_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:background="@drawable/equipment_information_gray_bg">
+                    android:background="@drawable/base_border_ng"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center"
                         android:src="@drawable/icon_seat" />
 
                     <TextView
                         android:id="@+id/car_armchair_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/roboto"
+                        android:padding="4dp"
                         android:text="@{selectedEquipment.seatNumber}"
                         android:textColor="@color/group_code_information"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Diesel" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:background="@drawable/equipment_information_gray_bg">
+                    android:background="@drawable/base_border_ng"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:scaleType="matrix"
+                        android:layout_gravity="center"
                         android:src="@drawable/icon_door" />
 
                     <TextView
                         android:id="@+id/car_door_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="center"
                         android:fontFamily="@font/roboto"
+                        android:padding="4dp"
                         android:text="@{selectedEquipment.doorNumber}"
                         android:textColor="@color/group_code_information"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Diesel" />
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/base_border_ng"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_air_condition" />
+
+                    <TextView
+                        android:id="@+id/car_snow_tire"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto"
+                        android:padding="4dp"
+                        android:text="Var"
+                        android:textColor="@color/group_code_information"
+                        android:textSize="12sp"
+                        tools:text="Diesel" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/base_border_ng"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/icon_luggage" />
+
+                    <TextView
+                        android:id="@+id/car_luggage_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/roboto"
+                        android:padding="4dp"
+                        android:text="@{selectedEquipment.luggageNumber}"
+                        android:textColor="@color/group_code_information"
+                        android:textSize="12sp"
+                        tools:text="Diesel" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
                 android:orientation="horizontal">
 
                 <include
@@ -214,64 +277,27 @@
                     layout="@layout/custom_ratingbar_small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
+                    android:layout_gravity="center"
                     bind:equipment="@{selectedEquipment}" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/equipment_information_gray_bg">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:src="@drawable/icon_air_condition" />
-
-                    <TextView
-                        android:id="@+id/car_snow_tire"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="Var"
-                        android:textColor="@color/group_code_information"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/equipment_information_gray_bg">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:src="@drawable/icon_luggage" />
-
-                    <TextView
-                        android:id="@+id/car_luggage_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginEnd="10dp"
-                        android:fontFamily="@font/roboto"
-                        android:text="@{selectedEquipment.luggageNumber}"
-                        android:textColor="@color/group_code_information"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:background="@{selectedEquipment.statusReason==1?@drawable/ready_for_bg:@drawable/not_ready_for_bg}"
+                android:gravity="center"
+                android:minWidth="110dp"
+                android:padding="6dp"
+                android:text="@{selectedEquipment.statusReason==1?@string/ready_for_bg:@string/not_ready_for}"
+                android:textAlignment="center"
+                android:textColor="@color/white_color"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:background="@drawable/not_ready_for_bg"
+                tools:text="@string/not_ready_for" />
 
         </LinearLayout>
 

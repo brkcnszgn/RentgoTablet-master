@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -13,29 +14,42 @@
     </data>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_car_specs_grey"
-        android:padding="@dimen/spacing_tiny">
+        android:background="@drawable/base_border_ng"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/icon_fuel" />
+            android:padding="8dp">
 
-        <RatingBar
-            android:id="@+id/rate"
-            style="@style/RatingBarBig"
-            android:layout_width="wrap_content"
-            android:layout_height="24dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginStart="28dp"
-            android:background="@android:color/transparent"
-            android:isIndicator="true"
-            android:numStars="8"
-            android:rating="@{equipment.currentFuelValue == 0 ? equipment.fuelValue : equipment.currentFuelValue}"
-            android:stepSize="1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/icon_fuel" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:text="Yakıt Durumu"
+                android:textColor="#28282D" />
+
+            <RatingBar
+                android:id="@+id/rate"
+                style="@style/RatingBarSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:isIndicator="true"
+                android:numStars="8"
+                android:rating="@{equipment.currentFuelValue == 0 ? equipment.fuelValue : equipment.currentFuelValue}"
+                tools:rating="2" />
+
+        </LinearLayout>
     </LinearLayout>
 </layout>

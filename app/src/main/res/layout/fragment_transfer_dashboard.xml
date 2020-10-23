@@ -23,6 +23,7 @@
     </data>
 
     <LinearLayout
+        android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_base_background"
@@ -292,6 +293,8 @@
             </RelativeLayout>
 
             <LinearLayout
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -373,6 +376,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/transfer_list"
                     android:layout_width="match_parent"
+                    android:background="@drawable/contract_bg"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/spacing_default"
                     android:contentDescription="@string/customer_information_title"
