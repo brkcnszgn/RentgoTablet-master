@@ -45,6 +45,7 @@
                     android:layout_marginStart="24dp"
                     android:layout_weight="1"
                     android:textColor="@color/main_title_color"
+                    android:text="@string/delivery_summary_title"
                     android:textSize="27sp"
                     app:fontFamily="@font/roboto_medium" />
 

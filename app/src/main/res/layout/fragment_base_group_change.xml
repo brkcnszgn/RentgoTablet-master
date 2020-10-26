@@ -116,12 +116,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginEnd="@dimen/spacing_default"
-                    android:background="@drawable/main_dialog_button_bg"
+                    android:background="@drawable/button_ripple_effect_white_25"
                     android:fontFamily="@font/roboto_medium"
                     android:paddingStart="48dp"
                     android:paddingEnd="48dp"
                     android:textAllCaps="false"
-                    android:textColor="@color/colorWhite" />
+                    android:textColor="@color/colorAccent" />
 
                 <Button
                     android:id="@+id/update_button"

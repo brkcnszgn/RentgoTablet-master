@@ -57,7 +57,7 @@
             android:layout_below="@+id/lnr_header"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="11dp"
-            android:background="@color/white_color"
+            android:background="#ccffffff"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
