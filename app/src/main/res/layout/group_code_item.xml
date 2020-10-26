@@ -17,7 +17,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginEnd="@dimen/spacing_small"
-        android:background="#D2D2D2"
+        android:background="#aa28282D"
         android:onClick="@{()-> callback.onItemClick(groupCode)}"
         android:orientation="vertical">
 
