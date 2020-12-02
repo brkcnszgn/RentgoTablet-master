@@ -97,6 +97,8 @@ dependencies {
     implementation "com.google.firebase:firebase-perf:$firebase_perf"
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
     implementation("com.google.guava:guava:28.1-jre")
+    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
+    implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
     // Arch
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$arch"
@@ -145,3 +147,4 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'

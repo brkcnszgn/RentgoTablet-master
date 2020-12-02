@@ -32,6 +32,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:visibility="gone"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"

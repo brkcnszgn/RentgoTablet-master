@@ -29,6 +29,8 @@ import com.creatifsoftware.filonova.utils.SharedPrefUtils;
 import com.creatifsoftware.filonova.view.fragment.base.BaseErrorDialog;
 import com.creatifsoftware.filonova.view.fragment.base.BaseFilonovaLoadingDialogFragment;
 import com.creatifsoftware.filonova.viewmodel.LoginViewModel;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.util.Locale;
 
@@ -67,6 +69,8 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
+        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -77,6 +81,7 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
 
         //observeMasterData();
         prepareComponents();
+
     }
 
     private void prepareComponents() {
@@ -217,9 +222,17 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
         SharedPrefUtils.instance.saveObject(getApplicationContext(), "username", binding.username.getText().toString());
         SharedPrefUtils.instance.saveObject(getApplicationContext(), "password", binding.password.getText().toString());
         SharedPrefUtils.instance.saveObject(getApplicationContext(), "user", user);
+        //Set CrashlistUserId
+        setCrashlyticsUser(user);
         Intent myIntent = new Intent(this, MainActivity.class);
         this.startActivity(myIntent);
         finish();
+    }
+
+    private void setCrashlyticsUser(User user) {
+        FirebaseCrashlytics.getInstance().setUserId(user.userId);
+        FirebaseCrashlytics.getInstance().setCustomKey("userId", user.userId);
+        FirebaseCrashlytics.getInstance().setCustomKey("username", user.fullname);
     }
 
     @Override

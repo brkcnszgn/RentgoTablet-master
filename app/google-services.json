@@ -52,6 +52,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "179101262686-9tb2nt0keqk5rdn9iiomoi3nrtpeonah.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.creatifsoftware.filonova.qa",
+            "certificate_hash": "f08539b5d2685d6574208cc875f086d036438704"
+          }
+        },
+        {
           "client_id": "179101262686-8sg0b40rd0g9h5gcj17rdnrm3lpabgp3.apps.googleusercontent.com",
           "client_type": 3
         }

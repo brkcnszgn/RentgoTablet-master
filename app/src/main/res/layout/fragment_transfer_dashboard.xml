@@ -23,22 +23,24 @@
     </data>
 
     <LinearLayout
-        android:padding="12dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_base_background"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <ImageView
+            android:visibility="gone"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_margin="12dp"
             android:src="@drawable/ic_logo" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:layout_weight="0.3"
             app:tabIndicatorColor="@color/dashboard_will_transfer_color"
             app:tabIndicatorFullWidth="false"
@@ -293,11 +295,11 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -376,9 +378,9 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/transfer_list"
                     android:layout_width="match_parent"
-                    android:background="@drawable/contract_bg"
                     android:layout_height="match_parent"
                     android:layout_marginBottom="@dimen/spacing_default"
+                    android:background="@drawable/contract_bg"
                     android:contentDescription="@string/customer_information_title"
                     android:paddingBottom="@dimen/spacing_default"
                     app:layoutManager="LinearLayoutManager" />
