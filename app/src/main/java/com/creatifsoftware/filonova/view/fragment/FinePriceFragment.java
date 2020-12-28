@@ -30,6 +30,7 @@ import com.creatifsoftware.filonova.model.response.TrafficPenaltyResponse;
 import com.creatifsoftware.filonova.service.api.BasicAuthInterceptor;
 import com.creatifsoftware.filonova.service.api.ConnectivityInterceptor;
 import com.creatifsoftware.filonova.service.api.JsonApi;
+import com.creatifsoftware.filonova.utils.CommonMethods;
 import com.creatifsoftware.filonova.view.adapter.ExpandableDamagePaymentListAdapter;
 import com.creatifsoftware.filonova.view.adapter.ExpandableExtraPaymentListAdapter;
 import com.creatifsoftware.filonova.view.adapter.ExpandableTollListAdapter;
@@ -121,7 +122,7 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         }
 
         binding.addExtraPaymentButton.setOnClickListener(view ->
-                mActivity.showExtraPaymentDialog(priceResponse.otherCostAdditionalProductData));
+                mActivity.showExtraPaymentDialog(CommonMethods.instance.getExtraServiceList(requireContext())));
     }
 
     /**
@@ -454,13 +455,13 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         return retrofit.create(JsonApi.class);
     }
 
-    public void extraPaymentAdded(AdditionalProduct item) {
+    public void extraPaymentAdded(List<AdditionalProduct> item) {
         if (priceResponse == null) {
             priceResponse = new CalculateContractRemainingAmountResponse();
             priceResponse.otherAdditionalProductData = new ArrayList<>();
         }
 
-        priceResponse.otherAdditionalProductData.add(item);
+        priceResponse.otherAdditionalProductData.addAll(item);
 
         expandableExtraPaymentListAdapter.setDetailList(priceResponse.otherAdditionalProductData);
         expandableExtraPaymentListAdapter.notifyDataSetChanged();

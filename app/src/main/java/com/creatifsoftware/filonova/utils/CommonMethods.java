@@ -80,4 +80,9 @@ public final class CommonMethods {
     public OptionSetItem getSelectedStatusInformation(Context context, int statusCode) {
         return getEquipmentStatusList(context).stream().filter(e -> e.value == statusCode).findAny().orElse(null);
     }
+
+    public List<AdditionalProduct> getExtraServiceList(Context context) {
+        MasterDataResponse response = SharedPrefUtils.instance.getSavedObjectFromPreference(context, KEY_MASTER_DATA_RESPONSE, MasterDataResponse.class);
+        return response.otherAdditionalProducts;
+    }
 }

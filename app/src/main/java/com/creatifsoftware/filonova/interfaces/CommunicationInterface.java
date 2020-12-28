@@ -5,6 +5,8 @@ import com.creatifsoftware.filonova.model.AvailabilityGroupCodeInformation;
 import com.creatifsoftware.filonova.model.CreditCard;
 import com.creatifsoftware.filonova.model.DamageItem;
 
+import java.util.List;
+
 /**
  * Created by kerembalaban on 13.03.2019 at 01:43.
  */
@@ -13,7 +15,7 @@ public interface CommunicationInterface {
 
     void searchContractByPlateNumber(String plateNumber);
 
-    void addCustomExtraPayment(AdditionalProduct item);
+    void addCustomExtraPayment(List<AdditionalProduct> item);
 
     void groupCodeChanged(AvailabilityGroupCodeInformation groupCodeInformation);
 

@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     }
 
     @Override
-    public void addCustomExtraPayment(AdditionalProduct item) {
+    public void addCustomExtraPayment(List<AdditionalProduct> item) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         List<Fragment> fragments = fragmentManager.getFragments();
         for (Fragment fragment : fragments) {
@@ -502,7 +502,7 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
                 .commit();
     }
 
-    public void showExtraPaymentDialog(AdditionalProduct product) {
+    public void showExtraPaymentDialog(List<AdditionalProduct> product) {
         BaseExtraPaymentDialog baseExtraPaymentDialog = BaseExtraPaymentDialog.with(product);
         getSupportFragmentManager()
                 .beginTransaction()

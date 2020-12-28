@@ -3,8 +3,6 @@ package com.creatifsoftware.filonova.view.fragment.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,28 +13,34 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
 
 import com.creatifsoftware.filonova.R;
 import com.creatifsoftware.filonova.databinding.FragmentExtraPaymentDialogBinding;
 import com.creatifsoftware.filonova.di.Injectable;
 import com.creatifsoftware.filonova.interfaces.CommunicationInterface;
 import com.creatifsoftware.filonova.model.AdditionalProduct;
+import com.creatifsoftware.filonova.utils.CommonMethods;
 import com.creatifsoftware.filonova.view.activity.MainActivity;
+import com.creatifsoftware.filonova.view.adapter.ExtraServiceListAdapter;
 
-import java.util.Objects;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BaseExtraPaymentDialog extends Fragment implements Injectable {
     private static final String KEY_OTHER_ADDITIONAL_PRODUCT_DATA = "other_additional_product_Data";
+    public ExtraServiceListAdapter extraServiceListAdapter;
     private FragmentExtraPaymentDialogBinding binding;
     private MainActivity mActivity;
-    private AdditionalProduct otherCostAdditionalProductData;
+    private List<AdditionalProduct> otherCostAdditionalProductData;
 
-    public static BaseExtraPaymentDialog with(AdditionalProduct product) {
+    public static BaseExtraPaymentDialog with(List<AdditionalProduct> product) {
         BaseExtraPaymentDialog fragment = new BaseExtraPaymentDialog();
 
         Bundle args = new Bundle();
 
-        args.putSerializable(KEY_OTHER_ADDITIONAL_PRODUCT_DATA, product);
+        args.putSerializable(KEY_OTHER_ADDITIONAL_PRODUCT_DATA, (Serializable) product);
         fragment.setArguments(args);
 
         return fragment;
@@ -64,11 +68,20 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        binding.extraPaymentTitle.requestFocus();
+
+        initRcv();
 
         addButtonClickListeners();
-        addTextChangeListeners();
+        //addTextChangeListeners();
     }
+
+    private void initRcv() {
+        extraServiceListAdapter = new ExtraServiceListAdapter();
+        binding.extraRcv.setAdapter(extraServiceListAdapter);
+        binding.extraRcv.addItemDecoration(new DividerItemDecoration(binding.extraRcv.getContext(), DividerItemDecoration.VERTICAL));
+        extraServiceListAdapter.setExtraServiceList(CommonMethods.instance.getExtraServiceList(requireContext()));
+    }
+
 
     private void addButtonClickListeners() {
         binding.closeButtonLayout.setOnClickListener(view -> {
@@ -79,7 +92,7 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
         binding.addExtraPaymentButton.setOnClickListener(view -> {
             CommunicationInterface myInterface = (CommunicationInterface) getActivity();
             hideKeyboard();
-            if (binding.extraPaymentTitle.getText().toString().isEmpty()) {
+      /*      if (binding.extraPaymentTitle.getText().toString().isEmpty()) {
                 binding.titleErrorText.setText(getString(R.string.extra_payment_title_empty_error));
                 binding.titleErrorText.setVisibility(View.VISIBLE);
             } else if (binding.extraPaymentAmount.getText().toString().isEmpty()) {
@@ -91,32 +104,37 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
             } else if (Double.valueOf(binding.extraPaymentAmount.getText().toString()) == 0) {
                 binding.amountErrorText.setText(getString(R.string.extra_payment_amount_zero_error));
                 binding.amountErrorText.setVisibility(View.VISIBLE);
-            }
+            }*/
             mActivity.onBackPressed();
-            AdditionalProduct item = prepareExtraPaymentObject();
+
+            List<AdditionalProduct> item = prepareExtraPaymentObject();
             myInterface.addCustomExtraPayment(item);
         });
     }
 
-    private AdditionalProduct prepareExtraPaymentObject() {
-        Bundle bundle = getArguments();
+    private List<AdditionalProduct> prepareExtraPaymentObject() {
+        List<AdditionalProduct> additionalProductList = new ArrayList<>();
+      /*  Bundle bundle = getArguments();
         if (bundle != null) {
-            otherCostAdditionalProductData = (AdditionalProduct) getArguments().getSerializable(KEY_OTHER_ADDITIONAL_PRODUCT_DATA);
+            otherCostAdditionalProductData = (List<AdditionalProduct>) getArguments().getSerializable(KEY_OTHER_ADDITIONAL_PRODUCT_DATA);
+        }*/
+
+        for (AdditionalProduct product : extraServiceListAdapter.getItemList()) {
+            if (product.actualAmount > 0) {
+                product.value = 1;
+                product.isChecked = true;
+                product.actualTotalAmount = product.actualAmount;
+                product.tobePaidAmount = product.actualAmount;
+                additionalProductList.add(product);
+            }
+
         }
 
-        AdditionalProduct temp = new AdditionalProduct(Objects.requireNonNull(otherCostAdditionalProductData));
 
-        temp.productName = binding.extraPaymentTitle.getText().toString();
-        temp.value = 1;
-        temp.isChecked = true;
-        temp.actualTotalAmount = Double.valueOf(binding.extraPaymentAmount.getText().toString());
-        temp.tobePaidAmount = Double.valueOf(binding.extraPaymentAmount.getText().toString());
-        temp.actualAmount = Double.valueOf(binding.extraPaymentAmount.getText().toString());
-
-        return temp;
+        return additionalProductList;
     }
 
-    private void addTextChangeListeners() {
+  /*  private void addTextChangeListeners() {
         binding.extraPaymentTitle.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -150,7 +168,7 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
 
             }
         });
-    }
+    }*/
 
     @Override
     public void onPause() {

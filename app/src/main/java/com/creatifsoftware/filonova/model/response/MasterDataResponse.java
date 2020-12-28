@@ -1,5 +1,6 @@
 package com.creatifsoftware.filonova.model.response;
 
+import com.creatifsoftware.filonova.model.AdditionalProduct;
 import com.creatifsoftware.filonova.model.Branch;
 import com.creatifsoftware.filonova.model.DamageDocument;
 import com.creatifsoftware.filonova.model.DamageSize;
@@ -23,4 +24,5 @@ public class MasterDataResponse extends BaseResponse implements Serializable {
     public List<Branch> branchList;
     public List<GroupCodeInformation> groupCodeList;
     public List<OptionSetItem> equipmentStatusOptionSetList;
+    public List<AdditionalProduct> otherAdditionalProducts;
 }

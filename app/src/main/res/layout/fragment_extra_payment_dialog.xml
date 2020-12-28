@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -31,57 +32,16 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:background="@drawable/main_dialog_bg"
-            android:orientation="vertical"
-            android:paddingStart="@dimen/spacing_default"
-            android:paddingEnd="@dimen/spacing_default">
+            android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/extra_payment_title"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/extra_rcv"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="32dp"
-                android:background="@drawable/main_white_bg"
-                android:fontFamily="@font/roboto_medium"
-                android:hint="@string/extra_payment_hint"
-                android:inputType="textPersonName"
-                android:paddingStart="@dimen/spacing_default"
-                android:textColor="@color/main_title_color"
-                android:textSize="16sp" />
+                android:layout_height="match_parent"
+                android:background="@color/white_color"
+                android:padding="8dp"
+                app:layoutManager="LinearLayoutManager" />
 
-            <TextView
-                android:id="@+id/title_error_Text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/colorMainRed"
-                android:textSize="16sp"
-                android:visibility="gone" />
-
-            <EditText
-                android:id="@+id/extra_payment_amount"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="@dimen/spacing_default"
-                android:background="@drawable/main_white_bg"
-                android:fontFamily="@font/roboto_medium"
-                android:hint="@string/extra_payment_amount_hint"
-                android:inputType="numberDecimal"
-                android:paddingStart="@dimen/spacing_default"
-                android:textColor="@color/main_title_color"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/amount_error_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_tiny"
-                android:fontFamily="@font/roboto_medium"
-                android:textColor="@color/colorMainRed"
-                android:textSize="16sp"
-                android:visibility="gone" />
 
             <Button
                 android:id="@+id/add_extra_payment_button"
