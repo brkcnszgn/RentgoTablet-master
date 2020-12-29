@@ -210,6 +210,8 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
         viewModel.setContractInformation(selectedContract);
         binding.setContract(selectedContract);
         binding.setCallback(drivingLicenseImageClickCallback);
+        if (selectedContract.isEquipmentChanged)
+            selectedContract.hasAdditionalDriver = false;
         if (selectedContract.hasAdditionalDriver) {
             if (selectedContract.additionalDrivers.size() == 1) {
                 binding.extraLicenseFrontImageLayout.setVisibility(View.VISIBLE);
@@ -223,9 +225,8 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                 binding.extra2LicenseBackImageLayout.setVisibility(View.VISIBLE);
             }
 
+
         }
-
-
         if (selectedContract.isEquipmentChanged) {
             super.showLoading();
             downloadPhoto("license_front_image", true);
@@ -574,7 +575,7 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
     }
 
     private void focusOnView(View view) {
-        binding.scroll.post(() -> binding.scroll.scrollTo(0, view.getBottom()));
+        binding.scroll.post(() -> binding.scroll.fullScroll(View.FOCUS_DOWN));
     }
 
     @Override
