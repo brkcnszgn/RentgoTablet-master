@@ -100,6 +100,14 @@ public class BlobStorageManager {
                 name.toLowerCase());
     }
 
+    public String prepareAdditionalImageName(Equipment selectedEquipment, String documentNumber, String id) {
+        return String.format(Locale.getDefault(), "%s/%s/%s/%s",
+                selectedEquipment.plateNumber.replaceAll(" ", "").toLowerCase(),
+                documentNumber.toLowerCase(),
+                "delivery",
+                id.toLowerCase());
+    }
+
     public String getEquipmentsContainerName() {
         return "equipments";
     }

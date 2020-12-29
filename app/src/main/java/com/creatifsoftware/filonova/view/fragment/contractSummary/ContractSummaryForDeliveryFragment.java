@@ -35,7 +35,7 @@ public class ContractSummaryForDeliveryFragment extends ContractSummaryFragment 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getStepView().go(6, true);
+        getStepView().go(7, true);
     }
 
     @Override

@@ -48,7 +48,7 @@ public class EquipmentInformationFragmentForDelivery extends EquipmentInformatio
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         binding.carInformationTitle.setText(String.format(Locale.getDefault(), "%s - %s (%s)", getString(R.string.car_information_title), selectedContract.contractNumber, selectedContract.pnrNumber));
-        getStepView().go(3, true);
+        getStepView().go(4, true);
         if (selectedContract.selectedEquipment.kilometerFuelImageFile != null) {
             Picasso.get().load(selectedContract.selectedEquipment.kilometerFuelImageFile).into(binding.carInformationLayout.kilometerFuelImage);
         }

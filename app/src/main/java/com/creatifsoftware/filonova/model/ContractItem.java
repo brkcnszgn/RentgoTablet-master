@@ -42,6 +42,8 @@ public class ContractItem extends BaseResponse implements Serializable {
     public double depositAmount = 0;
     public boolean hasPaymentError = false;
     public long dateNow;
+    public boolean hasAdditionalDriver;
+    public List<String> additionalDrivers = new ArrayList<>();
 
     public String convertTimestampToDate(long timestamp) {
         //long localeUTC = timestamp + TimeUnit.MINUTES.toMillis(180);

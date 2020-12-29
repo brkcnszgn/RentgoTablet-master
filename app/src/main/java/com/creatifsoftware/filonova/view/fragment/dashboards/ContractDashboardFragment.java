@@ -491,6 +491,7 @@ public class ContractDashboardFragment extends BaseFragment implements Injectabl
         steps.add(getString(R.string.contract_information));
         steps.add(getString(R.string.equipment_list_title));
         steps.add(getString(R.string.damage_entry_title));
+        steps.add(getString(R.string.images_entry_title));
         steps.add(getString(R.string.car_information_title));
         steps.add(getString(R.string.additional_products_title));
         steps.add(getString(R.string.additional_service_title));

@@ -103,7 +103,7 @@ public class AdditionalProductsFragment extends BaseFragment implements Injectab
     @Override
     public void onActivityCreated(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getStepView().go(4, true);
+        getStepView().go(5, true);
         final AdditionalProductsViewModel viewModel = ViewModelProviders.of(this,
                 viewModelFactory).get(AdditionalProductsViewModel.class);
 

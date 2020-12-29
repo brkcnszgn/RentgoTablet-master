@@ -40,6 +40,7 @@ public class RentgoViewModelFactory implements ViewModelProvider.Factory {
         creators.put(DeliveryTransferSummaryViewModel.class, viewModelSubComponent::deliveryTransferSummaryViewModel);
         creators.put(ReturnTransferSummaryViewModel.class, viewModelSubComponent::returnTransferSummaryViewModel);
         creators.put(ReservationInformationViewModel.class, viewModelSubComponent::reservationInformationViewModel);
+        creators.put(AdditionalPhotoViewModel.class, viewModelSubComponent::additionalPhotoViewModelViewModel);
     }
 
     @NonNull

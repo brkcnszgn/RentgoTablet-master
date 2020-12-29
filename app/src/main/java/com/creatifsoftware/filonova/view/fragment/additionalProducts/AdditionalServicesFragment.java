@@ -44,7 +44,7 @@ public class AdditionalServicesFragment extends AdditionalProductsFragment imple
     @Override
     public void onActivityCreated(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        getStepView().go(5, true);
+        getStepView().go(6, true);
         selectedContract = getSelectedContract();
         binding.additionalProductTitle.setText(String.format(Locale.getDefault(), "%s - %s (%s)", getString(R.string.additional_service_title), selectedContract.contractNumber, selectedContract.pnrNumber));
         binding.addedProductTitle.setText(getString(R.string.added_additional_service_amount_title));

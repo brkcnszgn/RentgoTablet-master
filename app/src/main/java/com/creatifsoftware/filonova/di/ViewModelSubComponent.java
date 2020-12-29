@@ -1,5 +1,6 @@
 package com.creatifsoftware.filonova.di;
 
+import com.creatifsoftware.filonova.viewmodel.AdditionalPhotoViewModel;
 import com.creatifsoftware.filonova.viewmodel.AdditionalProductsViewModel;
 import com.creatifsoftware.filonova.viewmodel.AdditionalServicesViewModel;
 import com.creatifsoftware.filonova.viewmodel.CarsListViewModel;
@@ -58,6 +59,8 @@ public interface ViewModelSubComponent {
     ReturnTransferSummaryViewModel returnTransferSummaryViewModel();
 
     ReservationInformationViewModel reservationInformationViewModel();
+
+    AdditionalPhotoViewModel additionalPhotoViewModelViewModel();
 
     @Subcomponent.Builder
     interface Builder {

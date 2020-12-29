@@ -25,4 +25,5 @@ public class MasterDataResponse extends BaseResponse implements Serializable {
     public List<GroupCodeInformation> groupCodeList;
     public List<OptionSetItem> equipmentStatusOptionSetList;
     public List<AdditionalProduct> otherAdditionalProducts;
+    public boolean takeAllPictures;
 }

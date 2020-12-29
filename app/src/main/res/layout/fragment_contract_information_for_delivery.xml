@@ -15,11 +15,11 @@
     </data>
 
     <RelativeLayout
-        android:background="@drawable/ic_base_background"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:orientation="vertical">
+        android:background="@drawable/ic_base_background"
+        android:orientation="vertical"
+        android:padding="12dp">
 
         <LinearLayout
             android:id="@+id/lnr_header"
@@ -32,12 +32,12 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:visibility="gone"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="12dp"
-                android:src="@drawable/ic_logo" />
+                android:src="@drawable/ic_logo"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/contract_information_title"
@@ -352,214 +352,393 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <LinearLayout
+            <ScrollView
+                android:id="@+id/scroll"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
+                android:layout_weight="0.5">
 
-                <RelativeLayout
-                    android:id="@+id/pickup_date_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/text_field_layout_height"
-                    android:background="@drawable/customer_information_layout_bg">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <TextView
+                    <RelativeLayout
+                        android:id="@+id/pickup_date_time"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/pickup_date_time"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto_medium" />
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:background="@drawable/customer_information_layout_bg">
 
-                    <TextView
-                        android:id="@+id/delivery_date_and_time"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/pickup_date_time"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/delivery_date_and_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/delivery_date_and_time_icon"
+                            android:gravity="end"
+                            android:text="@{contract.convertTimestampToDateTime(contract.pickupTimestamp)}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto" />
+
+                        <ImageView
+                            android:id="@+id/delivery_date_and_time_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="30dp"
-                        android:layout_toStartOf="@+id/delivery_date_and_time_icon"
-                        android:gravity="end"
-                        android:text="@{contract.convertTimestampToDateTime(contract.pickupTimestamp)}"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto" />
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/customer_information_layout_bg">
 
-                    <ImageView
-                        android:id="@+id/delivery_date_and_time_icon"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/dropoff_date_time"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <TextView
+                            android:id="@+id/return_date_and_time"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/return_date_and_time_icon"
+                            android:gravity="end"
+                            android:text="@{contract.convertTimestampToDateTime(contract.dropoffTimestamp)}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto" />
+
+                        <ImageView
+                            android:id="@+id/return_date_and_time_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="9dp"
-                        android:src="@drawable/icon_checkmark" />
-                </RelativeLayout>
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/customer_information_layout_bg">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/text_field_layout_height"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/customer_information_layout_bg">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/driving_license_number"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
 
-                    <TextView
+                        <TextView
+                            android:id="@+id/license_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="false"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/license_number_icon"
+                            android:gravity="end"
+                            android:text="@{contract.customer.drivingLicenseNumber}"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto" />
+
+                        <ImageView
+                            android:id="@+id/license_number_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:src="@drawable/icon_checkmark" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/license_front_image_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/dropoff_date_time"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto_medium" />
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/layout_with_border_ripple_effect"
+                        android:onClick="@{(v) -> callback.onClick(v)}">
 
-                    <TextView
-                        android:id="@+id/return_date_and_time"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/driving_license_front_photo"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <ImageView
+                            android:id="@+id/license_front_face_photo"
+                            android:layout_width="42dp"
+                            android:layout_height="26dp"
+                            android:layout_alignParentEnd="false"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/license_front_face_photo_checkbox"
+                            android:gravity="end"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_take_license_front_photo" />
+
+                        <CheckBox
+                            android:id="@+id/license_front_face_photo_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:buttonTint="@color/colorMainBlue"
+                            android:checked="false"
+                            android:enabled="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/license_back_image_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="30dp"
-                        android:layout_toStartOf="@+id/return_date_and_time_icon"
-                        android:gravity="end"
-                        android:text="@{contract.convertTimestampToDateTime(contract.dropoffTimestamp)}"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto" />
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/layout_with_border_ripple_effect"
+                        android:onClick="@{(v) -> callback.onClick(v)}">
 
-                    <ImageView
-                        android:id="@+id/return_date_and_time_icon"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/driving_license_back_photo"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <ImageView
+                            android:id="@+id/license_back_face_photo"
+                            android:layout_width="42dp"
+                            android:layout_height="26dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/license_back_face_photo_checkbox"
+                            android:gravity="end"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_take_license_back_photo" />
+
+                        <CheckBox
+                            android:id="@+id/license_back_face_photo_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:buttonTint="@color/colorMainBlue"
+                            android:checked="false"
+                            android:enabled="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/extra_license_front_image_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="9dp"
-                        android:src="@drawable/icon_checkmark" />
-                </RelativeLayout>
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/layout_with_border_ripple_effect"
+                        android:onClick="@{(v) -> callback.onClick(v)}"
+                        android:visibility="gone">
 
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/text_field_layout_height"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/customer_information_layout_bg">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/extra_driving_license_front_photo"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
 
-                    <TextView
+                        <ImageView
+                            android:id="@+id/extra_license_front_face_photo"
+                            android:layout_width="42dp"
+                            android:layout_height="26dp"
+                            android:layout_alignParentEnd="false"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/extra_license_front_face_photo_checkbox"
+                            android:gravity="end"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_take_license_front_photo" />
+
+                        <CheckBox
+                            android:id="@+id/extra_license_front_face_photo_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:buttonTint="@color/colorMainBlue"
+                            android:checked="false"
+                            android:enabled="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/extra_license_back_image_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/driving_license_number"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto_medium" />
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/layout_with_border_ripple_effect"
+                        android:onClick="@{(v) -> callback.onClick(v)}"
+                        android:visibility="gone">
 
-                    <TextView
-                        android:id="@+id/license_number"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/extra_driving_license_back_photo"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <ImageView
+                            android:id="@+id/extra_license_back_face_photo"
+                            android:layout_width="42dp"
+                            android:layout_height="26dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/extra_license_back_face_photo_checkbox"
+                            android:gravity="end"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_take_license_back_photo" />
+
+                        <CheckBox
+                            android:id="@+id/extra_license_back_face_photo_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:buttonTint="@color/colorMainBlue"
+                            android:checked="false"
+                            android:enabled="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/extra2_license_front_image_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="false"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="30dp"
-                        android:layout_toStartOf="@+id/license_number_icon"
-                        android:gravity="end"
-                        android:text="@{contract.customer.drivingLicenseNumber}"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto" />
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/layout_with_border_ripple_effect"
+                        android:onClick="@{(v) -> callback.onClick(v)}"
+                        android:visibility="gone">
 
-                    <ImageView
-                        android:id="@+id/license_number_icon"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/extra2_driving_license_front_photo"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
+
+                        <ImageView
+                            android:id="@+id/extra2_license_front_face_photo"
+                            android:layout_width="42dp"
+                            android:layout_height="26dp"
+                            android:layout_alignParentEnd="false"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/extra2_license_front_face_photo_checkbox"
+                            android:gravity="end"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_take_license_front_photo" />
+
+                        <CheckBox
+                            android:id="@+id/extra2_license_front_face_photo_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:buttonTint="@color/colorMainBlue"
+                            android:checked="false"
+                            android:enabled="false" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/extra2_license_back_image_layout"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="9dp"
-                        android:src="@drawable/icon_checkmark" />
-                </RelativeLayout>
+                        android:layout_height="@dimen/text_field_layout_height"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/layout_with_border_ripple_effect"
+                        android:onClick="@{(v) -> callback.onClick(v)}"
+                        android:visibility="gone">
 
-                <RelativeLayout
-                    android:id="@+id/license_front_image_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/text_field_layout_height"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/layout_with_border_ripple_effect"
-                    android:onClick="@{(v) -> callback.onClick(v)}">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:text="@string/extra2_driving_license_back_photo"
+                            android:textColor="@color/main_title_color"
+                            android:textSize="@dimen/general_text_title_size"
+                            app:fontFamily="@font/roboto_medium" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/driving_license_front_photo"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto_medium" />
+                        <ImageView
+                            android:id="@+id/extra2_license_back_face_photo"
+                            android:layout_width="42dp"
+                            android:layout_height="26dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="30dp"
+                            android:layout_toStartOf="@+id/extra2_license_back_face_photo_checkbox"
+                            android:gravity="end"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/ic_take_license_back_photo" />
 
-                    <ImageView
-                        android:id="@+id/license_front_face_photo"
-                        android:layout_width="42dp"
-                        android:layout_height="26dp"
-                        android:layout_alignParentEnd="false"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="30dp"
-                        android:layout_toStartOf="@+id/license_front_face_photo_checkbox"
-                        android:gravity="end"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_take_license_front_photo" />
+                        <CheckBox
+                            android:id="@+id/extra2_license_back_face_photo_checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="9dp"
+                            android:buttonTint="@color/colorMainBlue"
+                            android:checked="false"
+                            android:enabled="false" />
+                    </RelativeLayout>
 
-                    <CheckBox
-                        android:id="@+id/license_front_face_photo_checkbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="9dp"
-                        android:buttonTint="@color/colorMainBlue"
-                        android:checked="false"
-                        android:enabled="false" />
-                </RelativeLayout>
 
-                <RelativeLayout
-                    android:id="@+id/license_back_image_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="@dimen/text_field_layout_height"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/layout_with_border_ripple_effect"
-                    android:onClick="@{(v) -> callback.onClick(v)}">
+                </LinearLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:text="@string/driving_license_back_photo"
-                        android:textColor="@color/main_title_color"
-                        android:textSize="@dimen/general_text_title_size"
-                        app:fontFamily="@font/roboto_medium" />
-
-                    <ImageView
-                        android:id="@+id/license_back_face_photo"
-                        android:layout_width="42dp"
-                        android:layout_height="26dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="30dp"
-                        android:layout_toStartOf="@+id/license_back_face_photo_checkbox"
-                        android:gravity="end"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_take_license_back_photo" />
-
-                    <CheckBox
-                        android:id="@+id/license_back_face_photo_checkbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="9dp"
-                        android:buttonTint="@color/colorMainBlue"
-                        android:checked="false"
-                        android:enabled="false" />
-                </RelativeLayout>
-            </LinearLayout>
+            </ScrollView>
         </LinearLayout>
 
     </RelativeLayout>

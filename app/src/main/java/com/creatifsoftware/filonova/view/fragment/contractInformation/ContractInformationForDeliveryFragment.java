@@ -54,7 +54,11 @@ import static android.app.Activity.RESULT_OK;
  */
 public class ContractInformationForDeliveryFragment extends BaseFragment implements Injectable {
     private static final int REQUEST_FRONT_LICENSE_CAPTURE_IMAGE = 100;
+    private static final int EXTRA_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE = 103;
+    private static final int EXTRA2_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE = 105;
     private static final int REQUEST_REAR_LICENSE_CAPTURE_IMAGE = 101;
+    private static final int EXTRA_REQUEST_REAR_LICENSE_CAPTURE_IMAGE = 104;
+    private static final int EXTRA2_REQUEST_REAR_LICENSE_CAPTURE_IMAGE = 106;
     private static final int MY_CAMERA_PERMISSION_CODE = 102;
     private final DrivingLicenseImageClickCallback drivingLicenseImageClickCallback = this::openCameraIntent;
     public FragmentContractInformationForDeliveryBinding binding;
@@ -206,20 +210,40 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
         viewModel.setContractInformation(selectedContract);
         binding.setContract(selectedContract);
         binding.setCallback(drivingLicenseImageClickCallback);
+        if (selectedContract.hasAdditionalDriver) {
+            if (selectedContract.additionalDrivers.size() == 1) {
+                binding.extraLicenseFrontImageLayout.setVisibility(View.VISIBLE);
+                binding.extraLicenseBackImageLayout.setVisibility(View.VISIBLE);
+            }
+            if (selectedContract.additionalDrivers.size() == 2) {
+                binding.extraLicenseFrontImageLayout.setVisibility(View.VISIBLE);
+                binding.extraLicenseBackImageLayout.setVisibility(View.VISIBLE);
 
-//        if (selectedContract.customer.drivingLicenseFrontImage != null){
-//            binding.licenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.drivingLicenseFrontImage));
-//            binding.licenseFrontFacePhotoCheckbox.setChecked(true);
-//        }
-//        if (selectedContract.customer.drivingLicenseRearImage != null){
-//            binding.licenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.drivingLicenseRearImage));
-//            binding.licenseBackFacePhotoCheckbox.setChecked(true);
-//        }
+                binding.extra2LicenseFrontImageLayout.setVisibility(View.VISIBLE);
+                binding.extra2LicenseBackImageLayout.setVisibility(View.VISIBLE);
+            }
+
+        }
+
 
         if (selectedContract.isEquipmentChanged) {
             super.showLoading();
             downloadPhoto("license_front_image", true);
             downloadPhoto("license_rear_image", false);
+            if (selectedContract.hasAdditionalDriver) {
+                if (selectedContract.additionalDrivers.size() == 1) {
+                    downloadPhoto2("extra_license_front_image", true);
+                    downloadPhoto2("extra_license_rear_image", false);
+                }
+                if (selectedContract.additionalDrivers.size() == 2) {
+                    downloadPhoto2("extra_license_front_image", true);
+                    downloadPhoto2("extra_license_rear_image", false);
+
+                    downloadPhoto3("extra2_license_front_image", true);
+                    downloadPhoto3("extra2_license_rear_image", false);
+                }
+
+            }
         } else {
             if (selectedContract.customer.drivingLicenseFrontImage != null) {
                 binding.licenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.drivingLicenseFrontImage));
@@ -229,6 +253,38 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                 binding.licenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.drivingLicenseRearImage));
                 binding.licenseBackFacePhotoCheckbox.setChecked(true);
             }
+            if (selectedContract.hasAdditionalDriver) {
+                if (selectedContract.additionalDrivers.size() == 1) {
+                    if (selectedContract.customer.extra_drivingLicenseFrontImage != null) {
+                        binding.extraLicenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_drivingLicenseFrontImage));
+                        binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+                    }
+                    if (selectedContract.customer.extra_drivingLicenseRearImage != null) {
+                        binding.extraLicenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_drivingLicenseRearImage));
+                        binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+                    }
+                }
+                if (selectedContract.additionalDrivers.size() == 2) {
+                    if (selectedContract.customer.extra_drivingLicenseFrontImage != null) {
+                        binding.extraLicenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_drivingLicenseFrontImage));
+                        binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+                    }
+                    if (selectedContract.customer.extra_drivingLicenseRearImage != null) {
+                        binding.extraLicenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_drivingLicenseRearImage));
+                        binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+                    }
+                    if (selectedContract.customer.extra2_drivingLicenseFrontImage != null) {
+                        binding.extra2LicenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra2_drivingLicenseFrontImage));
+                        binding.extra2LicenseFrontFacePhotoCheckbox.setChecked(true);
+                    }
+                    if (selectedContract.customer.extra2_drivingLicenseRearImage != null) {
+                        binding.extra2LicenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra2_drivingLicenseRearImage));
+                        binding.extra2LicenseBackFacePhotoCheckbox.setChecked(true);
+                    }
+                }
+
+            }
+
         }
     }
 
@@ -246,10 +302,157 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                     if (isFront) {
                         binding.licenseFrontFacePhoto.setImageBitmap(bitmap);
                         binding.licenseFrontFacePhotoCheckbox.setChecked(true);
+                        if (selectedContract.hasAdditionalDriver) {
+                            if (selectedContract.additionalDrivers.size() == 1) {
+                                binding.extraLicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+                            }
+                            if (selectedContract.additionalDrivers.size() == 2) {
+                                binding.extraLicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+
+                                binding.extra2LicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extra2LicenseFrontFacePhotoCheckbox.setChecked(true);
+                            }
+
+                        }
+
                     } else {
                         super.hideLoading();
                         binding.licenseBackFacePhoto.setImageBitmap(bitmap);
                         binding.licenseBackFacePhotoCheckbox.setChecked(true);
+                        if (selectedContract.hasAdditionalDriver) {
+                            if (selectedContract.additionalDrivers.size() == 1) {
+                                binding.extraLicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+                            }
+                            if (selectedContract.additionalDrivers.size() == 2) {
+                                binding.extraLicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+
+                                binding.extra2LicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extra2LicenseBackFacePhotoCheckbox.setChecked(true);
+                            }
+
+                        }
+                    }
+                    imageStream.reset();
+                });
+            } catch (Exception ex) {
+                final String exceptionMessage = ex.getMessage();
+                handler.post(imageStream::reset);
+            }
+        });
+        th.start();
+    }
+
+    private void downloadPhoto2(String imageName, boolean isFront) {
+        String refName =
+                BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(selectedContract.additionalDrivers.get(0), imageName);
+        final ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
+        final Handler handler = new Handler();
+        Thread th = new Thread(() -> {
+            try {
+                long imageLength = 0;
+                BlobStorageManager.instance.GetImage(BlobStorageManager.instance.getCustomerContainerName(), refName, imageStream, imageLength);
+                handler.post(() -> {
+                    byte[] buffer = imageStream.toByteArray();
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(buffer, 0, buffer.length);
+                    if (isFront) {
+                        binding.licenseFrontFacePhoto.setImageBitmap(bitmap);
+                        binding.licenseFrontFacePhotoCheckbox.setChecked(true);
+                        if (selectedContract.hasAdditionalDriver) {
+                            if (selectedContract.additionalDrivers.size() == 1) {
+                                binding.extraLicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+                            }
+                            if (selectedContract.additionalDrivers.size() == 2) {
+                                binding.extraLicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+
+                                binding.extra2LicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extra2LicenseFrontFacePhotoCheckbox.setChecked(true);
+                            }
+
+                        }
+
+                    } else {
+                        super.hideLoading();
+                        binding.licenseBackFacePhoto.setImageBitmap(bitmap);
+                        binding.licenseBackFacePhotoCheckbox.setChecked(true);
+                        if (selectedContract.hasAdditionalDriver) {
+                            if (selectedContract.additionalDrivers.size() == 1) {
+                                binding.extraLicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+                            }
+                            if (selectedContract.additionalDrivers.size() == 2) {
+                                binding.extraLicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+
+                                binding.extra2LicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extra2LicenseBackFacePhotoCheckbox.setChecked(true);
+                            }
+
+                        }
+                    }
+                    imageStream.reset();
+                });
+            } catch (Exception ex) {
+                final String exceptionMessage = ex.getMessage();
+                handler.post(imageStream::reset);
+            }
+        });
+        th.start();
+    }
+
+    private void downloadPhoto3(String imageName, boolean isFront) {
+        String refName =
+                BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(selectedContract.additionalDrivers.get(1), imageName);
+        final ByteArrayOutputStream imageStream = new ByteArrayOutputStream();
+        final Handler handler = new Handler();
+        Thread th = new Thread(() -> {
+            try {
+                long imageLength = 0;
+                BlobStorageManager.instance.GetImage(BlobStorageManager.instance.getCustomerContainerName(), refName, imageStream, imageLength);
+                handler.post(() -> {
+                    byte[] buffer = imageStream.toByteArray();
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(buffer, 0, buffer.length);
+                    if (isFront) {
+                        binding.licenseFrontFacePhoto.setImageBitmap(bitmap);
+                        binding.licenseFrontFacePhotoCheckbox.setChecked(true);
+                        if (selectedContract.hasAdditionalDriver) {
+                            if (selectedContract.additionalDrivers.size() == 1) {
+                                binding.extraLicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+                            }
+                            if (selectedContract.additionalDrivers.size() == 2) {
+                                binding.extraLicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+
+                                binding.extra2LicenseFrontFacePhoto.setImageBitmap(bitmap);
+                                binding.extra2LicenseFrontFacePhotoCheckbox.setChecked(true);
+                            }
+
+                        }
+
+                    } else {
+                        super.hideLoading();
+                        binding.licenseBackFacePhoto.setImageBitmap(bitmap);
+                        binding.licenseBackFacePhotoCheckbox.setChecked(true);
+                        if (selectedContract.hasAdditionalDriver) {
+                            if (selectedContract.additionalDrivers.size() == 1) {
+                                binding.extraLicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+                            }
+                            if (selectedContract.additionalDrivers.size() == 2) {
+                                binding.extraLicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+
+                                binding.extra2LicenseBackFacePhoto.setImageBitmap(bitmap);
+                                binding.extra2LicenseBackFacePhotoCheckbox.setChecked(true);
+                            }
+
+                        }
                     }
                     imageStream.reset();
                 });
@@ -291,13 +494,14 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                         selectedContract.customer.customerId,
                         "license_front_image");
 
+
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.drivingLicenseFrontImage, imageName);
 
                 String imageName2 = BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
                         selectedContract.customer.customerId,
                         "license_rear_image");
-
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.drivingLicenseRearImage, imageName2);
+
 
             } catch (Exception e) {
                 hasBlobStorageError = true;
@@ -317,6 +521,7 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
             showEquipmentListFragment();
     }
 
+
     private void showEquipmentListFragment() {
         selectedContract.additionalProductList = new ArrayList<>();
         selectedContract.addedAdditionalProducts = new ArrayList<>();
@@ -333,8 +538,43 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
         } else if (!binding.licenseBackFacePhotoCheckbox.isChecked()) {
             return new ResponseResult(false, getString(R.string.license_back_photo_empty_error));
         }
+        if (binding.getContract().hasAdditionalDriver) {
+
+            if (binding.getContract().additionalDrivers.size() == 1) {
+                if (!binding.extraLicenseFrontFacePhotoCheckbox.isChecked()) {
+                    return new ResponseResult(false,
+                            getString(R.string.extra_license_front_photo_empty_error));
+                } else if (!binding.extraLicenseBackFacePhotoCheckbox.isChecked()) {
+                    return new ResponseResult(false,
+                            getString(R.string.extra_license_back_photo_empty_error));
+                }
+            }
+            if (binding.getContract().additionalDrivers.size() == 2) {
+                if (!binding.extraLicenseFrontFacePhotoCheckbox.isChecked()) {
+
+                    return new ResponseResult(false,
+                            getString(R.string.extra_license_front_photo_empty_error));
+                } else if (!binding.extraLicenseBackFacePhotoCheckbox.isChecked()) {
+                    return new ResponseResult(false,
+                            getString(R.string.extra_license_back_photo_empty_error));
+                } else if (!binding.extra2LicenseFrontFacePhotoCheckbox.isChecked()) {
+                    focusOnView(binding.extra2LicenseFrontFacePhotoCheckbox);
+                    return new ResponseResult(false,
+                            getString(R.string.extra2_license_front_photo_empty_error));
+                } else if (!binding.extra2LicenseBackFacePhotoCheckbox.isChecked()) {
+                    focusOnView(binding.extra2LicenseBackFacePhotoCheckbox);
+                    return new ResponseResult(false,
+                            getString(R.string.extra2_license_back_photo_empty_error));
+                }
+            }
+
+        }
 
         return super.checkBeforeNavigate();
+    }
+
+    private void focusOnView(View view) {
+        binding.scroll.post(() -> binding.scroll.scrollTo(0, view.getBottom()));
     }
 
     @Override
@@ -364,9 +604,31 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
             //Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
 
             Intent intent = ImageUtil.instance.dispatchTakePictureIntent(mActivity);
-            startActivityForResult(intent, view.getId() == R.id.license_front_image_layout ?
-                    REQUEST_FRONT_LICENSE_CAPTURE_IMAGE :
-                    REQUEST_REAR_LICENSE_CAPTURE_IMAGE);
+            int reqId = 0;
+            switch (view.getId()) {
+
+                case R.id.license_front_image_layout:
+                    reqId = REQUEST_FRONT_LICENSE_CAPTURE_IMAGE;
+                    break;
+                case R.id.license_back_image_layout:
+                    reqId = REQUEST_REAR_LICENSE_CAPTURE_IMAGE;
+                    break;
+                case R.id.extra_license_back_image_layout:
+                    reqId = EXTRA_REQUEST_REAR_LICENSE_CAPTURE_IMAGE;
+                    break;
+
+                case R.id.extra_license_front_image_layout:
+                    reqId = EXTRA_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE;
+                    break;
+                case R.id.extra2_license_front_image_layout:
+                    reqId = EXTRA2_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE;
+                    break;
+                case R.id.extra2_license_back_image_layout:
+                    reqId = EXTRA2_REQUEST_REAR_LICENSE_CAPTURE_IMAGE;
+                    break;
+            }
+
+            startActivityForResult(intent, reqId);
         }
     }
 
@@ -385,10 +647,30 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                 binding.licenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.drivingLicenseFrontImage));
                 binding.licenseFrontFacePhotoCheckbox.setChecked(true);
                 ImageUtil.instance.removeImageFile();
-            } else {
+            } else if (requestCode == REQUEST_REAR_LICENSE_CAPTURE_IMAGE) {
                 selectedContract.customer.drivingLicenseRearImage = compressedImage;
                 binding.licenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.drivingLicenseRearImage));
                 binding.licenseBackFacePhotoCheckbox.setChecked(true);
+                ImageUtil.instance.removeImageFile();
+            } else if (requestCode == EXTRA_REQUEST_REAR_LICENSE_CAPTURE_IMAGE) {
+                selectedContract.customer.extra_drivingLicenseRearImage = compressedImage;
+                binding.extraLicenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_drivingLicenseRearImage));
+                binding.extraLicenseBackFacePhotoCheckbox.setChecked(true);
+                ImageUtil.instance.removeImageFile();
+            } else if (requestCode == EXTRA_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE) {
+                selectedContract.customer.extra_drivingLicenseFrontImage = compressedImage;
+                binding.extraLicenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_drivingLicenseFrontImage));
+                binding.extraLicenseFrontFacePhotoCheckbox.setChecked(true);
+                ImageUtil.instance.removeImageFile();
+            } else if (requestCode == EXTRA2_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE) {
+                selectedContract.customer.extra2_drivingLicenseFrontImage = compressedImage;
+                binding.extra2LicenseFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra2_drivingLicenseFrontImage));
+                binding.extra2LicenseFrontFacePhotoCheckbox.setChecked(true);
+                ImageUtil.instance.removeImageFile();
+            } else if (requestCode == EXTRA2_REQUEST_REAR_LICENSE_CAPTURE_IMAGE) {
+                selectedContract.customer.extra2_drivingLicenseRearImage = compressedImage;
+                binding.extra2LicenseBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra2_drivingLicenseRearImage));
+                binding.extra2LicenseBackFacePhotoCheckbox.setChecked(true);
                 ImageUtil.instance.removeImageFile();
             }
         }

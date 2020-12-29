@@ -85,4 +85,9 @@ public final class CommonMethods {
         MasterDataResponse response = SharedPrefUtils.instance.getSavedObjectFromPreference(context, KEY_MASTER_DATA_RESPONSE, MasterDataResponse.class);
         return response.otherAdditionalProducts;
     }
+
+    public boolean getTakeAllPictures(Context context) {
+        MasterDataResponse response = SharedPrefUtils.instance.getSavedObjectFromPreference(context, KEY_MASTER_DATA_RESPONSE, MasterDataResponse.class);
+        return response.takeAllPictures;
+    }
 }

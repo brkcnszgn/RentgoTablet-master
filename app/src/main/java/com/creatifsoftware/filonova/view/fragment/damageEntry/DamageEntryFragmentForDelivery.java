@@ -15,7 +15,9 @@ import com.creatifsoftware.filonova.di.Injectable;
 import com.creatifsoftware.filonova.model.ContractItem;
 import com.creatifsoftware.filonova.model.DamageItem;
 import com.creatifsoftware.filonova.utils.BlobStorageManager;
+import com.creatifsoftware.filonova.utils.CommonMethods;
 import com.creatifsoftware.filonova.view.adapter.DamageListAdapter;
+import com.creatifsoftware.filonova.view.fragment.additionalphotos.AdditionaPhotoFragment;
 import com.creatifsoftware.filonova.view.fragment.equipmentInformation.EquipmentInformationFragmentForDelivery;
 
 import java.util.Locale;
@@ -60,8 +62,16 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
 
     @Override
     protected void navigate() {
-        EquipmentInformationFragmentForDelivery equipmentInformationFragment = EquipmentInformationFragmentForDelivery.forSelectedContract(selectedContract);
-        super.changeFragment(equipmentInformationFragment);
+
+        if (CommonMethods.instance.getTakeAllPictures(requireContext())) {
+            AdditionaPhotoFragment additionaPhotoFragment =
+                    AdditionaPhotoFragment.forSelectedContract(selectedContract);
+            super.changeFragment(additionaPhotoFragment);
+        } else {
+            EquipmentInformationFragmentForDelivery equipmentInformationFragment = EquipmentInformationFragmentForDelivery.forSelectedContract(selectedContract);
+            super.changeFragment(equipmentInformationFragment);
+        }
+
     }
 
     @Override

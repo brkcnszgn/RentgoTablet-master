@@ -1,6 +1,8 @@
 package com.creatifsoftware.filonova.model;
 
 
+import com.google.gson.annotations.Expose;
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,5 +29,28 @@ public class Customer implements Serializable {
     public String priceCodeId;
     public int contractType;
     public int paymentMethod;
+    //Extra images
+
+    @Expose
+    public File extra_right_image;
+    @Expose
+    public File extra_left_image;
+    @Expose
+    public File extra_front_image;
+    @Expose
+    public File extra_rear_image;
+    @Expose
+    public File extra_seat_rear_image;
+    @Expose
+    public File extra_seat_front_image;
+    @Expose
+    public File extra_drivingLicenseFrontImage;
+    @Expose
+    public File extra_drivingLicenseRearImage;
+
+    @Expose
+    public File extra2_drivingLicenseFrontImage;
+    @Expose
+    public File extra2_drivingLicenseRearImage;
 
 }

@@ -11,7 +11,11 @@
     <string name="dropoff_branch_name">İade Ofisi</string>
     <string name="driving_license_number">Ehliyet Numarası</string>
     <string name="driving_license_front_photo">Ehliyet Ön Yüz Fotoğrafı</string>
+    <string name="extra_driving_license_front_photo">2. Sürücü Ehliyet Ön Yüz Fotoğrafı</string>
+    <string name="extra2_driving_license_front_photo">3. Sürücü Ehliyet Ön Yüz Fotoğrafı</string>
     <string name="driving_license_back_photo">Ehliyet Arka Yüz Fotoğrafı</string>
+    <string name="extra_driving_license_back_photo">2. Sürücü Ehliyet Arka Yüz Fotoğrafı</string>
+    <string name="extra2_driving_license_back_photo">3. Sürücü Ehliyet Arka Yüz Fotoğrafı</string>
     <string name="pickup_date_time">Teslim Tarihi - Saati</string>
     <string name="pickup_date">Teslim Tarihi</string>
     <string name="pickup_time">Teslim Saati</string>
@@ -24,7 +28,15 @@
     <string name="rental_contract_title">Beklenen İadeler</string>
     <string name="add_other_damage_title">Ek Hasar Ekle</string>
     <string name="license_front_photo_empty_error">Ehliyet ön yüz fotoğrafı çekilmelidir</string>
+    <string name="extra_license_front_photo_empty_error">2. Sürücü Ehliyet ön yüz fotoğrafı
+        çekilmelidir</string>
+    <string name="extra2_license_front_photo_empty_error">2. Sürücü Ehliyet ön yüz fotoğrafı
+        çekilmelidir</string>
     <string name="license_back_photo_empty_error">Ehliyet arka yüz fotoğrafı çekilmelidir</string>
+    <string name="extra_license_back_photo_empty_error">2. Sürücü Ehliyet arka yüz fotoğrafı
+        çekilmelidir</string>
+    <string name="extra2_license_back_photo_empty_error">2. Sürücü Ehliyet arka yüz
+        fotoğrafı çekilmelidir</string>
     <string name="delivery_fuel_value_error">Aracı teslim edebilmek için yakıt değeri 8 olmalıdır</string>
     <string name="fuel_value_error">Aracın güncel yakıt değerini girin</string>
     <string name="delivery_summary_title">Araç Teslim Özeti</string>
@@ -178,5 +190,21 @@
     <string name="car_classes">SINIFI</string>
     <string name="ready_for_bg">UYGUN</string>
     <string name="not_ready_for">UYGUN DEĞİL</string>
+    <string name="images_entry_title">Araç Resimleri</string>
+    <string name="right">Aracın Sağdan  Fotoğrafı</string>
+    <string name="left_front_photo">Aracın Soldan Fotoğrafı</string>
+    <string name="front_back_photo">Aracın Önden Fotoğrafı</string>
+    <string name="back_photo">Aracın Arkadan Fotoğrafı</string>
+    <string name="seat_front_photo">Ön Koltukların Fotoğrafı</string>
+    <string name="seat_back_photo">Arka Koltukların Fotoğrafı</string>
+    <string name="additional_photos_title">Aracın Fotoğrafları</string>
+
+    <string name="right_error">Aracın Sağdan  Fotoğrafı Eksik</string>
+    <string name="left_front_photo_error">Aracın Soldan Fotoğrafı Eksik</string>
+    <string name="front_back_photo_error">Aracın Önden Fotoğrafı Eksik</string>
+    <string name="back_photo_error">Aracın Arkadan Fotoğrafı Eksik</string>
+    <string name="seat_front_photo_error">Ön Koltukların Fotoğrafı Eksik</string>
+    <string name="seat_back_photo_error">Arka Koltukların Fotoğrafı Eksik</string>
+    <string name="additional_photos_title_error">Aracın Fotoğrafları Eksik</string>
 
 </resources>
