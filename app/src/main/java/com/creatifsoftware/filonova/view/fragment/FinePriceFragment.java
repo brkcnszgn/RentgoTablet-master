@@ -41,6 +41,7 @@ import com.creatifsoftware.filonova.view.fragment.contractSummary.ContractSummar
 import com.creatifsoftware.filonova.viewmodel.FinePricesViewModel;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
@@ -455,14 +456,39 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         return retrofit.create(JsonApi.class);
     }
 
+    public AdditionalProduct findUsingIterator(String name, List<AdditionalProduct> customers) {
+        Iterator<AdditionalProduct> iterator = customers.iterator();
+        while (iterator.hasNext()) {
+            AdditionalProduct item = iterator.next();
+            if (item.productId.equals(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     public void extraPaymentAdded(List<AdditionalProduct> item) {
         if (priceResponse == null) {
             priceResponse = new CalculateContractRemainingAmountResponse();
             priceResponse.otherAdditionalProductData = new ArrayList<>();
         }
 
-        priceResponse.otherAdditionalProductData.addAll(item);
+        // priceResponse.otherAdditionalProductData.addAll(item);
 
+
+        for (AdditionalProduct sub : item) {
+
+            AdditionalProduct exist = findUsingIterator(sub.productId, priceResponse.otherAdditionalProductData);
+            if (exist == null) {
+                if (sub.tobePaidAmount > 0)
+                    priceResponse.otherAdditionalProductData.add(sub);
+            } else {
+                priceResponse.otherAdditionalProductData.remove(exist);
+                priceResponse.otherAdditionalProductData.add(exist);
+
+            }
+
+        }
         expandableExtraPaymentListAdapter.setDetailList(priceResponse.otherAdditionalProductData);
         expandableExtraPaymentListAdapter.notifyDataSetChanged();
         prepareCarDifferenceAmountLayout(priceResponse == null ? null : priceResponse.calculatePricesForUpdateContractResponse);

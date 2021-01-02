@@ -80,6 +80,7 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
         //String blobStorageUrl = ApplicationUtils.instance.getLiveSwitchIsChecked(getContext()) ? ConnectionUtils.instance.getLiveBlobStorageUrl() : ConnectionUtils.instance.getDevBlobStorageUrl();
         String blobStorageUrl = BuildConfig.BLOB_API_URL;
         damageItem.damageId = UUID.randomUUID().toString();
+        String test = UUID.randomUUID().toString();
         damageItem.damageInfo.isNewDamage = true;
         damageItem.blobStoragePath = blobStorageUrl +
                 "equipments/" +
@@ -88,11 +89,19 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
                 selectedContract.contractNumber.toLowerCase() +
                 "/delivery/" +
                 damageItem.damageId.toLowerCase();
+        damageItem.blobStoragePathDocument = blobStorageUrl +
+                "equipments/" +
+                selectedContract.selectedEquipment.plateNumber.toLowerCase() +
+                "/" +
+                selectedContract.contractNumber.toLowerCase() +
+                "/delivery/" +
+                test.toLowerCase();
 
         //upload image
         Thread thread = new Thread(() -> {
             try {
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFile, getBlobImageName(damageItem));
+                BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFileDocument, getBlobImageName(damageItem));
             } catch (Exception e) {
                 hasBlobStorageError = true;
                 super.showMessageDialog(e.getLocalizedMessage());

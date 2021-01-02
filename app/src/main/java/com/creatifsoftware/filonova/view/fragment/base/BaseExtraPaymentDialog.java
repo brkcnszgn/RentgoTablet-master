@@ -34,6 +34,8 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
     private FragmentExtraPaymentDialogBinding binding;
     private MainActivity mActivity;
     private List<AdditionalProduct> otherCostAdditionalProductData;
+    private List<AdditionalProduct> prepareExtraPaymentObject;
+
 
     public static BaseExtraPaymentDialog with(List<AdditionalProduct> product) {
         BaseExtraPaymentDialog fragment = new BaseExtraPaymentDialog();
@@ -79,7 +81,10 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
         extraServiceListAdapter = new ExtraServiceListAdapter();
         binding.extraRcv.setAdapter(extraServiceListAdapter);
         binding.extraRcv.addItemDecoration(new DividerItemDecoration(binding.extraRcv.getContext(), DividerItemDecoration.VERTICAL));
-        extraServiceListAdapter.setExtraServiceList(CommonMethods.instance.getExtraServiceList(requireContext()));
+        if (prepareExtraPaymentObject == null) {
+            prepareExtraPaymentObject = CommonMethods.instance.getExtraServiceList(requireContext());
+        }
+        extraServiceListAdapter.setExtraServiceList(prepareExtraPaymentObject);
     }
 
 
@@ -107,8 +112,8 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
             }*/
             mActivity.onBackPressed();
 
-            List<AdditionalProduct> item = prepareExtraPaymentObject();
-            myInterface.addCustomExtraPayment(item);
+            prepareExtraPaymentObject = prepareExtraPaymentObject();
+            myInterface.addCustomExtraPayment(prepareExtraPaymentObject);
         });
     }
 
@@ -120,13 +125,13 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
         }*/
 
         for (AdditionalProduct product : extraServiceListAdapter.getItemList()) {
-            if (product.actualAmount > 0) {
-                product.value = 1;
+
+            product.value = 1;
                 product.isChecked = true;
                 product.actualTotalAmount = product.actualAmount;
                 product.tobePaidAmount = product.actualAmount;
                 additionalProductList.add(product);
-            }
+
 
         }
 

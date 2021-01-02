@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -14,7 +15,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:orientation="vertical">
 
@@ -28,7 +29,8 @@
 
         <LinearLayout
             android:layout_width="600dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@id/rltBottom"
             android:layout_centerInParent="true"
             android:background="@drawable/main_dialog_bg"
             android:orientation="vertical"
@@ -48,9 +50,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/damage_part_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small" />
+                android:layout_marginTop="@dimen/spacing_small"
+                tools:itemCount="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,9 +69,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/damage_type_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small" />
+                android:layout_marginTop="@dimen/spacing_small"
+                tools:itemCount="1" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -84,9 +88,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/damage_size_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_small" />
+                android:layout_marginTop="@dimen/spacing_small"
+                tools:itemCount="1" />
 
             <TextView
                 android:id="@+id/damage_document_title"
@@ -103,46 +108,98 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/damage_document_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_small"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:layout_marginBottom="@dimen/spacing_default" />
+                android:layout_marginBottom="@dimen/spacing_default"
+                tools:itemCount="1" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/spacing_small"
-                android:layout_marginTop="@dimen/spacing_default"
+            <Button
+                android:id="@+id/document_type_button"
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="@dimen/main_button_height"
+                android:layout_gravity="end"
                 android:layout_marginEnd="@dimen/spacing_default"
                 android:layout_marginBottom="@dimen/spacing_default"
-                android:orientation="horizontal">
+                android:background="@drawable/main_dialog_button_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/add_damage_document_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite"
+                android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/cancel_button"
-                    android:layout_width="@dimen/main_button_width"
-                    android:layout_height="@dimen/main_button_height"
-                    android:layout_alignParentStart="true"
-                    android:background="@drawable/back_button_bg"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/dialog_button_cancel"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorMainBlue" />
+            <TextView
+                android:id="@+id/document_error"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_button_height"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_default"
+                android:background="@drawable/main_blue_border_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="@string/error_damage_document_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
 
-                <Button
-                    android:id="@+id/confirm_button"
-                    android:layout_width="@dimen/main_button_width"
-                    android:layout_height="@dimen/main_button_height"
-                    android:layout_alignParentEnd="true"
-                    android:layout_gravity="end"
-                    android:alpha="0.5"
-                    android:background="@drawable/main_dialog_button_bg"
-                    android:enabled="false"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="@string/add_damage_button_title"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorWhite" />
-            </RelativeLayout>
+            <TextView
+                android:id="@+id/document_succes"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_button_height"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_default"
+                android:background="@drawable/main_blue_border_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="@string/succes_damage_document_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorAccent"
+                android:visibility="gone" />
+
+
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rltBottom"
+            android:layout_width="600dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginEnd="@dimen/spacing_default"
+            android:layout_marginBottom="@dimen/spacing_default"
+            android:background="#E6E6E6"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="@dimen/main_button_height"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/spacing_default"
+                android:background="@drawable/back_button_bg"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/dialog_button_cancel"
+                android:textAllCaps="false"
+                android:textColor="@color/colorMainBlue" />
+
+            <Button
+                android:id="@+id/confirm_button"
+                android:layout_width="@dimen/main_button_width"
+                android:layout_height="@dimen/main_button_height"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/spacing_default"
+                android:layout_marginBottom="@dimen/spacing_default"
+                android:alpha="0.5"
+                android:background="@drawable/main_dialog_button_bg"
+                android:enabled="false"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/add_damage_button_title"
+                android:textAllCaps="false"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
     </RelativeLayout>
+
+
 </layout>

@@ -19,8 +19,10 @@ public class DamageItem implements Serializable {
     public DamageInfo damageInfo;
     public double damageAmount;
     public File damagePhotoFile;
+    public File damagePhotoFileDocument;
     public Bitmap damagePhotoBitmap;
     public String blobStoragePath;
+    public String blobStoragePathDocument;
     public boolean isPriceCalculated;
     public boolean isRepaired = false;
 

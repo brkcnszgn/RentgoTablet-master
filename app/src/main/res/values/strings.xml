@@ -30,12 +30,12 @@
     <string name="license_front_photo_empty_error">Ehliyet ön yüz fotoğrafı çekilmelidir</string>
     <string name="extra_license_front_photo_empty_error">2. Sürücü Ehliyet ön yüz fotoğrafı
         çekilmelidir</string>
-    <string name="extra2_license_front_photo_empty_error">2. Sürücü Ehliyet ön yüz fotoğrafı
+    <string name="extra2_license_front_photo_empty_error">3. Sürücü Ehliyet ön yüz fotoğrafı
         çekilmelidir</string>
     <string name="license_back_photo_empty_error">Ehliyet arka yüz fotoğrafı çekilmelidir</string>
     <string name="extra_license_back_photo_empty_error">2. Sürücü Ehliyet arka yüz fotoğrafı
         çekilmelidir</string>
-    <string name="extra2_license_back_photo_empty_error">2. Sürücü Ehliyet arka yüz
+    <string name="extra2_license_back_photo_empty_error">3. Sürücü Ehliyet arka yüz
         fotoğrafı çekilmelidir</string>
     <string name="delivery_fuel_value_error">Aracı teslim edebilmek için yakıt değeri 8 olmalıdır</string>
     <string name="fuel_value_error">Aracın güncel yakıt değerini girin</string>
@@ -206,5 +206,8 @@
     <string name="seat_front_photo_error">Ön Koltukların Fotoğrafı Eksik</string>
     <string name="seat_back_photo_error">Arka Koltukların Fotoğrafı Eksik</string>
     <string name="additional_photos_title_error">Aracın Fotoğrafları Eksik</string>
+    <string name="add_damage_document_button_title">Evrak Ekle</string>
+    <string name="error_damage_document_button_title">Lütfen Evrak Yükleyiniz</string>
+    <string name="succes_damage_document_button_title">Evrak Başarıyla Eklendi.</string>
 
 </resources>

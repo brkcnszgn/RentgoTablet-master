@@ -210,8 +210,8 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
         viewModel.setContractInformation(selectedContract);
         binding.setContract(selectedContract);
         binding.setCallback(drivingLicenseImageClickCallback);
-        if (selectedContract.isEquipmentChanged)
-            selectedContract.hasAdditionalDriver = false;
+        /*if (selectedContract.isEquipmentChanged)
+            selectedContract.hasAdditionalDriver = false;*/
         if (selectedContract.hasAdditionalDriver) {
             if (selectedContract.additionalDrivers.size() == 1) {
                 binding.extraLicenseFrontImageLayout.setVisibility(View.VISIBLE);
@@ -233,15 +233,15 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
             downloadPhoto("license_rear_image", false);
             if (selectedContract.hasAdditionalDriver) {
                 if (selectedContract.additionalDrivers.size() == 1) {
-                    downloadPhoto2("extra_license_front_image", true);
-                    downloadPhoto2("extra_license_rear_image", false);
+                    downloadPhoto2("license_front_image", true);
+                    downloadPhoto2("license_rear_image", false);
                 }
                 if (selectedContract.additionalDrivers.size() == 2) {
-                    downloadPhoto2("extra_license_front_image", true);
-                    downloadPhoto2("extra_license_rear_image", false);
+                    downloadPhoto2("license_front_image", true);
+                    downloadPhoto2("license_rear_image", false);
 
-                    downloadPhoto3("extra2_license_front_image", true);
-                    downloadPhoto3("extra2_license_rear_image", false);
+                    downloadPhoto3("license_front_image", true);
+                    downloadPhoto3("license_rear_image", false);
                 }
 
             }
@@ -319,6 +319,7 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                         }
 
                     } else {
+
                         super.hideLoading();
                         binding.licenseBackFacePhoto.setImageBitmap(bitmap);
                         binding.licenseBackFacePhotoCheckbox.setChecked(true);
@@ -503,6 +504,51 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                         "license_rear_image");
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.drivingLicenseRearImage, imageName2);
 
+                if (selectedContract.additionalDrivers.size() == 1) {
+                    String front =
+                            BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
+                                    selectedContract.additionalDrivers.get(0),
+                                    "license_front_image");
+
+
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.extra_drivingLicenseFrontImage, front);
+
+                    String back =
+                            BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
+                                    selectedContract.additionalDrivers.get(0),
+                                    "license_rear_image");
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.extra_drivingLicenseRearImage, back);
+
+                } else if (selectedContract.additionalDrivers.size() == 2) {
+                    String front =
+                            BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
+                                    selectedContract.additionalDrivers.get(0),
+                                    "license_front_image");
+
+
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.extra_drivingLicenseFrontImage, front);
+
+                    String back =
+                            BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
+                                    selectedContract.additionalDrivers.get(0),
+                                    "license_rear_image");
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.extra_drivingLicenseRearImage, back);
+
+                    String front2 =
+                            BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
+                                    selectedContract.additionalDrivers.get(1),
+                                    "license_front_image");
+
+
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.extra2_drivingLicenseFrontImage, front2);
+
+                    String back2 =
+                            BlobStorageManager.instance.prepareCustomerDrivingLicenseImageName(
+                                    selectedContract.additionalDrivers.get(1),
+                                    "license_rear_image");
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getCustomerContainerName(), selectedContract.customer.extra2_drivingLicenseRearImage, back2);
+                }
+
 
             } catch (Exception e) {
                 hasBlobStorageError = true;
@@ -617,7 +663,6 @@ public class ContractInformationForDeliveryFragment extends BaseFragment impleme
                 case R.id.extra_license_back_image_layout:
                     reqId = EXTRA_REQUEST_REAR_LICENSE_CAPTURE_IMAGE;
                     break;
-
                 case R.id.extra_license_front_image_layout:
                     reqId = EXTRA_REQUEST_FRONT_LICENSE_CAPTURE_IMAGE;
                     break;

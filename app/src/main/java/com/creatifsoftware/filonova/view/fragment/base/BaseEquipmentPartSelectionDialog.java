@@ -57,6 +57,7 @@ import static android.app.Activity.RESULT_OK;
 
 public class BaseEquipmentPartSelectionDialog extends Fragment implements Injectable {
     private static final int REQUEST_TAKE_PHOTO = 100;
+    private static final int REQUEST_TAKE_PHOTO_DOCUMENT = 110;
     private static final int MY_CAMERA_PERMISSION_CODE = 101;
     private static final String KEY_SHOULD_HIDE_DAMAGE_DOCUMENT = "hide_damage_document";
     private static final String KEY_PART_LIST = "key_part_list";
@@ -74,7 +75,7 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
     private DamageType selectedDamageType;
     private DamageDocument selectedDamageDocument;
     private EquipmentPart selectedEquipmentPart;
-
+    private DamageItem damageItem = new DamageItem();
     private List<EquipmentPart> equipmentPartList = new ArrayList<>();
     private final EquipmentPartClickCallback equipmentPartClickCallback = item -> {
         if (getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
@@ -133,6 +134,15 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
             selectedDamageDocument = item;
             enableAddDamageButton();
             damageDocumentListAdapter.notifyDataSetChanged();
+            if (item.damageDocumentType != EnumUtils.DamageDocumentType.NONE.getIntValue()) {
+
+                binding.documentTypeButton.setVisibility(View.VISIBLE);
+                binding.documentTypeButton.setEnabled(true);
+
+            } else {
+                binding.documentTypeButton.setVisibility(View.GONE);
+                binding.documentTypeButton.setEnabled(false);
+            }
         }
     };
 
@@ -180,11 +190,11 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
             prepareEquipmentPartRecyclerView();
 
             if (shouldHideDamageDocumentLayout) {
-                binding.damageDocumentTitle.setVisibility(View.GONE);
-                binding.damageDocumentList.setVisibility(View.GONE);
+                // binding.damageDocumentTitle.setVisibility(View.GONE);
+                // binding.damageDocumentList.setVisibility(View.GONE);
                 for (DamageDocument damageDocument : CommonMethods.instance.getDamageDocumentList(getContext())) {
                     if (damageDocument.damageDocumentType == EnumUtils.DamageDocumentType.NONE.getIntValue()) {
-                        selectedDamageDocument = damageDocument;
+                        //   selectedDamageDocument = damageDocument;
                         break;
                     }
                 }
@@ -195,7 +205,11 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
         binding.cancelButton.setOnClickListener(view -> mActivity.onBackPressed());
         binding.confirmButton.setOnClickListener(view -> {
             //damageItem = prepareDamageObject();
-            openCameraIntent();
+            openCameraIntent(REQUEST_TAKE_PHOTO);
+        });
+        binding.documentTypeButton.setOnClickListener(view -> {
+            //damageItem = prepareDamageObject();
+            openCameraIntent(REQUEST_TAKE_PHOTO_DOCUMENT);
         });
     }
 
@@ -204,21 +218,21 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_CAMERA_PERMISSION_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                openCameraIntent();
+                openCameraIntent(REQUEST_TAKE_PHOTO);
             } else {
                 Toast.makeText(getContext(), "camera permission denied", Toast.LENGTH_LONG).show();
             }
         }
     }
 
-    private void openCameraIntent() {
+    private void openCameraIntent(int req) {
         if (mActivity.checkSelfPermission(Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA},
                     MY_CAMERA_PERMISSION_CODE);
         } else {
             Intent intent = ImageUtil.instance.dispatchTakePictureIntent(mActivity);
-            startActivityForResult(intent, REQUEST_TAKE_PHOTO);
+            startActivityForResult(intent, req);
         }
     }
 
@@ -227,17 +241,21 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK && requestCode == REQUEST_TAKE_PHOTO) {
+
             CommunicationInterface myInterface = (CommunicationInterface) getActivity();
+
             if (myInterface != null) {
                 mActivity.getSupportFragmentManager().popBackStackImmediate();
-                DamageItem damageItem = prepareDamageObject();
+                damageItem = prepareDamageObject();
                 myInterface.addDamageItem(damageItem);
             }
+        } else if (resultCode == RESULT_OK && requestCode == REQUEST_TAKE_PHOTO_DOCUMENT) {
+            damageItem = prepareDamageObjectDocument();
         }
     }
 
     private DamageItem prepareDamageObject() {
-        DamageItem damageItem = new DamageItem();
+
         damageItem.damageInfo = new DamageInfo();
 
         damageItem.damageDocument = selectedDamageDocument;
@@ -248,6 +266,28 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
         //damageItem.damagePhotoFile = ImageUtil.instance.getImageFile();
         try {
             damageItem.damagePhotoFile = new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ImageUtil.instance.removeImageFile();
+
+        return damageItem;
+    }
+
+    private DamageItem prepareDamageObjectDocument() {
+
+        damageItem.damageInfo = new DamageInfo();
+
+        damageItem.damageDocument = selectedDamageDocument;
+        damageItem.damageType = selectedDamageType;
+        damageItem.damageSize = selectedDamageSize;
+        damageItem.equipmentPart = selectedEquipmentPart;
+        damageItem.damageInfo.damageBranch = new User().getUser(mActivity).userBranch;
+
+        try {
+            damageItem.damagePhotoFileDocument = new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile());
+            binding.documentError.setVisibility(View.GONE);
+            enableAddDamageButton();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -302,8 +342,28 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
                 selectedDamageSize != null &&
                 selectedDamageDocument != null) {
 
-            binding.confirmButton.setAlpha(1);
-            binding.confirmButton.setEnabled(true);
+            if (selectedDamageDocument.damageDocumentType == EnumUtils.DamageDocumentType.NONE.getIntValue()) {
+                binding.confirmButton.setAlpha(1);
+                binding.confirmButton.setEnabled(true);
+                binding.documentError.setVisibility(View.GONE);
+
+                binding.documentTypeButton.setVisibility(View.GONE);
+                binding.documentTypeButton.setEnabled(false);
+
+            } else {
+                binding.documentTypeButton.setVisibility(View.VISIBLE);
+                binding.documentTypeButton.setEnabled(true);
+            }
+
+            if (damageItem.damagePhotoFileDocument != null) {
+                binding.confirmButton.setAlpha(1);
+                binding.confirmButton.setEnabled(true);
+                binding.documentError.setVisibility(View.GONE);
+                binding.documentSucces.setVisibility(View.VISIBLE);
+            } else {
+                binding.documentError.setVisibility(View.VISIBLE);
+                binding.documentSucces.setVisibility(View.GONE);
+            }
         }
     }
 }
