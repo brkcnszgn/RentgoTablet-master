@@ -83,6 +83,9 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
         binding.extraRcv.addItemDecoration(new DividerItemDecoration(binding.extraRcv.getContext(), DividerItemDecoration.VERTICAL));
         if (prepareExtraPaymentObject == null) {
             prepareExtraPaymentObject = CommonMethods.instance.getExtraServiceList(requireContext());
+            for (AdditionalProduct prod : prepareExtraPaymentObject) {
+                prod.actualAmount = 0;
+            }
         }
         extraServiceListAdapter.setExtraServiceList(prepareExtraPaymentObject);
     }
@@ -127,10 +130,10 @@ public class BaseExtraPaymentDialog extends Fragment implements Injectable {
         for (AdditionalProduct product : extraServiceListAdapter.getItemList()) {
 
             product.value = 1;
-                product.isChecked = true;
-                product.actualTotalAmount = product.actualAmount;
-                product.tobePaidAmount = product.actualAmount;
-                additionalProductList.add(product);
+            product.isChecked = true;
+            product.actualTotalAmount = product.actualAmount;
+            product.tobePaidAmount = product.actualAmount;
+            additionalProductList.add(product);
 
 
         }

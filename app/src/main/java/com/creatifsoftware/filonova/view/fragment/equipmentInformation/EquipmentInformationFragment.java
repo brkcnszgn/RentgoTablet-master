@@ -132,6 +132,8 @@ public class EquipmentInformationFragment extends BaseFragment implements Inject
                 binding.carInformationLayout.kilometerCheckbox.setChecked(true);
             }
             binding.carInformationLayout.currentFuelValue.setText(String.format(Locale.getDefault(), "%.0f", binding.carInformationLayout.fuelRatingBar.rate.getRating()));
+
+            binding.carInformationLayout.fuelCheckbox.setChecked(false);
         }
 
     }

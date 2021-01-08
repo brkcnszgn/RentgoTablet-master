@@ -6,6 +6,8 @@ import com.creatifsoftware.filonova.utils.DateUtils;
 
 import java.io.File;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by kerembalaban on 13.02.2019 at 00:49.
@@ -19,10 +21,10 @@ public class DamageItem implements Serializable {
     public DamageInfo damageInfo;
     public double damageAmount;
     public File damagePhotoFile;
-    public File damagePhotoFileDocument;
+    public List<File> damagePhotoFileDocument=new ArrayList<>();
     public Bitmap damagePhotoBitmap;
     public String blobStoragePath;
-    public String blobStoragePathDocument;
+    public List<String> blobStoragePathDocument=new ArrayList<>();
     public boolean isPriceCalculated;
     public boolean isRepaired = false;
 

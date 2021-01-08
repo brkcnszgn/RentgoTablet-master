@@ -16,6 +16,7 @@ public class AdditionalProduct implements Serializable {
     public int webRank;
     public int billingType;
     public String productDescription;
+    public String description;
     public double actualAmount;
     public boolean isChecked;
     //public boolean isFromReservation;

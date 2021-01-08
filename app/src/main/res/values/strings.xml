@@ -10,12 +10,12 @@
     <string name="pickup_branch_name">Teslim Ofisi</string>
     <string name="dropoff_branch_name">İade Ofisi</string>
     <string name="driving_license_number">Ehliyet Numarası</string>
-    <string name="driving_license_front_photo">Ehliyet Ön Yüz Fotoğrafı</string>
-    <string name="extra_driving_license_front_photo">2. Sürücü Ehliyet Ön Yüz Fotoğrafı</string>
-    <string name="extra2_driving_license_front_photo">3. Sürücü Ehliyet Ön Yüz Fotoğrafı</string>
-    <string name="driving_license_back_photo">Ehliyet Arka Yüz Fotoğrafı</string>
-    <string name="extra_driving_license_back_photo">2. Sürücü Ehliyet Arka Yüz Fotoğrafı</string>
-    <string name="extra2_driving_license_back_photo">3. Sürücü Ehliyet Arka Yüz Fotoğrafı</string>
+    <string name="driving_license_front_photo">Ehliyet/Kimlik  Ön Yüz Fotoğrafı</string>
+    <string name="extra_driving_license_front_photo">2. Sürücü Ehliyet/Kimlik  Ön Yüz Fotoğrafı</string>
+    <string name="extra2_driving_license_front_photo">3. Sürücü Ehliyet/Kimlik  Ön Yüz Fotoğrafı</string>
+    <string name="driving_license_back_photo">Ehliyet/Kimlik Arka Yüz Fotoğrafı</string>
+    <string name="extra_driving_license_back_photo">2. Sürücü Ehliyet/Kimlik  Arka Yüz Fotoğrafı</string>
+    <string name="extra2_driving_license_back_photo">3. Sürücü Ehliyet/Kimlik  Arka Yüz Fotoğrafı</string>
     <string name="pickup_date_time">Teslim Tarihi - Saati</string>
     <string name="pickup_date">Teslim Tarihi</string>
     <string name="pickup_time">Teslim Saati</string>
@@ -209,5 +209,6 @@
     <string name="add_damage_document_button_title">Evrak Ekle</string>
     <string name="error_damage_document_button_title">Lütfen Evrak Yükleyiniz</string>
     <string name="succes_damage_document_button_title">Evrak Başarıyla Eklendi.</string>
+    <string name="additional_photos_rental_title">Araç Görselleri</string>
 
 </resources>

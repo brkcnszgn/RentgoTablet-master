@@ -285,7 +285,7 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
         damageItem.damageInfo.damageBranch = new User().getUser(mActivity).userBranch;
 
         try {
-            damageItem.damagePhotoFileDocument = new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile());
+            damageItem.damagePhotoFileDocument.add( new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile()));
             binding.documentError.setVisibility(View.GONE);
             enableAddDamageButton();
         } catch (IOException e) {
@@ -361,8 +361,23 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
                 binding.documentError.setVisibility(View.GONE);
                 binding.documentSucces.setVisibility(View.VISIBLE);
             } else {
-                binding.documentError.setVisibility(View.VISIBLE);
-                binding.documentSucces.setVisibility(View.GONE);
+                if (selectedDamageDocument.damageDocumentType == EnumUtils.DamageDocumentType.NONE.getIntValue()) {
+                    binding.confirmButton.setAlpha(1);
+                    binding.confirmButton.setEnabled(true);
+                    binding.documentError.setVisibility(View.GONE);
+
+                    binding.documentTypeButton.setVisibility(View.GONE);
+                    binding.documentTypeButton.setEnabled(false);
+
+                    binding.documentError.setVisibility(View.GONE);
+                    binding.documentSucces.setVisibility(View.GONE);
+
+                }
+                else {
+                    binding.documentError.setVisibility(View.VISIBLE);
+                    binding.documentSucces.setVisibility(View.GONE);
+                }
+
             }
         }
     }

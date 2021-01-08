@@ -15,9 +15,12 @@ import com.creatifsoftware.filonova.di.Injectable;
 import com.creatifsoftware.filonova.model.ContractItem;
 import com.creatifsoftware.filonova.model.DamageItem;
 import com.creatifsoftware.filonova.utils.BlobStorageManager;
+import com.creatifsoftware.filonova.utils.CommonMethods;
 import com.creatifsoftware.filonova.view.adapter.DamageListAdapter;
+import com.creatifsoftware.filonova.view.fragment.additionalphotos.AdditionaPhotoRentalFragment;
 import com.creatifsoftware.filonova.view.fragment.equipmentInformation.EquipmentInformationFragmentForRental;
 
+import java.io.File;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -60,8 +63,14 @@ public class DamageEntryFragmentForRental extends DamageEntryFragment implements
 
     @Override
     public void navigate() {
-        EquipmentInformationFragmentForRental carInformationForRentalFragment = EquipmentInformationFragmentForRental.forSelectedContract(selectedContract);
-        super.changeFragment(carInformationForRentalFragment);
+        if (CommonMethods.instance.getTakeAllPictures(requireContext())) {
+            AdditionaPhotoRentalFragment additionaPhotoRentalFragment =
+                    AdditionaPhotoRentalFragment.forSelectedContract(selectedContract);
+            super.changeFragment(additionaPhotoRentalFragment);
+        } else {
+            EquipmentInformationFragmentForRental carInformationForRentalFragment = EquipmentInformationFragmentForRental.forSelectedContract(selectedContract);
+            super.changeFragment(carInformationForRentalFragment);
+        }
     }
 
     @Override
@@ -82,10 +91,25 @@ public class DamageEntryFragmentForRental extends DamageEntryFragment implements
                 selectedContract.contractNumber.toLowerCase() +
                 "/rental/" +
                 damageItem.damageId.toLowerCase();
-
+        for (File doc : damageItem.damagePhotoFileDocument) {
+            damageItem.blobStoragePathDocument.add(
+                    blobStorageUrl +
+                            "equipments/" +
+                            selectedContract.selectedEquipment.plateNumber.toLowerCase() +
+                            "/" +
+                            selectedContract.contractNumber.toLowerCase() +
+                            "/rental/" +
+                            UUID.randomUUID().toString().toLowerCase()
+            );
+        }
         Thread thread = new Thread(() -> {
             try {
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFile, getBlobImageName(damageItem));
+                for (File doc:damageItem.damagePhotoFileDocument){
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), doc, getBlobImageName(damageItem));
+
+                }
+
             } catch (Exception e) {
                 hasBlobStorageError = true;
                 super.showMessageDialog(e.getLocalizedMessage());

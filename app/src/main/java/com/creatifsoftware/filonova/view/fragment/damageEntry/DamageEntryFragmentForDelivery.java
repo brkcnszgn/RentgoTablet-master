@@ -20,6 +20,7 @@ import com.creatifsoftware.filonova.view.adapter.DamageListAdapter;
 import com.creatifsoftware.filonova.view.fragment.additionalphotos.AdditionaPhotoFragment;
 import com.creatifsoftware.filonova.view.fragment.equipmentInformation.EquipmentInformationFragmentForDelivery;
 
+import java.io.File;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -80,7 +81,6 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
         //String blobStorageUrl = ApplicationUtils.instance.getLiveSwitchIsChecked(getContext()) ? ConnectionUtils.instance.getLiveBlobStorageUrl() : ConnectionUtils.instance.getDevBlobStorageUrl();
         String blobStorageUrl = BuildConfig.BLOB_API_URL;
         damageItem.damageId = UUID.randomUUID().toString();
-        String test = UUID.randomUUID().toString();
         damageItem.damageInfo.isNewDamage = true;
         damageItem.blobStoragePath = blobStorageUrl +
                 "equipments/" +
@@ -89,19 +89,30 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
                 selectedContract.contractNumber.toLowerCase() +
                 "/delivery/" +
                 damageItem.damageId.toLowerCase();
-        damageItem.blobStoragePathDocument = blobStorageUrl +
-                "equipments/" +
-                selectedContract.selectedEquipment.plateNumber.toLowerCase() +
-                "/" +
-                selectedContract.contractNumber.toLowerCase() +
-                "/delivery/" +
-                test.toLowerCase();
+
+        for (File doc : damageItem.damagePhotoFileDocument) {
+            damageItem.blobStoragePathDocument.add(
+                    blobStorageUrl +
+                            "equipments/" +
+                            selectedContract.selectedEquipment.plateNumber.toLowerCase() +
+                            "/" +
+                            selectedContract.contractNumber.toLowerCase() +
+                            "/delivery/" +
+                            UUID.randomUUID().toString().toLowerCase()
+            );
+        }
 
         //upload image
         Thread thread = new Thread(() -> {
             try {
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFile, getBlobImageName(damageItem));
-                BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFileDocument, getBlobImageName(damageItem));
+
+                for (File doc:damageItem.damagePhotoFileDocument){
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), doc, getBlobImageName(damageItem));
+
+                }
+
+
             } catch (Exception e) {
                 hasBlobStorageError = true;
                 super.showMessageDialog(e.getLocalizedMessage());

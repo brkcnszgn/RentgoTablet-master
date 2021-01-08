@@ -504,6 +504,7 @@ public class ContractDashboardFragment extends BaseFragment implements Injectabl
         ArrayList<String> steps = new ArrayList<>();
         steps.add(getString(R.string.contract_information));
         steps.add(getString(R.string.damage_entry_title));
+        steps.add(getString(R.string.additional_photos_rental_title));
         steps.add(getString(R.string.car_information_title));
         steps.add(getString(R.string.extra_payment_title));
         steps.add(getString(R.string.rental_summary_title));

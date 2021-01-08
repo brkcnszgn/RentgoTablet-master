@@ -27,6 +27,21 @@
             android:textColor="@color/main_title_color"
             android:textSize="16sp"
             tools:text="TESTTTT" />
+        <EditText
+            android:id="@+id/txtDescription"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:hint="Açıklama..."
+            android:background="@drawable/main_blue_border_bg"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:text="@{item.description}"
+            android:textColor="@color/main_title_color"
+            android:textSize="16sp"
+            tools:text="TESTTTT" />
 
         <EditText
             android:id="@+id/edtPrice"

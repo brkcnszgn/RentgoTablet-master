@@ -6,6 +6,7 @@ import com.creatifsoftware.filonova.view.fragment.ReservationInformationFragment
 import com.creatifsoftware.filonova.view.fragment.additionalProducts.AdditionalProductsFragment;
 import com.creatifsoftware.filonova.view.fragment.additionalProducts.AdditionalServicesFragment;
 import com.creatifsoftware.filonova.view.fragment.additionalphotos.AdditionaPhotoFragment;
+import com.creatifsoftware.filonova.view.fragment.additionalphotos.AdditionaPhotoRentalFragment;
 import com.creatifsoftware.filonova.view.fragment.base.BaseConfirmationDialog;
 import com.creatifsoftware.filonova.view.fragment.base.BaseCreditCardFragment;
 import com.creatifsoftware.filonova.view.fragment.base.BaseDepositCreditCardFragment;
@@ -173,4 +174,7 @@ public abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
     abstract AdditionaPhotoFragment contributeAdditionaPhotoFragment();
+
+    @ContributesAndroidInjector
+    abstract AdditionaPhotoRentalFragment contributeAdditionaPhotoRentalFragment();
 }

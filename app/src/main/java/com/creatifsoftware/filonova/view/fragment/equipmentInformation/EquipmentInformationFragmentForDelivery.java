@@ -28,7 +28,7 @@ public class EquipmentInformationFragmentForDelivery extends EquipmentInformatio
 
     @Inject
     ViewModelProvider.Factory viewModelFactory;
-
+    private boolean isFirst=true;
     /**
      * Creates project fragment for specific project ID
      */
@@ -52,14 +52,17 @@ public class EquipmentInformationFragmentForDelivery extends EquipmentInformatio
         if (selectedContract.selectedEquipment.kilometerFuelImageFile != null) {
             Picasso.get().load(selectedContract.selectedEquipment.kilometerFuelImageFile).into(binding.carInformationLayout.kilometerFuelImage);
         }
+
+
     }
 
     @Override
     public void ratingBarChangeListener(RatingBar ratingBar, Equipment equipment) {
         super.ratingBarChangeListener(ratingBar, equipment);
         //binding.carInformationLayout.fuelCheckbox.setChecked(binding.carInformationLayout.fuelRatingBar.rate.getRating() == 8);
-
-        binding.carInformationLayout.fuelCheckbox.setChecked(true);
+        if(!isFirst)
+            binding.carInformationLayout.fuelCheckbox.setChecked(true);
+        isFirst=false;
         //binding.carInformationLayout.currentFuelValue.setText(String.format(Locale.getDefault(),"%.0f",ratingBar.getRating()));
         //equipment.currentFuelValue = (int)binding.carInformationLayout.fuelRatingBar.rate.getRating();
     }

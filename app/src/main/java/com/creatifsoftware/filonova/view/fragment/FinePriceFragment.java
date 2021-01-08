@@ -106,7 +106,7 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
     public void onActivityCreated(@androidx.annotation.Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        getStepView().go(3, true);
+        getStepView().go(4, true);
 
         viewModel = ViewModelProviders.of(this,
                 viewModelFactory).get(FinePricesViewModel.class);
@@ -484,7 +484,11 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
                     priceResponse.otherAdditionalProductData.add(sub);
             } else {
                 priceResponse.otherAdditionalProductData.remove(exist);
-                priceResponse.otherAdditionalProductData.add(exist);
+                exist.tobePaidAmount = sub.tobePaidAmount;
+                exist.actualAmount = sub.actualAmount;
+                exist.actualTotalAmount = sub.actualTotalAmount;
+                if (exist.tobePaidAmount > 0)
+                    priceResponse.otherAdditionalProductData.add(exist);
 
             }
 
