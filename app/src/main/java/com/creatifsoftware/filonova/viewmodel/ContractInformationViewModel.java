@@ -11,7 +11,10 @@ import androidx.lifecycle.Transformations;
 
 import com.creatifsoftware.filonova.model.ContractItem;
 import com.creatifsoftware.filonova.model.request.GetContractInformationRequest;
+import com.creatifsoftware.filonova.model.request.GivenPath;
 import com.creatifsoftware.filonova.service.repository.ContractRepository;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -20,14 +23,14 @@ public class ContractInformationViewModel extends AndroidViewModel {
     private static final MutableLiveData ABSENT = new MutableLiveData();
 
     private final ObservableField<ContractItem> selectedContract = new ObservableField<>();
-    //private final ContractRepository contractRepository;
+    private ContractRepository contractRepository;
     private final LiveData<ContractItem> contractInformationObservable;
     private final MutableLiveData<GetContractInformationRequest> getContractInformationRequest;
 
     @Inject
     public ContractInformationViewModel(@NonNull ContractRepository contractRepository, @NonNull Application application) {
         super(application);
-
+        this.contractRepository = contractRepository;
         this.getContractInformationRequest = new MutableLiveData<>();
         contractInformationObservable = Transformations.switchMap(getContractInformationRequest, input -> {
             if (input.contractId.isEmpty()) {
@@ -48,6 +51,10 @@ public class ContractInformationViewModel extends AndroidViewModel {
     public LiveData<ContractItem> getContractInformationObservable() {
         return contractInformationObservable;
         //return contractRepository.getContractInformation(getContractInformationRequest.getValue());
+    }
+
+    public LiveData<List<String>> getSliderList(GivenPath path) {
+        return contractRepository.getImageList(path);
     }
 
     public void setGetContractInformationRequest(GetContractInformationRequest request) {

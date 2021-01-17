@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
-apply plugin: 'io.fabric'
 apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin:  'kotlin-android'
 
 android {
     def version_code = 32
-    def version_name = "3.2"
+    def version_name = "3.7"
 
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion '29.0.3'
     defaultConfig {
         minSdkVersion 24
-        targetSdkVersion 29
+        targetSdkVersion 30
     }
 
     signingConfigs {
@@ -102,9 +102,9 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$firebase_core"
     implementation "com.google.firebase:firebase-perf:$firebase_perf"
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
-    implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics"
     implementation("com.google.guava:guava:28.1-jre")
-
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     // Arch
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$arch"
     implementation 'androidx.lifecycle:lifecycle-runtime:2.3.0-alpha01'
@@ -131,8 +131,8 @@ dependencies {
     implementation 'com.wang.avi:library:2.1.3'
     implementation 'com.camerakit:camerakit:1.0.0-beta3.10'
     implementation 'com.camerakit:jpegkit:0.1.0'
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61'
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.0.0'
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.20'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9'
     implementation 'id.zelory:compressor:2.1.0'
     implementation 'com.microsoft.azure.android:azure-storage-android:2.0.0@aar'
     implementation 'com.github.tarek360.RichPath:animator:0.1.1'
@@ -147,7 +147,7 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.3.0-alpha04'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0-alpha04'
     implementation 'com.github.addisonelliott:SegmentedButton:3.1.2'
-
+    implementation 'com.github.denzcoskun:ImageSlideshow:0.0.9'
     testImplementation 'junit:junit:4.12'
 }
 

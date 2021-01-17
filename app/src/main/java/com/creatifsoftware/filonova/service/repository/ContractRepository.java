@@ -37,6 +37,7 @@ import com.creatifsoftware.filonova.model.request.GetHgsTransitListRequest;
 import com.creatifsoftware.filonova.model.request.GetReservationListRequest;
 import com.creatifsoftware.filonova.model.request.GetTrafficPenaltyListRequest;
 import com.creatifsoftware.filonova.model.request.GetTransferListRequest;
+import com.creatifsoftware.filonova.model.request.GivenPath;
 import com.creatifsoftware.filonova.model.request.PaymentInformation;
 import com.creatifsoftware.filonova.model.request.QuickContractCustomerParameter;
 import com.creatifsoftware.filonova.model.request.QuickContractPriceInformation;
@@ -121,6 +122,30 @@ public class ContractRepository {
 
     private static ContractItem convertJsonStringToJsonObject(String s) {
         return new Gson().fromJson(s, ContractItem.class);
+    }
+
+    public LiveData<List<String>> getImageList(GivenPath request) {
+        final MutableLiveData<List<String>> data = new MutableLiveData<>();
+
+        jsonApi.getBlobsByGivenPath(request).enqueue(new Callback<List<String>>() {
+            @Override
+            public void onResponse(Call<List<String>> call, Response<List<String>> response) {
+                if (response.isSuccessful()) {
+                    data.setValue(response.body());
+                } else {
+                    data.setValue(null);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<String>> call, Throwable t) {
+                data.setValue(new ArrayList<>());
+            }
+        });
+
+        //data.setValue(convertJsonStringToContractJsonArray(MockData.contractListMockData()));
+
+        return data;
     }
 
     public LiveData<User> login(UserRequest request) {

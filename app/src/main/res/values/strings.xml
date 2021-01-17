@@ -210,5 +210,7 @@
     <string name="error_damage_document_button_title">Lütfen Evrak Yükleyiniz</string>
     <string name="succes_damage_document_button_title">Evrak Başarıyla Eklendi.</string>
     <string name="additional_photos_rental_title">Araç Görselleri</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

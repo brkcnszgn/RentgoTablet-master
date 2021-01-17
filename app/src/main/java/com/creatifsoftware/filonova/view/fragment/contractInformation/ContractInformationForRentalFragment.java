@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.transition.Slide;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -23,15 +25,18 @@ import com.creatifsoftware.filonova.di.Injectable;
 import com.creatifsoftware.filonova.model.ContractItem;
 import com.creatifsoftware.filonova.model.User;
 import com.creatifsoftware.filonova.model.request.GetContractInformationRequest;
+import com.creatifsoftware.filonova.model.request.GivenPath;
 import com.creatifsoftware.filonova.utils.BlobStorageManager;
 import com.creatifsoftware.filonova.utils.EnumUtils;
 import com.creatifsoftware.filonova.view.fragment.base.BaseFragment;
+import com.creatifsoftware.filonova.view.fragment.base.SliderFragment;
 import com.creatifsoftware.filonova.view.fragment.damageEntry.DamageEntryFragmentForRental;
 import com.creatifsoftware.filonova.viewmodel.ContractInformationViewModel;
 
 import java.io.ByteArrayOutputStream;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
@@ -85,6 +90,18 @@ public class ContractInformationForRentalFragment extends BaseFragment implement
         binding.contractInformationTitle.setText(String.format(Locale.getDefault(), "%s - %s (%s)", getString(R.string.contract_information), selectedContract.contractNumber, selectedContract.pnrNumber));
         binding.dropoffDateTime.setOnClickListener(view -> datePicker());
         bindViewModal();
+        binding.showslider.setOnClickListener(v -> {
+            GivenPath givenPath = new GivenPath();
+            givenPath.setContractNumber(selectedContract.contractNumber);
+            givenPath.setPlateNumber(selectedContract.selectedEquipment.plateNumber);
+            viewModel.getSliderList(givenPath).observe(getViewLifecycleOwner(), t -> {
+                if (t != null) {
+                    SliderFragment fragment = new SliderFragment(t);
+                    fragment.show(requireActivity().getSupportFragmentManager(), "Slider");
+                }
+
+            });
+        });
     }
 
     private void datePicker() {

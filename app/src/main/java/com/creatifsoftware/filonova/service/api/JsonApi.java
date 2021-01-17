@@ -24,6 +24,7 @@ import com.creatifsoftware.filonova.model.request.GetHgsTransitListRequest;
 import com.creatifsoftware.filonova.model.request.GetReservationListRequest;
 import com.creatifsoftware.filonova.model.request.GetTrafficPenaltyListRequest;
 import com.creatifsoftware.filonova.model.request.GetTransferListRequest;
+import com.creatifsoftware.filonova.model.request.GivenPath;
 import com.creatifsoftware.filonova.model.request.UpdateContractForDeliveryRequest;
 import com.creatifsoftware.filonova.model.request.UpdateContractForRentalRequest;
 import com.creatifsoftware.filonova.model.request.UpdateEquipmentInformationRequest;
@@ -50,6 +51,8 @@ import com.creatifsoftware.filonova.model.response.ReservationListResponse;
 import com.creatifsoftware.filonova.model.response.TrafficPenaltyResponse;
 import com.creatifsoftware.filonova.model.response.TransferListResponse;
 import com.creatifsoftware.filonova.model.response.UpdateContractForRentalResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -144,6 +147,10 @@ public interface JsonApi {
 
     @POST("getHgsAdditionalProducts")
     Call<GetHgsAdditionalProductsResponse> getHgsAdditionalProducts(@Body GetHgsAdditionalProductRequest request);
+
+    @POST("getBlobsByGivenPath")
+    Call<List<String>> getBlobsByGivenPath(@Body GivenPath request);
+
 
 //    @FormUrlEncoded
 //    @POST("cancelInvoiceByLogoInvoiceNumber")
