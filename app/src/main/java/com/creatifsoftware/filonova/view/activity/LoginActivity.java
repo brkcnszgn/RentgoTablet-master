@@ -30,7 +30,6 @@ import com.creatifsoftware.filonova.view.fragment.base.BaseErrorDialog;
 import com.creatifsoftware.filonova.view.fragment.base.BaseFilonovaLoadingDialogFragment;
 import com.creatifsoftware.filonova.viewmodel.LoginViewModel;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.crashlytics.FirebaseCrashlytics;
 
 import java.util.Locale;
 
@@ -70,7 +69,6 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
-        FirebaseCrashlytics.getInstance().setCrashlyticsCollectionEnabled(true);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
@@ -230,9 +228,9 @@ public class LoginActivity extends AppCompatActivity implements HasSupportFragme
     }
 
     private void setCrashlyticsUser(User user) {
-        FirebaseCrashlytics.getInstance().setUserId(user.userId);
+      /*  FirebaseCrashlytics.getInstance().setUserId(user.userId);
         FirebaseCrashlytics.getInstance().setCustomKey("userId", user.userId);
-        FirebaseCrashlytics.getInstance().setCustomKey("username", user.fullname);
+        FirebaseCrashlytics.getInstance().setCustomKey("username", user.fullname);*/
     }
 
     @Override

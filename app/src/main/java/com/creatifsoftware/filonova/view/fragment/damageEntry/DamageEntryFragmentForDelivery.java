@@ -90,26 +90,22 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
                 "/delivery/" +
                 damageItem.damageId.toLowerCase();
 
+        int index=1;
         for (File doc : damageItem.damagePhotoFileDocument) {
             damageItem.blobStoragePathDocument.add(
-                    blobStorageUrl +
-                            "equipments/" +
-                            selectedContract.selectedEquipment.plateNumber.toLowerCase() +
-                            "/" +
-                            selectedContract.contractNumber.toLowerCase() +
-                            "/delivery/" +
-                            UUID.randomUUID().toString().toLowerCase()
+                UUID.randomUUID().toString().toLowerCase()
             );
+            index++;
         }
 
         //upload image
         Thread thread = new Thread(() -> {
             try {
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFile, getBlobImageName(damageItem));
-
+int row=0;
                 for (File doc:damageItem.damagePhotoFileDocument){
-                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), doc, getBlobImageName(damageItem));
-
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), doc, getBlobImageName(damageItem,row));
+row++;
                 }
 
 
@@ -140,6 +136,12 @@ public class DamageEntryFragmentForDelivery extends DamageEntryFragment implemen
                 selectedContract.contractNumber,
                 "delivery",
                 damageItem.damageId);
+    }
+    private String getBlobImageName(DamageItem damageItem,int index) {
+        return BlobStorageManager.instance.prepareEquipmentImageName(selectedContract.selectedEquipment,
+                selectedContract.contractNumber,
+                "delivery",
+                damageItem.blobStoragePathDocument.get(index));
     }
 
     @Override

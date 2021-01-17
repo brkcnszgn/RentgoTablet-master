@@ -19,6 +19,7 @@ import com.creatifsoftware.filonova.utils.CommonMethods;
 import com.creatifsoftware.filonova.view.adapter.DamageListAdapter;
 import com.creatifsoftware.filonova.view.fragment.additionalphotos.AdditionaPhotoRentalFragment;
 import com.creatifsoftware.filonova.view.fragment.equipmentInformation.EquipmentInformationFragmentForRental;
+import com.squareup.picasso.Picasso;
 
 import java.io.File;
 import java.util.Locale;
@@ -91,23 +92,21 @@ public class DamageEntryFragmentForRental extends DamageEntryFragment implements
                 selectedContract.contractNumber.toLowerCase() +
                 "/rental/" +
                 damageItem.damageId.toLowerCase();
+        int index=1;
         for (File doc : damageItem.damagePhotoFileDocument) {
             damageItem.blobStoragePathDocument.add(
-                    blobStorageUrl +
-                            "equipments/" +
-                            selectedContract.selectedEquipment.plateNumber.toLowerCase() +
-                            "/" +
-                            selectedContract.contractNumber.toLowerCase() +
-                            "/rental/" +
-                            UUID.randomUUID().toString().toLowerCase()
+                   UUID.randomUUID().toString().toLowerCase()
             );
+            index++;
         }
+
         Thread thread = new Thread(() -> {
             try {
                 BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), damageItem.damagePhotoFile, getBlobImageName(damageItem));
-                for (File doc:damageItem.damagePhotoFileDocument){
-                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), doc, getBlobImageName(damageItem));
-
+                int row=0;
+                for (File doc:damageItem.damagePhotoFileDocument) {
+                    BlobStorageManager.instance.UploadImage(BlobStorageManager.instance.getEquipmentsContainerName(), doc, getBlobImageName(damageItem,row));
+                    row++;
                 }
 
             } catch (Exception e) {
@@ -129,6 +128,7 @@ public class DamageEntryFragmentForRental extends DamageEntryFragment implements
             selectedContract.selectedEquipment.damageList.add(0, damageItem);
             damageListAdapter.notifyDataSetChanged();
             drawDamageItemsToModelByEquipmentSubPart(damageItem.equipmentPart.equipmentSubPartId);
+            Picasso.get().load(damageItem.damagePhotoFileDocument.get(0)).into(binding.imgTest);
         }
     }
 
@@ -138,6 +138,15 @@ public class DamageEntryFragmentForRental extends DamageEntryFragment implements
                 "rental",
                 damageItem.damageId);
     }
+
+    private String getBlobImageName(DamageItem damageItem,int index) {
+        return BlobStorageManager.instance.prepareEquipmentImageName(selectedContract.selectedEquipment,
+                selectedContract.contractNumber,
+                "rental",
+                damageItem.blobStoragePathDocument.get(index)
+                );
+    }
+
 
     @Override
     public void deleteBlobImage(DamageItem damageItem) {

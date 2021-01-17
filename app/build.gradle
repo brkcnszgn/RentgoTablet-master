@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'io.fabric'
 apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
-    def version_code = 33
-    def version_name = "3.3"
+    def version_code = 32
+    def version_name = "3.2"
 
     compileSdkVersion 29
     buildToolsVersion '29.0.3'
@@ -14,7 +14,12 @@ android {
     }
 
     signingConfigs {
-
+        release {
+            keyAlias 'rentgoservice_alias'
+            keyPassword 'Creatif092016'
+            storeFile file('../rentgoservice.jks')
+            storePassword 'Creatif092016'
+        }
     }
 
     flavorDimensions "ProductType"
@@ -24,7 +29,7 @@ android {
             dimension "ProductType"
             versionCode version_code
             versionName "$version_name"
-            resValue "string", "app_name", "FiloNova Servis"
+            resValue "string", "app_name", "Rentgo Servis"
             buildConfigField "String", 'API_USERNAME', '"serviceclient"'
             buildConfigField "String", 'API_PASSWORD', '"123"'
             buildConfigField "String", 'SERVICE_API_URL', '"http://newmongodb.rentgo.com:6060/api/service/"'
@@ -42,11 +47,11 @@ android {
             applicationIdSuffix ".qa"
             versionCode version_code
             versionName "Test - $version_name"
-            resValue "string", "app_name", "FiloNova Servis Test"
+            resValue "string", "app_name", "Filonova"
             buildConfigField "String", 'API_USERNAME', '"serviceclient"'
             buildConfigField "String", 'API_PASSWORD', '"123"'
-            buildConfigField "String", 'SERVICE_API_URL', '" http://testfilonova.westeurope.cloudapp.azure.com:6060/api/service/"'
-            buildConfigField "String", 'FINE_API_URL', '" http://testfilonova.westeurope.cloudapp.azure.com:6060/api/fine/"'
+            buildConfigField "String", 'SERVICE_API_URL', '"http://testfilonova.westeurope.cloudapp.azure.com:6060/api/service/"'
+            buildConfigField "String", 'FINE_API_URL', '"http://testfilonova.westeurope.cloudapp.azure.com:6060/api/fine/"'
             buildConfigField "String", 'BLOB_API_URL', '"https://testfilonova.blob.core.windows.net/"'
             buildConfigField "String", 'BLOB_CONNECTION_STRING', '"DefaultEndpointsProtocol=https;AccountName=testfilonova;AccountKey=jtG3AReFmMALWULEa0culeWqzLtjPGUYfiwQfQGDfhUv95uDGQ/rXVVHgQZVu20/mXLu09iYJOIqHzeladoi4A==;EndpointSuffix=core.windows.net"'
             buildConfigField "boolean", 'IS_PROD', "false"
@@ -56,10 +61,12 @@ android {
     buildTypes {
         release {
             debuggable false
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     dataBinding {
         enabled = true
     }
@@ -68,7 +75,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 final support = "1.0.0"
@@ -78,7 +84,7 @@ final constraintlayout = '2.0.0-beta4'
 final material = '1.2.0-alpha05'
 final arch = '2.2.0-rc01'
 final retrofit = '2.6.2'
-final android_dagger_version = '2.23'
+final android_dagger_version = '2.21'
 final firebase_core = '17.2.3'
 final firebase_perf = '19.0.5'
 final crashlytics = "2.10.1"
@@ -96,9 +102,8 @@ dependencies {
     implementation "com.google.firebase:firebase-core:$firebase_core"
     implementation "com.google.firebase:firebase-perf:$firebase_perf"
     implementation 'com.google.firebase:firebase-firestore:21.4.1'
+    implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics"
     implementation("com.google.guava:guava:28.1-jre")
-    implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
-    implementation 'com.google.firebase:firebase-analytics:17.5.0'
 
     // Arch
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$arch"
@@ -147,4 +152,3 @@ dependencies {
 }
 
 apply plugin: 'com.google.gms.google-services'
-apply plugin: 'com.google.firebase.crashlytics'

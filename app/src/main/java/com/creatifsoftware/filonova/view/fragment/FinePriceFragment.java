@@ -498,7 +498,12 @@ public class FinePriceFragment extends BaseFragment implements Injectable {
         prepareCarDifferenceAmountLayout(priceResponse == null ? null : priceResponse.calculatePricesForUpdateContractResponse);
         calculateTotalFineAmount();
         binding.setViewModel(viewModel);
-        prepareContractExtraPaymentListForUpdate(item);
+        List<AdditionalProduct> newItems=new ArrayList<>();
+        for (AdditionalProduct p:item){
+            if(p.tobePaidAmount>0)
+            newItems.add(p);
+        }
+        prepareContractExtraPaymentListForUpdate(newItems);
     }
 
     /**

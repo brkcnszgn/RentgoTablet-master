@@ -185,7 +185,7 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
             }
             if (selectedContract.customer.extra_seat_front_image != null) {
                 binding.seatFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_seat_front_image));
-                binding.seatBackFacePhotoCheckbox.setChecked(true);
+                binding.seatFrontFacePhotoCheckbox.setChecked(true);
             }
         }
     }

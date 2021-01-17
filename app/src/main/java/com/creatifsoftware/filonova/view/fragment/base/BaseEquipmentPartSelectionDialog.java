@@ -353,32 +353,17 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
             } else {
                 binding.documentTypeButton.setVisibility(View.VISIBLE);
                 binding.documentTypeButton.setEnabled(true);
-            }
-
-            if (damageItem.damagePhotoFileDocument != null) {
-                binding.confirmButton.setAlpha(1);
-                binding.confirmButton.setEnabled(true);
-                binding.documentError.setVisibility(View.GONE);
-                binding.documentSucces.setVisibility(View.VISIBLE);
-            } else {
-                if (selectedDamageDocument.damageDocumentType == EnumUtils.DamageDocumentType.NONE.getIntValue()) {
+                if (damageItem.damagePhotoFileDocument.size()>0) {
                     binding.confirmButton.setAlpha(1);
                     binding.confirmButton.setEnabled(true);
                     binding.documentError.setVisibility(View.GONE);
-
-                    binding.documentTypeButton.setVisibility(View.GONE);
-                    binding.documentTypeButton.setEnabled(false);
-
-                    binding.documentError.setVisibility(View.GONE);
-                    binding.documentSucces.setVisibility(View.GONE);
-
+                    binding.documentSucces.setText(""+damageItem.damagePhotoFileDocument.size()+" - "+requireContext().getString(R.string.succes_damage_document_button_title));
+                   binding.documentSucces.setVisibility(View.VISIBLE);
                 }
-                else {
-                    binding.documentError.setVisibility(View.VISIBLE);
-                    binding.documentSucces.setVisibility(View.GONE);
-                }
-
             }
+
+
+
         }
     }
 }
