@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 
+import androidx.multidex.MultiDex;
+
 import com.creatifsoftware.filonova.di.AppInjector;
 
 import javax.inject.Inject;
@@ -37,5 +39,11 @@ public final class FilonovaServiceApp extends Application implements HasActivity
     @Override
     public DispatchingAndroidInjector<Activity> activityInjector() {
         return dispatchingAndroidInjector;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 }

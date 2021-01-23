@@ -16,6 +16,7 @@ import androidx.core.content.FileProvider;
 
 import com.creatifsoftware.filonova.BuildConfig;
 import com.creatifsoftware.filonova.R;
+import com.emrhmrc.cameraxlib.CameraXActivity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -67,9 +68,9 @@ public class ImageUtil {
     }
 
     public Intent dispatchTakePictureIntent(Context context) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra("android.intent.extras.CAMERA_FACING", 1);
-        if (intent.resolveActivity(context.getPackageManager()) != null) {
+        Intent intent = new Intent(context,CameraXActivity.class);
+
+       try {
             File imageFile = null;
             try {
                 imageFile = createImageFile(context);
@@ -81,10 +82,11 @@ public class ImageUtil {
                 imageFilePath = imageFile.getAbsolutePath();
 
                 Uri imageUri = FileProvider.getUriForFile(context, AUTHORITY, imageFile);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                intent.putExtra("FILE_NAME", imageFile.getName());
+
                 //grantUriPermissions(context,intent, imageUri);
             }
-        } else {
+        } catch (Exception e){
             Toast.makeText(context, R.string.camera_not_found, LENGTH_LONG).show();
         }
 
