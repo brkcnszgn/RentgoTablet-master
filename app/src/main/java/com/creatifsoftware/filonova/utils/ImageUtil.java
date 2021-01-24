@@ -68,13 +68,14 @@ public class ImageUtil {
     }
 
     public Intent dispatchTakePictureIntent(Context context) {
-        Intent intent = new Intent(context,CameraXActivity.class);
-
-       try {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra("android.intent.extras.CAMERA_FACING", 1);
+        if (intent.resolveActivity(context.getPackageManager()) != null) {
             File imageFile = null;
             try {
                 imageFile = createImageFile(context);
             } catch (IOException e) {
+                Toast.makeText(context, e.getLocalizedMessage(), LENGTH_LONG).show();
                 e.printStackTrace();
             }
 
@@ -82,11 +83,10 @@ public class ImageUtil {
                 imageFilePath = imageFile.getAbsolutePath();
 
                 Uri imageUri = FileProvider.getUriForFile(context, AUTHORITY, imageFile);
-                intent.putExtra("FILE_NAME", imageFile.getName());
-
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
                 //grantUriPermissions(context,intent, imageUri);
             }
-        } catch (Exception e){
+        } else {
             Toast.makeText(context, R.string.camera_not_found, LENGTH_LONG).show();
         }
 

@@ -4,7 +4,7 @@ apply plugin:  'kotlin-android'
 
 android {
     def version_code = 32
-    def version_name = "3.7"
+    def version_name = "3.7.2"
 
     compileSdkVersion 30
     buildToolsVersion '29.0.3'

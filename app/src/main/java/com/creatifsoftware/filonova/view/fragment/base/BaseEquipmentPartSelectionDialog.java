@@ -230,6 +230,12 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA},
                     MY_CAMERA_PERMISSION_CODE);
+        } else if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    4324);
+        } else if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    432432);
         } else {
             Intent intent = ImageUtil.instance.dispatchTakePictureIntent(mActivity);
             startActivityForResult(intent, req);
@@ -285,7 +291,7 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
         damageItem.damageInfo.damageBranch = new User().getUser(mActivity).userBranch;
 
         try {
-            damageItem.damagePhotoFileDocument.add( new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile()));
+            damageItem.damagePhotoFileDocument.add(new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile()));
             binding.documentError.setVisibility(View.GONE);
             enableAddDamageButton();
         } catch (IOException e) {
@@ -353,15 +359,14 @@ public class BaseEquipmentPartSelectionDialog extends Fragment implements Inject
             } else {
                 binding.documentTypeButton.setVisibility(View.VISIBLE);
                 binding.documentTypeButton.setEnabled(true);
-                if (damageItem.damagePhotoFileDocument.size()>0) {
+                if (damageItem.damagePhotoFileDocument.size() > 0) {
                     binding.confirmButton.setAlpha(1);
                     binding.confirmButton.setEnabled(true);
                     binding.documentError.setVisibility(View.GONE);
-                    binding.documentSucces.setText(""+damageItem.damagePhotoFileDocument.size()+" - "+requireContext().getString(R.string.succes_damage_document_button_title));
-                   binding.documentSucces.setVisibility(View.VISIBLE);
+                    binding.documentSucces.setText("" + damageItem.damagePhotoFileDocument.size() + " - " + requireContext().getString(R.string.succes_damage_document_button_title));
+                    binding.documentSucces.setVisibility(View.VISIBLE);
                 }
             }
-
 
 
         }

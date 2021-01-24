@@ -54,6 +54,8 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
     private static final int SEAT_BACK_CAPTURE_IMAGE = 104;
     private static final int SEAT_FRONT_CAPTURE_IMAGE = 105;
     private static final int MY_CAMERA_PERMISSION_CODE = 102;
+    private static final int WRITE_EXTERNAL_STORAGE = 209;
+    private static final int READ_EXTERNAL_STORAGE = 209;
     private final AdditionalPhotoImageClickCallback additionalPhotoImageClickCallback = this::openCameraIntent;
     public FragmentAdditionalPhotosBinding binding;
     public AdditionalPhotoViewModel viewModel;
@@ -347,10 +349,17 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
     }
 
     private void openCameraIntent(View view) {
-        if (mActivity.checkSelfPermission(Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
+        if (mActivity.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA},
                     MY_CAMERA_PERMISSION_CODE);
+        }
+        else if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    WRITE_EXTERNAL_STORAGE);
+        }
+        else if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    READ_EXTERNAL_STORAGE);
         } else {
             //Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             //Intent cameraIntent = new Intent("android.media.action.IMAGE_CAPTURE");
@@ -391,6 +400,7 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
             try {
                 compressedImage = new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile());
             } catch (IOException e) {
+                Toast.makeText(requireContext(),"HATA1 "+e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
 

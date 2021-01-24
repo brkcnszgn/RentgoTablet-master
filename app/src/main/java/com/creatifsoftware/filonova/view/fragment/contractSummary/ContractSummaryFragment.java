@@ -323,6 +323,12 @@ public class ContractSummaryFragment extends BaseFragment implements Injectable 
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA},
                     requestCode);
+        } else if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    546);
+        } else if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    65465);
         } else {
             Intent intent = ImageUtil.instance.dispatchTakePictureIntent(mActivity);
             startActivityForResult(intent, REQUEST_TAKE_PHOTO);

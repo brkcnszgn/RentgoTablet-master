@@ -143,6 +143,12 @@ public class EquipmentInformationFragment extends BaseFragment implements Inject
                 != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA},
                     MY_CAMERA_PERMISSION_CODE);
+        } else if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    112121);
+        } else if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    12121);
         } else {
             Intent intent = ImageUtil.instance.dispatchTakePictureIntent(mActivity);
             startActivityForResult(intent, REQUEST_TAKE_PHOTO);
