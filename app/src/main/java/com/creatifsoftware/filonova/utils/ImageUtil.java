@@ -68,8 +68,7 @@ public class ImageUtil {
     }
 
     public Intent dispatchTakePictureIntent(Context context) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        intent.putExtra("android.intent.extras.CAMERA_FACING", 1);
+        Intent intent = new Intent(context,CameraXActivity.class);
         if (intent.resolveActivity(context.getPackageManager()) != null) {
             File imageFile = null;
             try {
@@ -83,7 +82,7 @@ public class ImageUtil {
                 imageFilePath = imageFile.getAbsolutePath();
 
                 Uri imageUri = FileProvider.getUriForFile(context, AUTHORITY, imageFile);
-                intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+                intent.putExtra("FILE_NAME", imageFile.getName());
                 //grantUriPermissions(context,intent, imageUri);
             }
         } else {

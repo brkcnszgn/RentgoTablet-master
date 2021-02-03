@@ -48,6 +48,7 @@ import static android.app.Activity.RESULT_OK;
  * Created by kerembalaban on 16.02.2019 at 18:38.
  */
 public class AdditionaPhotoRentalFragment extends BaseFragment implements Injectable {
+    private int downloadedImageCount=0;
     private static final int RIGHT_CAPTURE_IMAGE = 100;
     private static final int LEFT_CAPTURE_IMAGE = 101;
     private static final int FRONT_CAPTURE_IMAGE = 102;
@@ -92,8 +93,7 @@ public class AdditionaPhotoRentalFragment extends BaseFragment implements Inject
         getStepView().go(2, true);
 
         mActivity.showProgressBar();
-        viewModel = ViewModelProviders.of(mActivity, viewModelFactory)
-                .get(AdditionalPhotoViewModel.class);
+        viewModel = ViewModelProviders.of(mActivity, viewModelFactory).get(AdditionalPhotoViewModel.class);
         selectedContract = getSelectedContract();
         binding.contractInformationTitle.setText(String.format(Locale.getDefault(), "%s - %s (%s)", getString(R.string.additional_photos_title), selectedContract.contractNumber, selectedContract.pnrNumber));
         bindViewModal();
@@ -156,7 +156,7 @@ public class AdditionaPhotoRentalFragment extends BaseFragment implements Inject
 
 
         if (selectedContract.isEquipmentChanged) {
-            super.showLoading();
+            downloadedImageCount=0;
             downloadPhoto("extra_right_image", RIGHT_CAPTURE_IMAGE);
             downloadPhoto("extra_left_image", LEFT_CAPTURE_IMAGE);
             downloadPhoto("extra_front_image", FRONT_CAPTURE_IMAGE);
@@ -206,35 +206,43 @@ public class AdditionaPhotoRentalFragment extends BaseFragment implements Inject
                     Bitmap bitmap = BitmapFactory.decodeByteArray(buffer, 0, buffer.length);
                     switch (type) {
                         case RIGHT_CAPTURE_IMAGE:
+                            downloadedImageCount++;
                             binding.rightFacePhoto.setImageBitmap(bitmap);
                             binding.rightPhotoCheckbox.setChecked(true);
                             break;
                         case LEFT_CAPTURE_IMAGE:
+                            downloadedImageCount++;
                             binding.leftFacePhoto.setImageBitmap(bitmap);
                             binding.leftPhotoCheckbox.setChecked(true);
                             break;
                         case FRONT_CAPTURE_IMAGE:
+                            downloadedImageCount++;
                             binding.frontFacePhoto.setImageBitmap(bitmap);
                             binding.frontFacePhotoCheckbox.setChecked(true);
                             break;
                         case BACK_CAPTURE_IMAGE:
+                            downloadedImageCount++;
                             binding.backFacePhoto.setImageBitmap(bitmap);
                             binding.backFacePhotoCheckbox.setChecked(true);
                             break;
                         case SEAT_BACK_CAPTURE_IMAGE:
+                            downloadedImageCount++;
                             binding.seatBackFacePhoto.setImageBitmap(bitmap);
                             binding.seatBackFacePhotoCheckbox.setChecked(true);
                             break;
                         case SEAT_FRONT_CAPTURE_IMAGE:
+                            downloadedImageCount++;
                             binding.seatFrontFacePhoto.setImageBitmap(bitmap);
                             binding.seatFrontFacePhotoCheckbox.setChecked(true);
                             break;
                     }
                     imageStream.reset();
                 });
+
             } catch (Exception ex) {
                 final String exceptionMessage = ex.getMessage();
                 handler.post(imageStream::reset);
+                super.hideLoading();
             }
         });
         th.start();
