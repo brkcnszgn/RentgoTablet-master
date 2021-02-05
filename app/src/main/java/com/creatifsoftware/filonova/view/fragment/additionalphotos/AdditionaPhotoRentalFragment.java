@@ -155,7 +155,7 @@ public class AdditionaPhotoRentalFragment extends BaseFragment implements Inject
         binding.setCallback(additionalPhotoImageClickCallback);
 
 
-        if (selectedContract.isEquipmentChanged) {
+     /*   if (selectedContract.isEquipmentChanged) {
             downloadedImageCount=0;
             downloadPhoto("extra_right_image", RIGHT_CAPTURE_IMAGE);
             downloadPhoto("extra_left_image", LEFT_CAPTURE_IMAGE);
@@ -163,7 +163,7 @@ public class AdditionaPhotoRentalFragment extends BaseFragment implements Inject
             downloadPhoto("extra_rear_image", BACK_CAPTURE_IMAGE);
             downloadPhoto("extra_seat_rear_image", SEAT_BACK_CAPTURE_IMAGE);
             downloadPhoto("extra_seat_front_image", SEAT_FRONT_CAPTURE_IMAGE);
-        } else {
+        } else {*/
             if (selectedContract.customer.extra_right_image != null) {
                 binding.rightFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_right_image));
                 binding.rightPhotoCheckbox.setChecked(true);
@@ -188,7 +188,7 @@ public class AdditionaPhotoRentalFragment extends BaseFragment implements Inject
                 binding.seatFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_seat_front_image));
                 binding.seatFrontFacePhotoCheckbox.setChecked(true);
             }
-        }
+      //  }
     }
 
     private void downloadPhoto(String imageName, int type) {
