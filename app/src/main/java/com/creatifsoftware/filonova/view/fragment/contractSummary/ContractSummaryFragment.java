@@ -37,6 +37,7 @@ import com.creatifsoftware.filonova.viewmodel.ContractSummaryViewModel;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 
@@ -304,6 +305,17 @@ public class ContractSummaryFragment extends BaseFragment implements Injectable 
         }
 
         return list;
+    }
+
+    private boolean removeDuplicate(List<AdditionalProduct> list, AdditionalProduct item) {
+        boolean retVal=false;
+        for (AdditionalProduct paymentInfo:list){
+            if (paymentInfo.productId.equals(item.productId)) {
+                retVal = true;
+                break;
+            }
+        }
+        return retVal;
     }
 
     public double getDepositAmountDifference() {

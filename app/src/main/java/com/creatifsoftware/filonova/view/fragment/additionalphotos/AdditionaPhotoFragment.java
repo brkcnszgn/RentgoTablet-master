@@ -156,7 +156,7 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
         binding.setCallback(additionalPhotoImageClickCallback);
 
 
-        if (selectedContract.isEquipmentChanged) {
+       /* if (selectedContract.isEquipmentChanged) {
             super.showLoading();
             downloadPhoto("extra_right_image", RIGHT_CAPTURE_IMAGE);
             downloadPhoto("extra_left_image", LEFT_CAPTURE_IMAGE);
@@ -164,31 +164,30 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
             downloadPhoto("extra_rear_image", BACK_CAPTURE_IMAGE);
             downloadPhoto("extra_seat_rear_image", SEAT_BACK_CAPTURE_IMAGE);
             downloadPhoto("extra_seat_front_image", SEAT_FRONT_CAPTURE_IMAGE);
-        } else {
-            if (selectedContract.customer.extra_right_image != null) {
-                binding.rightFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_right_image));
-                binding.rightPhotoCheckbox.setChecked(true);
-            }
-            if (selectedContract.customer.extra_left_image != null) {
-                binding.leftFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_left_image));
-                binding.leftPhotoCheckbox.setChecked(true);
-            }
-            if (selectedContract.customer.extra_front_image != null) {
-                binding.frontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_front_image));
-                binding.frontFacePhotoCheckbox.setChecked(true);
-            }
-            if (selectedContract.customer.extra_rear_image != null) {
-                binding.backFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_rear_image));
-                binding.backFacePhotoCheckbox.setChecked(true);
-            }
-            if (selectedContract.customer.extra_seat_rear_image != null) {
-                binding.seatBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_seat_rear_image));
-                binding.seatBackFacePhotoCheckbox.setChecked(true);
-            }
-            if (selectedContract.customer.extra_seat_front_image != null) {
-                binding.seatFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_seat_front_image));
-                binding.seatFrontFacePhotoCheckbox.setChecked(true);
-            }
+        } else {*/
+        if (selectedContract.customer.extra_right_image != null) {
+            binding.rightFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_right_image));
+            binding.rightPhotoCheckbox.setChecked(true);
+        }
+        if (selectedContract.customer.extra_left_image != null) {
+            binding.leftFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_left_image));
+            binding.leftPhotoCheckbox.setChecked(true);
+        }
+        if (selectedContract.customer.extra_front_image != null) {
+            binding.frontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_front_image));
+            binding.frontFacePhotoCheckbox.setChecked(true);
+        }
+        if (selectedContract.customer.extra_rear_image != null) {
+            binding.backFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_rear_image));
+            binding.backFacePhotoCheckbox.setChecked(true);
+        }
+        if (selectedContract.customer.extra_seat_rear_image != null) {
+            binding.seatBackFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_seat_rear_image));
+            binding.seatBackFacePhotoCheckbox.setChecked(true);
+        }
+        if (selectedContract.customer.extra_seat_front_image != null) {
+            binding.seatFrontFacePhoto.setImageBitmap(ImageUtil.instance.convertFiletoBitmap(selectedContract.customer.extra_seat_front_image));
+            binding.seatFrontFacePhotoCheckbox.setChecked(true);
         }
     }
 
@@ -352,12 +351,10 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
         if (mActivity.checkSelfPermission(Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.CAMERA},
                     MY_CAMERA_PERMISSION_CODE);
-        }
-        else if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        } else if (mActivity.checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
                     WRITE_EXTERNAL_STORAGE);
-        }
-        else if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        } else if (mActivity.checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     READ_EXTERNAL_STORAGE);
         } else {
@@ -400,7 +397,7 @@ public class AdditionaPhotoFragment extends BaseFragment implements Injectable {
             try {
                 compressedImage = new Compressor(mActivity.getApplicationContext()).setQuality(50).compressToFile(ImageUtil.instance.getImageFile());
             } catch (IOException e) {
-                Toast.makeText(requireContext(),"HATA1 "+e.getLocalizedMessage(),Toast.LENGTH_LONG).show();
+                Toast.makeText(requireContext(), "HATA1 " + e.getLocalizedMessage(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
 
